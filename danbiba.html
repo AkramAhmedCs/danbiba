@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danbiba Farms & Mining Co. Ltd</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FBF9F5',
+                        navy: '#1E1B4B',
+                        plum: '#4C1D95',
+                        aqua: '#0E7490',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        }
+        .lang-hidden { display: none; }
+    </style>
+</head>
+<body class="bg-cream text-slate-800 font-sans selection:bg-navy selection:text-white">
+
+    <!-- STICKY NAVIGATION -->
+    <header class="sticky top-0 z-50 bg-cream/90 backdrop-blur-md border-b border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 min-h-20 py-3 flex flex-wrap items-center justify-between gap-3">
+            <a href="#" class="flex items-center gap-3 shrink-0">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-700 via-purple-600 to-cyan-500 flex items-center justify-center text-white font-heading font-extrabold text-xl shadow-sm">
+                    DB
+                </div>
+                <div>
+                    <span class="font-heading font-bold text-lg text-navy tracking-tight block leading-none">DANBIBA</span>
+                    <span class="text-xs tracking-widest uppercase font-semibold text-plum">Farms & Mining Co.</span>
+                </div>
+            </a>
+
+            <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-stone-600">
+                <a href="#about" class="hover:text-navy transition" data-i18n="nav_about">About Us</a>
+                <a href="#services" class="hover:text-navy transition" data-i18n="nav_services">Services</a>
+                <a href="#technology" class="hover:text-navy transition" data-i18n="nav_tech">Technology</a>
+                <a href="#gallery" class="hover:text-navy transition" data-i18n="nav_gallery">Equipment</a>
+                <a href="#contact" class="hover:text-navy transition" data-i18n="nav_contact">Contact</a>
+            </nav>
+
+            <div class="flex items-center gap-2 sm:gap-3 shrink-0 ml-auto">
+                <!-- Language Toggle -->
+                <div class="flex bg-stone-200/70 p-1 rounded-lg text-xs font-semibold">
+                    <button onclick="setLanguage('en')" id="lang-btn-en" class="px-2.5 sm:px-3 py-2 rounded-md bg-white text-navy shadow-sm transition">EN</button>
+                    <button onclick="setLanguage('ha')" id="lang-btn-ha" class="px-2.5 sm:px-3 py-2 rounded-md text-stone-600 hover:text-navy transition">HA</button>
+                </div>
+
+                <a href="mailto:danbiba2008@outlook.com" title="Email us" class="inline-flex items-center gap-2 border border-navy/20 text-navy hover:bg-navy hover:text-white text-xs uppercase tracking-wider font-semibold px-3 sm:px-4 py-3 rounded-md transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0-.621.504-1.125 1.125-1.125h17.25c.621 0 1.125.504 1.125 1.125v10.5c0 .621-.504 1.125-1.125 1.125H3.375A1.125 1.125 0 012.25 17.25V6.75z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75l9.75 6.5 9.75-6.5" />
+                    </svg>
+                    <span class="hidden sm:inline" data-i18n="nav_contactme">Contact Me</span>
+                </a>
+
+                <a href="#contact" class="bg-navy hover:bg-navy/90 text-white text-[11px] sm:text-xs uppercase tracking-wider font-semibold px-3 sm:px-5 py-3 rounded-md transition shadow-sm whitespace-nowrap" data-i18n="nav_partner">
+                    Partner With Us
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-[85vh] flex items-center justify-center bg-navy overflow-hidden">
+        <div class="absolute inset-0 opacity-30 mix-blend-overlay bg-[url('https://images.unsplash.com/photo-1781546441738-b85e43e733e3?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-navy via-navy/80 to-navy/40"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-plum/30 via-transparent to-aqua/20"></div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-6 text-center py-20">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/15 text-white/90 text-xs uppercase tracking-widest mb-8">
+                <span class="w-2 h-2 rounded-full bg-aqua animate-pulse"></span>
+                <span data-i18n="hero_badge">Abuja, Nigeria • Dual-Sector Operations</span>
+            </div>
+            <h1 class="font-heading font-extrabold text-4xl sm:text-6xl lg:text-7xl text-white tracking-tight leading-[1.1] mb-6" data-i18n="hero_h1">
+                Sustainable Mining.<br>
+                <span class="text-stone-300">Responsible Farming.</span><br>
+                Community Growth.
+            </h1>
+            <p class="text-stone-200 text-lg sm:text-xl max-w-2xl mx-auto font-light mb-10 leading-relaxed" data-i18n="hero_p">
+                Extracting high-grade heavy mineral sands and natural flake graphite alongside industrial agricultural development—working the earth with integrity.
+            </p>
+            <div class="flex flex-wrap items-center justify-center gap-4">
+                <a href="#services" class="bg-aqua hover:bg-aqua/90 text-white font-medium px-8 py-4 rounded-md transition shadow-lg text-sm uppercase tracking-wider" data-i18n="hero_btn1">
+                    Explore Our Services
+                </a>
+                <a href="#contact" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 font-medium px-8 py-4 rounded-md transition text-sm uppercase tracking-wider" data-i18n="hero_btn2">
+                    Corporate Inquiries
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT US -->
+    <section id="about" class="py-24 max-w-7xl mx-auto px-6">
+        <div class="grid lg:grid-cols-12 gap-16 items-start">
+            <div class="lg:col-span-6 space-y-8">
+                <div>
+                    <span class="text-aqua text-xs uppercase font-bold tracking-widest block mb-2" data-i18n="about_eyebrow">Corporate Profile</span>
+                    <h2 class="font-heading font-bold text-3xl sm:text-4xl text-navy" data-i18n="about_h2">Setting the Standard for Responsible Earth Resource Management</h2>
+                </div>
+                <p class="text-stone-600 leading-relaxed text-base" data-i18n="about_p">
+                    Danbiba Farms & Mining Co. Ltd is a global-minded operational entity headquartered in Abuja. We bridge the gap between heavy industrial mineral extraction and sustainable food production. Operating with a safety-first methodology, our centralized hub manages the entire lifecycle of land management—from geophysical exploration to ecosystem post-mining remediation.
+                </p>
+
+                <div class="grid sm:grid-cols-2 gap-6 pt-4 border-t border-stone-200">
+                    <div class="bg-white p-6 rounded-xl border border-stone-200/80 shadow-sm">
+                        <h3 class="font-heading font-bold text-navy text-lg mb-2" data-i18n="mission_title">Our Mission</h3>
+                        <p class="text-sm text-stone-600 leading-relaxed" data-i18n="mission_p">To operate as a centralized benchmark setting the national standard for sustainable quarrying across pre-mining, active extraction, and land restoration.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl border border-stone-200/80 shadow-sm">
+                        <h3 class="font-heading font-bold text-navy text-lg mb-2" data-i18n="vision_title">Our Vision</h3>
+                        <p class="text-sm text-stone-600 leading-relaxed" data-i18n="vision_p">To guide stakeholders through complex regulatory frameworks while deploying world-class conservation programs and low-impact agriculture.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accordion Registry -->
+            <div class="lg:col-span-6 bg-white border border-stone-200 rounded-2xl p-6 shadow-sm divide-y divide-stone-100">
+                <h3 class="font-heading font-bold text-plum text-sm uppercase tracking-wider mb-4 px-2" data-i18n="disclosure_title">Corporate Disclosure Registry</h3>
+
+                <!-- Accordion Item 1 -->
+                <details class="group py-4 cursor-pointer" open>
+                    <summary class="font-heading font-semibold text-sm text-navy flex justify-between items-center select-none">
+                        <span data-i18n="disc1_title">Registration & Incorporation</span>
+                        <span class="text-xs text-aqua transition group-open:rotate-180">▼</span>
+                    </summary>
+                    <p class="mt-3 text-sm text-stone-600 leading-relaxed pr-4" data-i18n="disc1_p">Fully incorporated under the Corporate Affairs Commission (CAC) of Nigeria, holding active dual-sector operational licenses for solid mineral mining and commercial agricultural development.</p>
+                </details>
+
+                <details class="group py-4 cursor-pointer">
+                    <summary class="font-heading font-semibold text-sm text-navy flex justify-between items-center select-none">
+                        <span data-i18n="disc2_title">Governance Structure</span>
+                        <span class="text-xs text-aqua transition group-open:rotate-180">▼</span>
+                    </summary>
+                    <p class="mt-3 text-sm text-stone-600 leading-relaxed pr-4" data-i18n="disc2_p">Led by an executive board comprising geologists, agricultural engineers, and ESG compliance officers, ensuring strict separation of operational risk between mining and farming units.</p>
+                </details>
+
+                <details class="group py-4 cursor-pointer">
+                    <summary class="font-heading font-semibold text-sm text-navy flex justify-between items-center select-none">
+                        <span data-i18n="disc3_title">Program Development Focus</span>
+                        <span class="text-xs text-aqua transition group-open:rotate-180">▼</span>
+                    </summary>
+                    <p class="mt-3 text-sm text-stone-600 leading-relaxed pr-4" data-i18n="disc3_p">Split into three distinct vectors: (1) Heavy Mineral Sands & Flake Graphite yield optimization, (2) Soil-rejuvenating crop rotation, and (3) Micro-infrastructure funding for host communities.</p>
+                </details>
+
+                <details class="group py-4 cursor-pointer">
+                    <summary class="font-heading font-semibold text-sm text-navy flex justify-between items-center select-none">
+                        <span data-i18n="disc4_title">Monitoring & Evaluation</span>
+                        <span class="text-xs text-aqua transition group-open:rotate-180">▼</span>
+                    </summary>
+                    <p class="mt-3 text-sm text-stone-600 leading-relaxed pr-4" data-i18n="disc4_p">Strict quarterly internal auditing of groundwater safety, soil toxicity levels near extraction zones, and carbon-offset metrics published to institutional investors.</p>
+                </details>
+
+                <details class="group py-4 cursor-pointer">
+                    <summary class="font-heading font-semibold text-sm text-navy flex justify-between items-center select-none">
+                        <span data-i18n="disc5_title">Transparency & Accountability</span>
+                        <span class="text-xs text-aqua transition group-open:rotate-180">▼</span>
+                    </summary>
+                    <p class="mt-3 text-sm text-stone-600 leading-relaxed pr-4" data-i18n="disc5_p">Committed to NEITI (Nigeria Extractive Industries Transparency Initiative) reporting standards, ensuring 100% visibility on community royalties and environmental tax compliance.</p>
+                </details>
+
+                <details class="group py-4 cursor-pointer">
+                    <summary class="font-heading font-semibold text-sm text-navy flex justify-between items-center select-none">
+                        <span data-i18n="disc6_title">Sustainability & Land Plan</span>
+                        <span class="text-xs text-aqua transition group-open:rotate-180">▼</span>
+                    </summary>
+                    <p class="mt-3 text-sm text-stone-600 leading-relaxed pr-4" data-i18n="disc6_p">Every hectare of exhausted mineral quarry is systematically backfilled, treated for pH balance, and transferred directly to the Danbiba Agricultural division for arable farming.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES (Horizontal Stepper) -->
+    <section id="services" class="py-24 bg-stone-100/60 border-y border-stone-200">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-2xl mb-16">
+                <span class="text-aqua text-xs uppercase font-bold tracking-widest block mb-2" data-i18n="services_eyebrow">Lifecycle Operations</span>
+                <h2 class="font-heading font-bold text-3xl text-navy" data-i18n="services_h2">End-to-End Earth Operations</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-white p-6 rounded-xl border border-stone-200 relative group hover:border-navy transition">
+                    <div class="text-aqua font-heading font-black text-2xl mb-6">01</div>
+                    <h3 class="font-heading font-bold text-navy text-base mb-2" data-i18n="svc1_title">Exploration</h3>
+                    <p class="text-sm text-stone-600 leading-relaxed" data-i18n="svc1_p">Advanced geophysical and core-drilling surveys to map mineral density with zero speculative habitat disruption.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white p-6 rounded-xl border border-stone-200 relative group hover:border-navy transition">
+                    <div class="text-aqua font-heading font-black text-2xl mb-6">02</div>
+                    <h3 class="font-heading font-bold text-navy text-base mb-2" data-i18n="svc2_title">Extraction</h3>
+                    <p class="text-sm text-stone-600 leading-relaxed" data-i18n="svc2_p">Precision surface mining of natural flake graphite and heavy mineral sands utilizing low-vibration machinery.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white p-6 rounded-xl border border-stone-200 relative group hover:border-navy transition">
+                    <div class="text-aqua font-heading font-black text-2xl mb-6">03</div>
+                    <h3 class="font-heading font-bold text-navy text-base mb-2" data-i18n="svc3_title">Processing</h3>
+                    <p class="text-sm text-stone-600 leading-relaxed" data-i18n="svc3_p">On-site mechanical screening and magnetic separation to refine raw ore into export-grade industrial concentrates.</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="bg-white p-6 rounded-xl border border-stone-200 relative group hover:border-navy transition">
+                    <div class="text-aqua font-heading font-black text-2xl mb-6">04</div>
+                    <h3 class="font-heading font-bold text-navy text-base mb-2" data-i18n="svc4_title">Remediation</h3>
+                    <p class="text-sm text-stone-600 leading-relaxed" data-i18n="svc4_p">Immediate top-soil replacement and organic fertilization to prepare post-extraction zones for agricultural planting.</p>
+                </div>
+                <!-- Card 5 -->
+                <div class="bg-white p-6 rounded-xl border border-stone-200 relative group hover:border-navy transition">
+                    <div class="text-aqua font-heading font-black text-2xl mb-6">05</div>
+                    <h3 class="font-heading font-bold text-navy text-base mb-2" data-i18n="svc5_title">Community</h3>
+                    <p class="text-sm text-stone-600 leading-relaxed" data-i18n="svc5_p">Direct reinvestment into local access roads, clean water boreholes, and outgrower farming schemes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CORE VALUES -->
+    <section class="py-24 max-w-7xl mx-auto px-6">
+        <div class="max-w-2xl mb-14">
+            <span class="text-aqua text-xs uppercase font-bold tracking-widest block mb-2" data-i18n="values_eyebrow">Our Commitment</span>
+            <h2 class="font-heading font-bold text-3xl text-navy mb-3" data-i18n="values_h2">The Core Values That Guide Every Decision</h2>
+            <p class="text-stone-600 text-sm leading-relaxed" data-i18n="values_p">Four principles anchor how we operate across every mine pit, field, and community partnership.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="border-l-2 border-navy pl-6">
+                <h4 class="font-heading font-bold text-navy text-lg mb-1" data-i18n="val1_title">Safety First</h4>
+                <p class="text-sm text-stone-600" data-i18n="val1_p">Zero-harm operational mandate across all mine pits and machine sheds.</p>
+            </div>
+            <div class="border-l-2 border-plum pl-6">
+                <h4 class="font-heading font-bold text-plum text-lg mb-1" data-i18n="val2_title">Stewardship</h4>
+                <p class="text-sm text-stone-600" data-i18n="val2_p">Treating Nigerian topsoil as a borrowed asset to be returned enriched.</p>
+            </div>
+            <div class="border-l-2 border-aqua pl-6">
+                <h4 class="font-heading font-bold text-aqua text-lg mb-1" data-i18n="val3_title">Absolute Integrity</h4>
+                <p class="text-sm text-stone-600" data-i18n="val3_p">Transparent reporting to government regulators and joint venture partners.</p>
+            </div>
+            <div class="border-l-2 border-stone-400 pl-6">
+                <h4 class="font-heading font-bold text-stone-800 text-lg mb-1" data-i18n="val4_title">Shared Prosperity</h4>
+                <p class="text-sm text-stone-600" data-i18n="val4_p">Prioritizing Nyaya and FCT local talent in our technical workforce.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TECHNOLOGY & INNOVATION -->
+    <section id="technology" class="py-24 bg-plum text-white relative overflow-hidden bg-grid-pattern">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <div>
+                    <span class="text-aqua font-mono text-xs uppercase tracking-widest block mb-2" data-i18n="tech_eyebrow">// INNOVATION ARCHITECTURE</span>
+                    <h2 class="font-heading font-bold text-3xl sm:text-4xl text-cream" data-i18n="tech_h2">AI & ML-Driven Mining Operations</h2>
+                </div>
+                <p class="text-stone-200 text-sm max-w-md font-light" data-i18n="tech_p">
+                    Deploying predictive neural algorithms to maximize extraction yield while minimizing physical footprint.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white/5 border border-white/10 p-8 rounded-xl backdrop-blur-sm">
+                    <div class="w-10 h-10 rounded-lg bg-aqua/20 text-cyan-300 flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>
+                    </div>
+                    <h3 class="font-heading font-bold text-lg text-cream mb-2" data-i18n="tc1_title">Advanced Data Analytics</h3>
+                    <p class="text-sm text-stone-200 leading-relaxed" data-i18n="tc1_p">Processing multi-spectral satellite imagery to pinpoint mineral sand pockets with 94% spatial accuracy.</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 p-8 rounded-xl backdrop-blur-sm">
+                    <div class="w-10 h-10 rounded-lg bg-aqua/20 text-cyan-300 flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085z"/></svg>
+                    </div>
+                    <h3 class="font-heading font-bold text-lg text-cream mb-2" data-i18n="tc2_title">Predictive Maintenance</h3>
+                    <p class="text-sm text-stone-200 leading-relaxed" data-i18n="tc2_p">IoT acoustic telemetry on screening plants detects bearing fatigue 150 operational hours prior to failure.</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 p-8 rounded-xl backdrop-blur-sm">
+                    <div class="w-10 h-10 rounded-lg bg-aqua/20 text-cyan-300 flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+                    </div>
+                    <h3 class="font-heading font-bold text-lg text-cream mb-2" data-i18n="tc3_title">Smart Resource Mgmt</h3>
+                    <p class="text-sm text-stone-200 leading-relaxed" data-i18n="tc3_p">Real-time balancing of diesel consumption against solar-battery arrays across field outposts.</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 p-8 rounded-xl backdrop-blur-sm">
+                    <div class="w-10 h-10 rounded-lg bg-aqua/20 text-cyan-300 flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+                    </div>
+                    <h3 class="font-heading font-bold text-lg text-cream mb-2" data-i18n="tc4_title">Autonomous Telemetry</h3>
+                    <p class="text-sm text-stone-200 leading-relaxed" data-i18n="tc4_p">Geofenced GPS tracking on heavy haulage assets ensures strict route compliance and fuel custody.</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 p-8 rounded-xl backdrop-blur-sm">
+                    <div class="w-10 h-10 rounded-lg bg-aqua/20 text-cyan-300 flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a7.5 7.5 0 007.5-7.5c0-4.142-7.5-11.25-7.5-11.25S4.5 9.358 4.5 13.5A7.5 7.5 0 0012 21z"/></svg>
+                    </div>
+                    <h3 class="font-heading font-bold text-lg text-cream mb-2" data-i18n="tc5_title">Ecosystem Monitoring</h3>
+                    <p class="text-sm text-stone-200 leading-relaxed" data-i18n="tc5_p">Automated downstream water turbidity sensors log ecological data directly to immutable cloud ledgers.</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 p-8 rounded-xl backdrop-blur-sm">
+                    <div class="w-10 h-10 rounded-lg bg-aqua/20 text-cyan-300 flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+                    </div>
+                    <h3 class="font-heading font-bold text-lg text-cream mb-2" data-i18n="tc6_title">Computer-Vision Safety</h3>
+                    <p class="text-sm text-stone-200 leading-relaxed" data-i18n="tc6_p">Pit cameras running edge ML instantly shut down conveyers if PPE non-compliance is detected.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EQUIPMENT GALLERY -->
+    <section id="gallery" class="py-24 max-w-7xl mx-auto px-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-12">
+            <div>
+                <span class="text-aqua text-xs uppercase font-bold tracking-widest block mb-2" data-i18n="gallery_eyebrow">On-Ground Assets</span>
+                <h2 class="font-heading font-bold text-3xl text-navy" data-i18n="gallery_h2">Operational Fleet Gallery</h2>
+            </div>
+
+            <!-- Gallery Tabs -->
+            <div class="flex bg-stone-200/70 p-1 rounded-lg self-start">
+                <button onclick="filterFleet('all')" id="btn-all" class="px-4 py-2 text-xs font-semibold rounded-md bg-white text-navy shadow-sm transition" data-i18n="tab_all">All Assets</button>
+                <button onclick="filterFleet('farming')" id="btn-farming" class="px-4 py-2 text-xs font-semibold rounded-md text-stone-600 hover:text-navy transition" data-i18n="tab_farming">Farming</button>
+                <button onclick="filterFleet('mining')" id="btn-mining" class="px-4 py-2 text-xs font-semibold rounded-md text-stone-600 hover:text-navy transition" data-i18n="tab_mining">Mining</button>
+                <button onclick="filterFleet('haulage')" id="btn-haulage" class="px-4 py-2 text-xs font-semibold rounded-md text-stone-600 hover:text-navy transition" data-i18n="tab_haulage">Haulage</button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="fleet-card farming bg-white rounded-xl overflow-hidden border border-stone-200 shadow-sm">
+                <div class="h-48 bg-stone-300 bg-[url('https://images.unsplash.com/photo-1696441567908-6a04d49e1350?auto=format&fit=crop&w=600&q=80')] bg-cover bg-center"></div>
+                <div class="p-5">
+                    <span class="text-xs uppercase font-bold text-aqua px-2 py-0.5 bg-aqua/10 rounded" data-i18n="g1_badge">Agriculture Division</span>
+                    <h4 class="font-heading font-bold text-navy mt-2" data-i18n="g1_title">Heavy Industrial Tractors & Plows</h4>
+                    <p class="text-sm text-stone-600 mt-1" data-i18n="g1_p">Multi-hectare seed planting and tilling units.</p>
+                </div>
+            </div>
+
+            <div class="fleet-card mining bg-white rounded-xl overflow-hidden border border-stone-200 shadow-sm">
+                <div class="h-48 bg-stone-300 bg-[url('https://images.unsplash.com/photo-1583024011792-b165975b52f5?auto=format&fit=crop&w=600&q=80')] bg-cover bg-center"></div>
+                <div class="p-5">
+                    <span class="text-xs uppercase font-bold text-navy px-2 py-0.5 bg-navy/10 rounded" data-i18n="g2_badge">Extraction Division</span>
+                    <h4 class="font-heading font-bold text-navy mt-2" data-i18n="g2_title">Crawler Excavators & Loaders</h4>
+                    <p class="text-sm text-stone-600 mt-1" data-i18n="g2_p">High-capacity earth movers for mineral flake stripping.</p>
+                </div>
+            </div>
+
+            <div class="fleet-card haulage bg-white rounded-xl overflow-hidden border border-stone-200 shadow-sm">
+                <div class="h-48 bg-stone-300 bg-[url('https://images.unsplash.com/photo-1653202293335-92f6ace9943f?auto=format&fit=crop&w=600&q=80')] bg-cover bg-center relative">
+                    <div class="absolute bottom-2 left-2 bg-plum/95 text-white text-xs font-bold px-2.5 py-1.5 rounded" data-i18n="g3_overlay">Branded: Danbiba Farms Ltd</div>
+                </div>
+                <div class="p-5">
+                    <span class="text-xs uppercase font-bold text-plum px-2 py-0.5 bg-plum/10 rounded" data-i18n="g3_badge">Logistics Division</span>
+                    <h4 class="font-heading font-bold text-navy mt-2" data-i18n="g3_title">DAF & Iveco Tipper Fleet</h4>
+                    <p class="text-sm text-stone-600 mt-1" data-i18n="g3_p">Dedicated cross-country transit trucks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT & FOOTER -->
+    <footer id="contact" class="bg-stone-900 text-stone-300 pt-20 pb-12 border-t border-stone-800">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-16 pb-16 border-b border-stone-800">
+
+            <div class="lg:col-span-5 space-y-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded bg-gradient-to-br from-indigo-700 to-cyan-500 flex items-center justify-center text-white font-heading font-bold text-sm">DB</div>
+                    <span class="font-heading font-bold text-white text-lg tracking-tight">DANBIBA FARMS & MINING</span>
+                </div>
+                <p class="text-sm leading-relaxed pr-6 text-stone-300" data-i18n="footer_tagline">
+                    A responsible Nigerian dual-sector operator built on institutional transparency, environmental reclamation, and community empowerment.
+                </p>
+                <div class="text-sm space-y-2 pt-2">
+                    <p class="text-white font-medium" data-i18n="footer_hq_label">Headquarters Location:</p>
+                    <p>Block 155, Room 9/10, Area C,<br>Nyaya, Abuja, Federal Capital Territory, Nigeria</p>
+                </div>
+                <div class="text-sm pt-2 space-y-1">
+                    <p><span data-i18n="footer_enquiries_label">Direct Enquiries:</span> <span class="text-white">[+234 Phone Placeholder]</span></p>
+                    <p><span data-i18n="footer_email_label">Electronic Mail:</span> <a href="mailto:danbiba2008@outlook.com" class="text-cyan-400 hover:underline">danbiba2008@outlook.com</a></p>
+                </div>
+                <a href="mailto:danbiba2008@outlook.com" class="inline-flex items-center gap-2 bg-aqua hover:bg-aqua/90 text-white font-heading font-bold text-xs uppercase tracking-widest px-6 py-3.5 rounded transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0-.621.504-1.125 1.125-1.125h17.25c.621 0 1.125.504 1.125 1.125v10.5c0 .621-.504 1.125-1.125 1.125H3.375A1.125 1.125 0 012.25 17.25V6.75z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75l9.75 6.5 9.75-6.5" />
+                    </svg>
+                    <span data-i18n="nav_contactme">Contact Me</span>
+                </a>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="lg:col-span-7 bg-stone-800/50 p-8 rounded-2xl border border-stone-700/60">
+                <h3 class="font-heading font-bold text-white text-lg mb-6" data-i18n="form_title">Initiate Official Correspondence</h3>
+                <form class="grid sm:grid-cols-2 gap-4" id="contact-form">
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-stone-300 mb-1" data-i18n="form_name_label">Representative Name</label>
+                        <input type="text" id="form-name" data-i18n-placeholder="form_name_ph" placeholder="e.g. Aliyu Musa" class="w-full bg-stone-900 border border-stone-700 rounded p-3 text-sm text-white focus:outline-none focus:border-aqua transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-stone-300 mb-1" data-i18n="form_org_label">Organization / Agency</label>
+                        <input type="text" id="form-org" data-i18n-placeholder="form_org_ph" placeholder="Ministry / Venture Fund" class="w-full bg-stone-900 border border-stone-700 rounded p-3 text-sm text-white focus:outline-none focus:border-aqua transition">
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label class="block text-xs uppercase tracking-wider text-stone-300 mb-1" data-i18n="form_email_label">Official Email Address</label>
+                        <input type="email" id="form-email" data-i18n-placeholder="form_email_ph" placeholder="name@organization.gov.ng" class="w-full bg-stone-900 border border-stone-700 rounded p-3 text-sm text-white focus:outline-none focus:border-aqua transition">
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label class="block text-xs uppercase tracking-wider text-stone-300 mb-1" data-i18n="form_subject_label">Subject Matter</label>
+                        <textarea rows="3" id="form-message" data-i18n-placeholder="form_subject_ph" placeholder="Specify interest in Graphite extraction licensing, agricultural produce bulk procurement, or ESG community relations..." class="w-full bg-stone-900 border border-stone-700 rounded p-3 text-sm text-white focus:outline-none focus:border-aqua transition"></textarea>
+                    </div>
+                    <div class="sm:col-span-2 flex justify-end">
+                        <button type="submit" class="bg-navy hover:bg-navy/80 text-white font-heading font-bold text-xs uppercase tracking-widest px-8 py-3.5 rounded transition" data-i18n="form_submit">
+                            Transmit Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 mt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-400">
+            <p data-i18n="footer_copyright">© 2026 Danbiba Farms & Mining Co. Ltd. All Rights Reserved.</p>
+            <div class="flex gap-6 mt-4 sm:mt-0">
+                <a href="#" class="hover:underline" data-i18n="footer_link1">CAC Verification</a>
+                <a href="#" class="hover:underline" data-i18n="footer_link2">Environmental Policy</a>
+                <a href="#" class="hover:underline" data-i18n="footer_link3">Employee Portal</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Vanilla JS for Gallery Filtering, Contact Form and Language Toggle -->
+    <script>
+        function filterFleet(category) {
+            const cards = document.querySelectorAll('.fleet-card');
+            const buttons = document.querySelectorAll('[id^="btn-"]');
+
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-white', 'text-navy', 'shadow-sm');
+                btn.classList.add('text-stone-600');
+            });
+
+            const activeBtn = document.getElementById('btn-' + category);
+            activeBtn.classList.add('bg-white', 'text-navy', 'shadow-sm');
+            activeBtn.classList.remove('text-stone-600');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.classList.contains(category)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const name = document.getElementById('form-name').value;
+            const org = document.getElementById('form-org').value;
+            const email = document.getElementById('form-email').value;
+            const message = document.getElementById('form-message').value;
+
+            const subject = encodeURIComponent('Corporate Inquiry: ' + (org || name || 'Danbiba Farms & Mining'));
+            const body = encodeURIComponent(
+                'Name: ' + name + '\n' +
+                'Organization: ' + org + '\n' +
+                'Reply-to Email: ' + email + '\n\n' +
+                'Message:\n' + message
+            );
+
+            window.location.href = 'mailto:danbiba2008@outlook.com?subject=' + subject + '&body=' + body;
+        });
+
+        const translations = {
+            nav_about: { en: 'About Us', ha: 'Game da Mu' },
+            nav_services: { en: 'Services', ha: 'Ayyukanmu' },
+            nav_tech: { en: 'Technology', ha: 'Fasaha' },
+            nav_gallery: { en: 'Equipment', ha: 'Kayan Aiki' },
+            nav_contact: { en: 'Contact', ha: 'Tuntube Mu' },
+            nav_partner: { en: 'Partner With Us', ha: 'Yi Hadin Gwiwa Da Mu' },
+            nav_contactme: { en: 'Contact Me', ha: 'Aiko Imel' },
+
+            hero_badge: { en: 'Abuja, Nigeria • Dual-Sector Operations', ha: 'Abuja, Najeriya • Sassa Biyu na Ayyuka' },
+            hero_h1: {
+                en: 'Sustainable Mining.<br><span class="text-stone-300">Responsible Farming.</span><br>Community Growth.',
+                ha: 'Hakar Ma’adinai Mai Dorewa.<br><span class="text-stone-300">Noma Mai Nauyi.</span><br>Ci Gaban Al’umma.'
+            },
+            hero_p: { en: 'Extracting high-grade heavy mineral sands and natural flake graphite alongside industrial agricultural development—working the earth with integrity.', ha: 'Muna hakar yashin ma’adinai mai inganci da graphite na halitta, tare da bunkasa noma na masana’antu — muna aiki da kasa cikin gaskiya da mutunci.' },
+            hero_btn1: { en: 'Explore Our Services', ha: 'Duba Ayyukanmu' },
+            hero_btn2: { en: 'Corporate Inquiries', ha: 'Tambayoyin Kamfani' },
+
+            about_eyebrow: { en: 'Corporate Profile', ha: 'Bayanin Kamfani' },
+            about_h2: { en: 'Setting the Standard for Responsible Earth Resource Management', ha: 'Kafa Ka’idar Gudanar da Albarkatun Kasa Cikin Nauyi' },
+            about_p: { en: 'Danbiba Farms & Mining Co. Ltd is a global-minded operational entity headquartered in Abuja. We bridge the gap between heavy industrial mineral extraction and sustainable food production. Operating with a safety-first methodology, our centralized hub manages the entire lifecycle of land management—from geophysical exploration to ecosystem post-mining remediation.', ha: 'Danbiba Farms & Mining Co. Ltd kamfani ne mai hedkwata a Abuja, wanda ke tunani a kan matakin duniya. Muna hada gwiwa tsakanin hakar ma’adinai na masana’antu da samar da abinci mai dorewa. Muna aiki bisa tsarin da ke ba da fifiko ga tsaro, kuma cibiyarmu ta tsakiya tana kula da dukkan matakan gudanar da kasa — daga bincike na farko har zuwa gyaran muhalli bayan hakar ma’adinai.' },
+            mission_title: { en: 'Our Mission', ha: 'Manufarmu' },
+            mission_p: { en: 'To operate as a centralized benchmark setting the national standard for sustainable quarrying across pre-mining, active extraction, and land restoration.', ha: 'Mu zama misali na kasa wajen hakar ma’adinai mai dorewa, daga matakin shirye-shirye, hakar aiki, har zuwa gyaran kasa.' },
+            vision_title: { en: 'Our Vision', ha: 'Hangen Nesanmu' },
+            vision_p: { en: 'To guide stakeholders through complex regulatory frameworks while deploying world-class conservation programs and low-impact agriculture.', ha: 'Mu jagoranci masu ruwa da tsaki ta cikin ka’idojin gwamnati masu sarkakiya, tare da aiwatar da shirye-shiryen kiyaye muhalli na duniya da noma mai karancin illa.' },
+
+            disclosure_title: { en: 'Corporate Disclosure Registry', ha: 'Bayanan Bayyanawa na Kamfani' },
+            disc1_title: { en: 'Registration & Incorporation', ha: 'Rijista da Kafuwar Kamfani' },
+            disc1_p: { en: 'Fully incorporated under the Corporate Affairs Commission (CAC) of Nigeria, holding active dual-sector operational licenses for solid mineral mining and commercial agricultural development.', ha: 'An rajista kamfanin gaba daya karkashin Hukumar Harkokin Kamfanoni (CAC) ta Najeriya, tare da lasisin gudanarwa mai aiki a fannonin hakar ma’adinai da bunkasa noma na kasuwanci.' },
+            disc2_title: { en: 'Governance Structure', ha: 'Tsarin Jagoranci' },
+            disc2_p: { en: 'Led by an executive board comprising geologists, agricultural engineers, and ESG compliance officers, ensuring strict separation of operational risk between mining and farming units.', ha: 'Ana jagorantar da kamfanin ta hannun kwamitin gudanarwa wanda ya kunshi masana kasa, injiniyoyin noma, da jami’an bin ka’idojin ESG, don tabbatar da rarrabuwar hadari tsakanin sashen hakar ma’adinai da na noma.' },
+            disc3_title: { en: 'Program Development Focus', ha: 'Manufar Ci Gaban Shirye-shirye' },
+            disc3_p: { en: 'Split into three distinct vectors: (1) Heavy Mineral Sands & Flake Graphite yield optimization, (2) Soil-rejuvenating crop rotation, and (3) Micro-infrastructure funding for host communities.', ha: 'An kasu kashi uku: (1) Inganta amfanin yashin ma’adinai da graphite, (2) Jujjuya amfanin gona don farfado da kasa, da (3) Tallafin gina karamin ababen more rayuwa ga al’ummomin da abin ya shafa.' },
+            disc4_title: { en: 'Monitoring & Evaluation', ha: 'Sa Ido da Kimantawa' },
+            disc4_p: { en: 'Strict quarterly internal auditing of groundwater safety, soil toxicity levels near extraction zones, and carbon-offset metrics published to institutional investors.', ha: 'Ana yin bincike na cikin gida kowane wata uku kan tsaftar ruwan karkashin kasa, matakan gubar kasa kusa da wuraren hakar ma’adinai, da adadin rage hayakin carbon, ana kuma buga sakamakon ga masu zuba jari.' },
+            disc5_title: { en: 'Transparency & Accountability', ha: 'Gaskiya da Lissafi' },
+            disc5_p: { en: 'Committed to NEITI (Nigeria Extractive Industries Transparency Initiative) reporting standards, ensuring 100% visibility on community royalties and environmental tax compliance.', ha: 'Muna bin ka’idojin bayar da rahoto na NEITI (Nigeria Extractive Industries Transparency Initiative), don tabbatar da bayyana kason al’umma da bin ka’idojin harajin muhalli gaba daya.' },
+            disc6_title: { en: 'Sustainability & Land Plan', ha: 'Dorewa da Shirin Kasa' },
+            disc6_p: { en: 'Every hectare of exhausted mineral quarry is systematically backfilled, treated for pH balance, and transferred directly to the Danbiba Agricultural division for arable farming.', ha: 'Kowane fadin kasa da aka gama hakar ma’adinai ana cika shi, a daidaita pH dinsa, sannan a mika shi kai tsaye ga sashen Noma na Danbiba domin noma.' },
+
+            services_eyebrow: { en: 'Lifecycle Operations', ha: 'Matakan Aiki' },
+            services_h2: { en: 'End-to-End Earth Operations', ha: 'Cikakken Sarkar Ayyukan Kasa' },
+            svc1_title: { en: 'Exploration', ha: 'Bincike' },
+            svc1_p: { en: 'Advanced geophysical and core-drilling surveys to map mineral density with zero speculative habitat disruption.', ha: 'Bincike na zamani da hako-gwaji don tantance yawan ma’adinai ba tare da tada muhalli ba.' },
+            svc2_title: { en: 'Extraction', ha: 'Hakowa' },
+            svc2_p: { en: 'Precision surface mining of natural flake graphite and heavy mineral sands utilizing low-vibration machinery.', ha: 'Hakar ma’adinai a saman kasa da injina masu karancin girgiza, don samun graphite da yashin ma’adinai.' },
+            svc3_title: { en: 'Processing', ha: 'Sarrafawa' },
+            svc3_p: { en: 'On-site mechanical screening and magnetic separation to refine raw ore into export-grade industrial concentrates.', ha: 'Ana tace da raba ma’adinai a wurin aiki don mai da danyen ma’adinai zuwa kaya mai inganci na fitarwa.' },
+            svc4_title: { en: 'Remediation', ha: 'Gyara Kasa' },
+            svc4_p: { en: 'Immediate top-soil replacement and organic fertilization to prepare post-extraction zones for agricultural planting.', ha: 'Ana maido da kasa nan take da takin gargajiya don shirya wurin da aka hako domin noma.' },
+            svc5_title: { en: 'Community', ha: 'Al’umma' },
+            svc5_p: { en: 'Direct reinvestment into local access roads, clean water boreholes, and outgrower farming schemes.', ha: 'Zuba jari kai tsaye a hanyoyi, rijiyoyin ruwa mai tsafta, da shirye-shiryen taimakon manoma a yankin.' },
+
+            values_eyebrow: { en: 'Our Commitment', ha: 'Alkawarinmu' },
+            values_h2: { en: 'The Core Values That Guide Every Decision', ha: 'Dabi’un da ke Jagorantar Kowane Shawara' },
+            values_p: { en: 'Four principles anchor how we operate across every mine pit, field, and community partnership.', ha: 'Ka’idoji hudu ne suke tafiyar da yadda muke aiki a kowane rami, gona, da hadin gwiwar al’umma.' },
+            val1_title: { en: 'Safety First', ha: 'Tsaro Farko' },
+            val1_p: { en: 'Zero-harm operational mandate across all mine pits and machine sheds.', ha: 'Manufar rashin illa a dukkan wuraren hakar ma’adinai da rumbunan injina.' },
+            val2_title: { en: 'Stewardship', ha: 'Kulawa da Amana' },
+            val2_p: { en: 'Treating Nigerian topsoil as a borrowed asset to be returned enriched.', ha: 'Muna dubi kasar Najeriya kamar rancen dukiya da za a mayar cikin ingantacciyar hali.' },
+            val3_title: { en: 'Absolute Integrity', ha: 'Gaskiya Cikakke' },
+            val3_p: { en: 'Transparent reporting to government regulators and joint venture partners.', ha: 'Rahoto bayyananne ga hukumomin gwamnati da abokan hulda.' },
+            val4_title: { en: 'Shared Prosperity', ha: 'Wadata Tare' },
+            val4_p: { en: 'Prioritizing Nyaya and FCT local talent in our technical workforce.', ha: 'Bai wa ’yan asalin Nyaya da FCT fifiko a ma’aikatanmu na fasaha.' },
+
+            tech_eyebrow: { en: '// INNOVATION ARCHITECTURE', ha: '// TSARIN KIRKIRE-KIRKIRE' },
+            tech_h2: { en: 'AI & ML-Driven Mining Operations', ha: 'Ayyukan Hakar Ma’adinai Karkashin AI & ML' },
+            tech_p: { en: 'Deploying predictive neural algorithms to maximize extraction yield while minimizing physical footprint.', ha: 'Muna amfani da fasahar hasashen kwamfuta don kara yawan amfanin hakar ma’adinai tare da rage tasirin muhalli.' },
+            tc1_title: { en: 'Advanced Data Analytics', ha: 'Nazarin Bayanai na Zamani' },
+            tc1_p: { en: 'Processing multi-spectral satellite imagery to pinpoint mineral sand pockets with 94% spatial accuracy.', ha: 'Nazarin hotunan tauraron dan adam domin gano wuraren ma’adinai da daidaito na kashi 94%.' },
+            tc2_title: { en: 'Predictive Maintenance', ha: 'Kula da Injina Kafin Lalacewa' },
+            tc2_p: { en: 'IoT acoustic telemetry on screening plants detects bearing fatigue 150 operational hours prior to failure.', ha: 'Na’urorin sadarwa suna gano matsalar injina awanni 150 kafin ta faru.' },
+            tc3_title: { en: 'Smart Resource Mgmt', ha: 'Gudanar da Albarkatu Cikin Wayo' },
+            tc3_p: { en: 'Real-time balancing of diesel consumption against solar-battery arrays across field outposts.', ha: 'Daidaita amfani da man dizal da makamashin hasken rana a wuraren aiki a lokaci guda.' },
+            tc4_title: { en: 'Autonomous Telemetry', ha: 'Sa Ido Ta Atomatik' },
+            tc4_p: { en: 'Geofenced GPS tracking on heavy haulage assets ensures strict route compliance and fuel custody.', ha: 'Na’urar GPS tana bin diddigin manyan motoci don tabbatar da bin hanya da amfani da mai yadda ya kamata.' },
+            tc5_title: { en: 'Ecosystem Monitoring', ha: 'Sa Ido Kan Muhalli' },
+            tc5_p: { en: 'Automated downstream water turbidity sensors log ecological data directly to immutable cloud ledgers.', ha: 'Na’urori suna auna tsaftar ruwa kai tsaye suna adana bayanan muhalli a girgije mai aminci.' },
+            tc6_title: { en: 'Computer-Vision Safety', ha: 'Tsaro Ta Idon Kwamfuta' },
+            tc6_p: { en: 'Pit cameras running edge ML instantly shut down conveyers if PPE non-compliance is detected.', ha: 'Kyamarori a wuraren aiki suna dakatar da injina nan take idan an gano rashin sanya kayan tsaro.' },
+
+            gallery_eyebrow: { en: 'On-Ground Assets', ha: 'Kayan Aiki A Filin Aiki' },
+            gallery_h2: { en: 'Operational Fleet Gallery', ha: 'Hotunan Motoci Da Injinan Aiki' },
+            tab_all: { en: 'All Assets', ha: 'Duka' },
+            tab_farming: { en: 'Farming', ha: 'Noma' },
+            tab_mining: { en: 'Mining', ha: 'Hakar Ma’adinai' },
+            tab_haulage: { en: 'Haulage', ha: 'Sufuri' },
+            g1_badge: { en: 'Agriculture Division', ha: 'Sashen Noma' },
+            g1_title: { en: 'Heavy Industrial Tractors & Plows', ha: 'Manyan Tarakta da Garuwa' },
+            g1_p: { en: 'Multi-hectare seed planting and tilling units.', ha: 'Injinan shuka iri da noman fadin gona.' },
+            g2_badge: { en: 'Extraction Division', ha: 'Sashen Hakar Ma’adinai' },
+            g2_title: { en: 'Crawler Excavators & Loaders', ha: 'Manyan Injinan Hakowa' },
+            g2_p: { en: 'High-capacity earth movers for mineral flake stripping.', ha: 'Manyan injina masu karfin cire kasa domin hakar ma’adinai.' },
+            g3_badge: { en: 'Logistics Division', ha: 'Sashen Sufuri' },
+            g3_title: { en: 'DAF & Iveco Tipper Fleet', ha: 'Motocin Dauke Kaya na DAF da Iveco' },
+            g3_p: { en: 'Dedicated cross-country transit trucks.', ha: 'Manyan motoci na jigilar kaya cikin kasa.' },
+            g3_overlay: { en: 'Branded: Danbiba Farms Ltd', ha: 'Alamar: Danbiba Farms Ltd' },
+
+            footer_tagline: { en: 'A responsible Nigerian dual-sector operator built on institutional transparency, environmental reclamation, and community empowerment.', ha: 'Kamfani ne na Najeriya mai sassa biyu, wanda aka gina bisa gaskiya, gyaran muhalli, da karfafa al’umma.' },
+            footer_hq_label: { en: 'Headquarters Location:', ha: 'Adireshin Hedkwata:' },
+            footer_enquiries_label: { en: 'Direct Enquiries:', ha: 'Tambayoyi Kai Tsaye:' },
+            footer_email_label: { en: 'Electronic Mail:', ha: 'Imel:' },
+            form_title: { en: 'Initiate Official Correspondence', ha: 'Fara Sadarwa Ta Hukuma' },
+            form_name_label: { en: 'Representative Name', ha: 'Sunan Wakili' },
+            form_name_ph: { en: 'e.g. Aliyu Musa', ha: 'misali: Aliyu Musa' },
+            form_org_label: { en: 'Organization / Agency', ha: 'Kungiya / Hukuma' },
+            form_org_ph: { en: 'Ministry / Venture Fund', ha: 'Ma’aikata / Asusun Zuba Jari' },
+            form_email_label: { en: 'Official Email Address', ha: 'Adireshin Imel' },
+            form_email_ph: { en: 'name@organization.gov.ng', ha: 'suna@hukuma.gov.ng' },
+            form_subject_label: { en: 'Subject Matter', ha: 'Batun Sako' },
+            form_subject_ph: { en: 'Specify interest in Graphite extraction licensing, agricultural produce bulk procurement, or ESG community relations...', ha: 'Bayyana bukatarka: lasisin hakar graphite, sayan amfanin gona da yawa, ko huldar al’umma...' },
+            form_submit: { en: 'Transmit Message', ha: 'Aika Sako' },
+            footer_copyright: { en: '© 2026 Danbiba Farms & Mining Co. Ltd. All Rights Reserved.', ha: '© 2026 Danbiba Farms & Mining Co. Ltd. Duk ’Yancin Mallaka an Kiyaye.' },
+            footer_link1: { en: 'CAC Verification', ha: 'Tabbatar da CAC' },
+            footer_link2: { en: 'Environmental Policy', ha: 'Manufar Muhalli' },
+            footer_link3: { en: 'Employee Portal', ha: 'Shafin Ma’aikata' },
+        };
+
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const entry = translations[el.getAttribute('data-i18n')];
+                if (entry && entry[lang]) el.innerHTML = entry[lang];
+            });
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const entry = translations[el.getAttribute('data-i18n-placeholder')];
+                if (entry && entry[lang]) el.setAttribute('placeholder', entry[lang]);
+            });
+
+            document.documentElement.lang = lang;
+
+            const enBtn = document.getElementById('lang-btn-en');
+            const haBtn = document.getElementById('lang-btn-ha');
+            [enBtn, haBtn].forEach(btn => btn.classList.remove('bg-white', 'text-navy', 'shadow-sm'));
+            [enBtn, haBtn].forEach(btn => btn.classList.add('text-stone-600'));
+            const active = lang === 'ha' ? haBtn : enBtn;
+            active.classList.add('bg-white', 'text-navy', 'shadow-sm');
+            active.classList.remove('text-stone-600');
+
+            localStorage.setItem('danbiba-lang', lang);
+        }
+
+        const savedLang = localStorage.getItem('danbiba-lang');
+        if (savedLang === 'ha') setLanguage('ha');
+    </script>
+</body>
+</html>
