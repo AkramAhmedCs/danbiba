@@ -23,6 +23,13 @@
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                         heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    fontSize: {
+                        'xs': ['0.875rem', { lineHeight: '1.25rem' }],
+                        'sm': ['1rem', { lineHeight: '1.5rem' }],
+                        'base': ['1.125rem', { lineHeight: '1.75rem' }],
+                        'lg': ['1.25rem', { lineHeight: '1.875rem' }],
+                        'xl': ['1.375rem', { lineHeight: '2rem' }],
                     }
                 }
             }
@@ -41,33 +48,37 @@
 
     <!-- STICKY NAVIGATION -->
     <header class="sticky top-0 z-50 bg-cream/90 backdrop-blur-md border-b border-stone-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 min-h-20 py-3 flex flex-wrap items-center justify-between gap-3">
-            <a href="#" class="flex items-center gap-3 shrink-0">
-                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-700 via-purple-600 to-cyan-500 flex items-center justify-center text-white font-heading font-extrabold text-xl shadow-sm">
-                    DB
-                </div>
-                <div>
-                    <span class="font-heading font-bold text-lg text-navy tracking-tight block leading-none">DANBIBA</span>
-                    <span class="text-xs tracking-widest uppercase font-semibold text-plum">Farms & Mining Co.</span>
-                </div>
-            </a>
+        <div class="w-full mx-auto px-3 sm:px-6 min-h-16 sm:min-h-20 py-2 sm:py-3 flex flex-nowrap items-center justify-between gap-2 sm:gap-6">
+            <!-- LEFT GROUP: Logo + Nav Links -->
+            <div class="flex items-center gap-4 sm:gap-8 shrink-0">
+                <a href="#" class="flex items-center gap-2 sm:gap-3 shrink-0">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-indigo-700 via-purple-600 to-cyan-500 flex items-center justify-center text-white font-heading font-extrabold text-lg sm:text-xl shadow-sm">
+                        DB
+                    </div>
+                    <div>
+                        <span class="font-heading font-bold text-base sm:text-lg text-navy tracking-tight block leading-none">DANBIBA</span>
+                        <span class="text-[10px] sm:text-xs tracking-widest uppercase font-semibold text-plum">Farms & Mining Co.</span>
+                    </div>
+                </a>
 
-            <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-stone-600">
-                <a href="#about" class="hover:text-navy transition" data-i18n="nav_about">About Us</a>
-                <a href="#services" class="hover:text-navy transition" data-i18n="nav_services">Services</a>
-                <a href="#technology" class="hover:text-navy transition" data-i18n="nav_tech">Technology</a>
-                <a href="#gallery" class="hover:text-navy transition" data-i18n="nav_gallery">Equipment</a>
-                <a href="#contact" class="hover:text-navy transition" data-i18n="nav_contact">Contact</a>
-            </nav>
+                <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-stone-600">
+                    <a href="#about" class="hover:text-navy transition" data-i18n="nav_about">About Us</a>
+                    <a href="#services" class="hover:text-navy transition" data-i18n="nav_services">Services</a>
+                    <a href="#technology" class="hover:text-navy transition" data-i18n="nav_tech">Technology</a>
+                    <a href="#gallery" class="hover:text-navy transition" data-i18n="nav_gallery">Equipment</a>
+                    <a href="#contact" class="hover:text-navy transition" data-i18n="nav_contact">Contact</a>
+                </nav>
+            </div>
 
-            <div class="flex items-center gap-2 sm:gap-3 shrink-0 ml-auto">
+            <!-- RIGHT GROUP: Language, Contact, Partner -->
+            <div class="flex items-center gap-1.5 sm:gap-3 shrink-0">
                 <!-- Language Toggle -->
-                <div class="flex bg-stone-200/70 p-1 rounded-lg text-xs font-semibold">
-                    <button onclick="setLanguage('en')" id="lang-btn-en" class="px-2.5 sm:px-3 py-2 rounded-md bg-white text-navy shadow-sm transition">EN</button>
-                    <button onclick="setLanguage('ha')" id="lang-btn-ha" class="px-2.5 sm:px-3 py-2 rounded-md text-stone-600 hover:text-navy transition">HA</button>
+                <div class="flex bg-stone-200/70 p-0.5 sm:p-1 rounded-lg text-[11px] sm:text-xs font-semibold">
+                    <button onclick="setLanguage('en')" id="lang-btn-en" class="px-2 sm:px-3 py-1.5 sm:py-2 rounded-md bg-white text-navy shadow-sm transition">EN</button>
+                    <button onclick="setLanguage('ha')" id="lang-btn-ha" class="px-2 sm:px-3 py-1.5 sm:py-2 rounded-md text-stone-600 hover:text-navy transition">HA</button>
                 </div>
 
-                <a href="mailto:danbiba2008@outlook.com" title="Email us" class="inline-flex items-center gap-2 border border-navy/20 text-navy hover:bg-navy hover:text-white text-xs uppercase tracking-wider font-semibold px-3 sm:px-4 py-3 rounded-md transition">
+                <a href="mailto:danbiba2008@outlook.com" title="Email us" class="inline-flex items-center gap-2 border border-navy/20 text-navy hover:bg-navy hover:text-white text-xs uppercase tracking-wider font-semibold px-2.5 sm:px-4 py-2.5 sm:py-3 rounded-md transition">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0-.621.504-1.125 1.125-1.125h17.25c.621 0 1.125.504 1.125 1.125v10.5c0 .621-.504 1.125-1.125 1.125H3.375A1.125 1.125 0 012.25 17.25V6.75z" />
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75l9.75 6.5 9.75-6.5" />
@@ -75,7 +86,7 @@
                     <span class="hidden sm:inline" data-i18n="nav_contactme">Contact Me</span>
                 </a>
 
-                <a href="#contact" class="bg-navy hover:bg-navy/90 text-white text-[11px] sm:text-xs uppercase tracking-wider font-semibold px-3 sm:px-5 py-3 rounded-md transition shadow-sm whitespace-nowrap" data-i18n="nav_partner">
+                <a href="#contact" class="bg-navy hover:bg-navy/90 text-white text-[10px] sm:text-xs uppercase tracking-wider font-semibold px-2.5 sm:px-5 py-2.5 sm:py-3 rounded-md transition shadow-sm whitespace-nowrap" data-i18n="nav_partner">
                     Partner With Us
                 </a>
             </div>
