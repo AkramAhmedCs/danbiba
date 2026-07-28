@@ -1,5 +1,7 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/danbiba.html" }
+    { "source": "/", "destination": "/danbiba.html" },
+    { "source": "/operations", "destination": "/operations.html" },
+    { "source": "/minerals", "destination": "/minerals.html" }
   ]
 }

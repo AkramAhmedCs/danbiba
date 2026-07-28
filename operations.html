@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lifecycle Operations — Danbiba Farms & Mining Co. Ltd</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FBF9F5',
+                        navy: '#1E1B4B',
+                        plum: '#4C1D95',
+                        aqua: '#0E7490',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    fontSize: {
+                        'xs': ['0.875rem', { lineHeight: '1.25rem' }],
+                        'sm': ['1rem', { lineHeight: '1.5rem' }],
+                        'base': ['1.125rem', { lineHeight: '1.75rem' }],
+                        'lg': ['1.25rem', { lineHeight: '1.875rem' }],
+                        'xl': ['1.375rem', { lineHeight: '2rem' }],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        }
+        /* Offset anchor targets so the sticky header never covers a stage heading */
+        section[id] { scroll-margin-top: 9rem; }
+    </style>
+</head>
+<body class="bg-cream text-slate-800 font-sans selection:bg-navy selection:text-white">
+
+    <!-- STICKY NAVIGATION -->
+    <header class="sticky top-0 z-50 bg-cream/90 backdrop-blur-md border-b border-stone-200">
+        <div class="w-full mx-auto px-4 sm:px-6 min-h-20 py-3 flex flex-wrap lg:flex-nowrap items-center justify-center lg:justify-between gap-3 sm:gap-6">
+            <div class="flex items-center gap-8">
+                <a href="danbiba.html" class="flex items-center gap-3 shrink-0">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-700 via-purple-600 to-cyan-500 flex items-center justify-center text-white font-heading font-extrabold text-xl shadow-sm">
+                        DB
+                    </div>
+                    <div>
+                        <span class="font-heading font-bold text-lg text-navy tracking-tight block leading-none">DANBIBA</span>
+                        <span class="text-xs tracking-widest uppercase font-semibold text-plum">Farms & Mining Co.</span>
+                    </div>
+                </a>
+
+                <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-stone-600">
+                    <a href="danbiba.html" class="hover:text-navy transition" data-i18n="nav_home">Home</a>
+                    <a href="danbiba.html#about" class="hover:text-navy transition" data-i18n="nav_about">About Us</a>
+                    <a href="danbiba.html#products" class="hover:text-navy transition" data-i18n="nav_products">Products</a>
+                    <a href="minerals.html" class="hover:text-navy transition" data-i18n="nav_minerals">Minerals</a>
+                    <a href="danbiba.html#contact" class="hover:text-navy transition" data-i18n="nav_contact">Contact</a>
+                </nav>
+            </div>
+
+            <div class="flex items-center justify-center gap-2 sm:gap-3 shrink-0 w-full lg:w-auto">
+                <div class="flex bg-stone-200/70 p-1 rounded-lg text-xs font-semibold">
+                    <button onclick="setLanguage('en')" id="lang-btn-en" class="px-2.5 sm:px-3 py-2 rounded-md bg-white text-navy shadow-sm transition">EN</button>
+                    <button onclick="setLanguage('ha')" id="lang-btn-ha" class="px-2.5 sm:px-3 py-2 rounded-md text-stone-600 hover:text-navy transition">HA</button>
+                </div>
+
+                <a href="danbiba.html?partner=1" class="bg-navy hover:bg-navy/90 text-white text-[11px] sm:text-xs uppercase tracking-wider font-semibold px-3 sm:px-5 py-3 rounded-md transition shadow-sm whitespace-nowrap" data-i18n="nav_partner">
+                    Partner With Us
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- PAGE HERO -->
+    <section class="relative py-24 overflow-hidden bg-gradient-to-br from-[#0C1512] via-[#101A21] to-[#0B1418] bg-grid-pattern text-white">
+        <div class="absolute inset-0 bg-gradient-to-r from-sky-500/10 via-emerald-500/5 to-rose-500/10"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-6">
+            <a href="danbiba.html" class="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-semibold text-stone-300 hover:text-white transition mb-8" data-i18n="nav_back">← Back to Home</a>
+            <span class="text-emerald-400 text-xs uppercase font-bold tracking-widest block mb-3" data-i18n="ops_title">Lifecycle Operations</span>
+            <h1 class="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight mb-6 max-w-4xl" data-i18n="ops_hero_h1">End-to-End Earth Operations</h1>
+            <p class="text-stone-200 text-lg max-w-3xl font-light leading-relaxed mb-10" data-i18n="ops_hero_p">
+                Every stage of how we work the land — from the first survey line to the last community handover. Each phase below runs under its own compliance regime, equipment set, and reporting cycle.
+            </p>
+
+            <!-- Jump links -->
+            <div>
+                <span class="block text-xs uppercase tracking-widest text-stone-400 font-semibold mb-3" data-i18n="ops_jump">Jump to stage</span>
+                <div class="flex flex-wrap gap-3">
+                    <a href="#exploration" class="px-4 py-2.5 rounded-lg bg-sky-500/15 text-sky-300 ring-1 ring-sky-400/40 hover:bg-sky-500/25 text-xs font-bold uppercase tracking-wider transition">01 · <span data-i18n="ops1_title">Exploration</span></a>
+                    <a href="#extraction" class="px-4 py-2.5 rounded-lg bg-amber-500/15 text-amber-300 ring-1 ring-amber-400/40 hover:bg-amber-500/25 text-xs font-bold uppercase tracking-wider transition">02 · <span data-i18n="ops2_title">Extraction</span></a>
+                    <a href="#processing" class="px-4 py-2.5 rounded-lg bg-indigo-500/15 text-indigo-300 ring-1 ring-indigo-400/40 hover:bg-indigo-500/25 text-xs font-bold uppercase tracking-wider transition">03 · <span data-i18n="ops3_title">Processing</span></a>
+                    <a href="#remediation" class="px-4 py-2.5 rounded-lg bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-400/40 hover:bg-emerald-500/25 text-xs font-bold uppercase tracking-wider transition">04 · <span data-i18n="ops4_title">Remediation</span></a>
+                    <a href="#community" class="px-4 py-2.5 rounded-lg bg-rose-500/15 text-rose-300 ring-1 ring-rose-400/40 hover:bg-rose-500/25 text-xs font-bold uppercase tracking-wider transition">05 · <span data-i18n="ops5_title">Community</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STAGE 01 — EXPLORATION (sky) -->
+    <section id="exploration" class="py-20 border-b border-stone-200">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-12 gap-12">
+                <div class="lg:col-span-4">
+                    <div class="lg:sticky lg:top-28">
+                        <div class="w-14 h-14 rounded-xl bg-sky-500 text-white flex items-center justify-center mb-5 shadow-lg shadow-sky-500/30">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
+                        </div>
+                        <span class="text-xs uppercase font-bold tracking-widest text-sky-600 block mb-2"><span data-i18n="ops_stage">Stage</span> 01</span>
+                        <h2 class="font-heading font-bold text-3xl text-navy mb-4" data-i18n="ops1_title">Exploration</h2>
+                        <p class="text-stone-600 text-base leading-relaxed" data-i18n="ops1_lead">Establishing what is under the ground before a single machine touches it.</p>
+                    </div>
+                </div>
+                <div class="lg:col-span-8 space-y-6">
+                    <div class="bg-white rounded-xl border border-stone-200 border-l-4 border-l-sky-500 p-7">
+                        <h3 class="font-heading font-bold text-navy text-lg mb-3" data-i18n="ops_what">What this stage covers</h3>
+                        <p class="text-sm text-stone-600 leading-relaxed" data-i18n="ops1_what">Desktop geological review, airborne and ground geophysical survey, soil geochemistry sampling, and diamond core drilling to build a defensible resource model. We map both mineral density and the ecological baseline of the same block, so extraction planning and habitat protection are designed together rather than in sequence.</p>
+                    </div>
+                    <div class="bg-white rounded-xl border border-stone-200 border-l-4 border-l-sky-500 p-7">
+                        <h3 class="font-heading font-bold text-navy text-lg mb-3" data-i18n="ops_how">How we do it</h3>
+                        <p class="text-sm text-stone-600 leading-relaxed" data-i18n="ops1_how">Survey grids are laid at 50-metre spacing and tied to national geodetic control. Core samples are logged on site, split, and sent to accredited third-party assay laboratories. Results feed a block model that sets cut-off grade and pit outline before any capital is committed.</p>
+                    </div>
+                    <div class="bg-sky-50 rounded-xl border border-sky-200 p-7">
+                        <h3 class="font-heading font-bold text-sky-900 text-lg mb-3" data-i18n="ops_safeguards">Safeguards & compliance</h3>
+                        <p class="text-sm text-sky-900/80 leading-relaxed" data-i18n="ops1_safe">No vegetation clearing beyond survey access paths. Drill pads are rehabilitated within 30 days. All exploration is conducted under an active Exploration Licence with community entry consent recorded in writing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STAGE 02 — EXTRACTION (amber) -->
+    <section id="extraction" class="py-20 bg-stone-100/60 border-b border-stone-200">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-12 gap-12">
+                <div class="lg:col-span-4">
+                    <div class="lg:sticky lg:top-28">
+                        <div class="w-14 h-14 rounded-xl bg-amber-500 text-white flex items-center justify-center mb-5 shadow-lg shadow-amber-500/30">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085z"/></svg>
+                        </div>
+                        <span class="text-xs uppercase font-bold tracking-widest text-amber-600 block mb-2"><span data-i18n="ops_stage">Stage</span> 02</span>
+                        <h2 class="font-heading font-bold text-3xl text-navy mb-4" data-i18n="ops2_title">Extraction</h2>
+                        <p class="text-stone-600 text-base leading-relaxed" data-i18n="ops2_lead">Precision surface mining that takes the ore and leaves the landscape recoverable.</p>
+                    </div>
+                </div>
+                <div class="lg:col-span-8 space-y-6">
+                    <div class="bg-white rounded-xl border border-stone-200 border-l-4 border-l-amber-500 p-7">
+                        <h3 class="font-heading font-bold text-navy text-lg mb-3" data-i18n="ops_what">What this stage covers</h3>
+                        <p class="text-sm text-stone-600 leading-relaxed" data-i18n="ops2_what">Staged open-pit and alluvial extraction of natural flake graphite, heavy mineral sands, and gemstone-bearing pegmatite. Topsoil and overburden are stripped separately and stockpiled for reuse, never mixed, so the original soil profile can be rebuilt during remediation.</p>
+                    </div>
+                    <div class="bg-white rounded-xl border border-stone-200 border-l-4 border-l-amber-500 p-7">
+                        <h3 class="font-heading font-bold text-navy text-lg mb-3" data-i18n="ops_how">How we do it</h3>
+                        <p class="text-sm text-stone-600 leading-relaxed" data-i18n="ops2_how">Low-vibration hydraulic excavators and articulated haulers work in benched cuts. Blasting is minimised and, where unavoidable, is designed to controlled peak particle velocity limits and scheduled in published windows. Active pit faces are watered to suppress dust.</p>
+                    </div>
+                    <div class="bg-amber-50 rounded-xl border border-amber-200 p-7">
+                        <h3 class="font-heading font-bold text-amber-900 text-lg mb-3" data-i18n="ops_safeguards">Safeguards & compliance</h3>
+                        <p class="text-sm text-amber-900/80 leading-relaxed" data-i18n="ops2_safe">Daily pit-wall stability inspection, mandatory PPE enforced by computer vision, and sediment traps on every runoff channel. Extraction never proceeds outside the surveyed pit outline approved in the mine plan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STAGE 03 — PROCESSING (indigo) -->
+    <section id="processing" class="py-20 border-b border-stone-200">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-12 gap-12">
+                <div class="lg:col-span-4">
+                    <div class="lg:sticky lg:top-28">
+                        <div class="w-14 h-14 rounded-xl bg-indigo-500 text-white flex items-center justify-center mb-5 shadow-lg shadow-indigo-500/30">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        </div>
+                        <span class="text-xs uppercase font-bold tracking-widest text-indigo-600 block mb-2"><span data-i18n="ops_stage">Stage</span> 03</span>
+                        <h2 class="font-heading font-bold text-3xl text-navy mb-4" data-i18n="ops3_title">Processing</h2>
+                        <p class="text-stone-600 text-base leading-relaxed" data-i18n="ops3_lead">Turning run-of-mine material into graded, export-ready concentrate on site.</p>
+                    </div>
+                </div>
+                <div class="lg:col-span-8 space-y-6">
+                    <div class="bg-white rounded-xl border border-stone-200 border-l-4 border-l-indigo-500 p-7">
+                        <h3 class="font-heading font-bold text-navy text-lg mb-3" data-i18n="ops_what">What this stage covers</h3>
+                        <p class="text-sm text-stone-600 leading-relaxed" data-i18n="ops3_what">Mechanical crushing, screening, gravity separation, and magnetic separation to lift raw ore to export specification. Gemstone material is hand-sorted and graded separately under supervised chain-of-custody rather than bulk processed.</p>
+                    </div>
+                    <div class="bg-white rounded-xl border border-stone-200 border-l-4 border-l-indigo-500 p-7">
+                        <h3 class="font-heading font-bold text-navy text-lg mb-3" data-i18n="ops_how">How we do it</h3>
+                        <p class="text-sm text-stone-600 leading-relaxed" data-i18n="ops3_how">Our plants run dry-process circuits wherever the mineralogy allows, which removes the need for tailings dams. Where water is used, it is recirculated through settling ponds in a closed loop with routine turbidity logging.</p>
+                    </div>
+                    <div class="bg-indigo-50 rounded-xl border border-indigo-200 p-7">
+                        <h3 class="font-heading font-bold text-indigo-900 text-lg mb-3" data-i18n="ops_safeguards">Safeguards & compliance</h3>
+                        <p class="text-sm text-indigo-900/80 leading-relaxed" data-i18n="ops3_safe">Every despatched lot carries an assay certificate from an accredited laboratory. Weighbridge records, lot numbers, and buyer documentation are retained for audit and regulator inspection.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STAGE 04 — REMEDIATION (emerald) -->
+    <section id="remediation" class="py-20 bg-stone-100/60 border-b border-stone-200">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-12 gap-12">
+                <div class="lg:col-span-4">
+                    <div class="lg:sticky lg:top-28">
+                        <div class="w-14 h-14 rounded-xl bg-emerald-500 text-white flex items-center justify-center mb-5 shadow-lg shadow-emerald-500/30">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg>
+                        </div>
+                        <span class="text-xs uppercase font-bold tracking-widest text-emerald-600 block mb-2"><span data-i18n="ops_stage">Stage</span> 04</span>
+                        <h2 class="font-heading font-bold text-3xl text-navy mb-4" data-i18n="ops4_title">Remediation</h2>
+                        <p class="text-stone-600 text-base leading-relaxed" data-i18n="ops4_lead">Returning mined blocks to productive farmland, not leaving them as pits.</p>
+                    </div>
+                </div>
+                <div class="lg:col-span-8 space-y-6">
+                    <div class="bg-white rounded-xl border border-stone-200 border-l-4 border-l-emerald-500 p-7">
+                        <h3 class="font-heading font-bold text-navy text-lg mb-3" data-i18n="ops_what">What this stage covers</h3>
+                        <p class="text-sm text-stone-600 leading-relaxed" data-i18n="ops4_what">Progressive backfilling, contour reshaping, replacement of the stockpiled topsoil, organic fertilisation, and a planned cropping sequence that rebuilds soil structure. Remediation begins on worked-out sections while extraction continues elsewhere on the lease.</p>
+                    </div>
+                    <div class="bg-white rounded-xl border border-stone-200 border-l-4 border-l-emerald-500 p-7">
+                        <h3 class="font-heading font-bold text-navy text-lg mb-3" data-i18n="ops_how">How we do it</h3>
+                        <p class="text-sm text-stone-600 leading-relaxed" data-i18n="ops4_how">The first two seasons after backfill are planted with nitrogen-fixing legumes — cowpea and soya — before the block enters the normal grain rotation. Soil organic carbon and pH are sampled each season and the block is only released to full production once it meets our agronomic threshold.</p>
+                    </div>
+                    <div class="bg-emerald-50 rounded-xl border border-emerald-200 p-7">
+                        <h3 class="font-heading font-bold text-emerald-900 text-lg mb-3" data-i18n="ops_safeguards">Safeguards & compliance</h3>
+                        <p class="text-sm text-emerald-900/80 leading-relaxed" data-i18n="ops4_safe">Quarterly independent monitoring of groundwater quality and soil toxicity near every rehabilitated zone, with results published to institutional investors and filed with regulators.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STAGE 05 — COMMUNITY (rose) -->
+    <section id="community" class="py-20 border-b border-stone-200">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-12 gap-12">
+                <div class="lg:col-span-4">
+                    <div class="lg:sticky lg:top-28">
+                        <div class="w-14 h-14 rounded-xl bg-rose-500 text-white flex items-center justify-center mb-5 shadow-lg shadow-rose-500/30">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
+                        </div>
+                        <span class="text-xs uppercase font-bold tracking-widest text-rose-600 block mb-2"><span data-i18n="ops_stage">Stage</span> 05</span>
+                        <h2 class="font-heading font-bold text-3xl text-navy mb-4" data-i18n="ops5_title">Community</h2>
+                        <p class="text-stone-600 text-base leading-relaxed" data-i18n="ops5_lead">The host community holds the land. The programme is built around that fact.</p>
+                    </div>
+                </div>
+                <div class="lg:col-span-8 space-y-6">
+                    <div class="bg-white rounded-xl border border-stone-200 border-l-4 border-l-rose-500 p-7">
+                        <h3 class="font-heading font-bold text-navy text-lg mb-3" data-i18n="ops_what">What this stage covers</h3>
+                        <p class="text-sm text-stone-600 leading-relaxed" data-i18n="ops5_what">Negotiated community development agreements covering access roads, clean water boreholes, classroom blocks, and an outgrower farming scheme that puts remediated land back into local hands with inputs and guaranteed offtake.</p>
+                    </div>
+                    <div class="bg-white rounded-xl border border-stone-200 border-l-4 border-l-rose-500 p-7">
+                        <h3 class="font-heading font-bold text-navy text-lg mb-3" data-i18n="ops_how">How we do it</h3>
+                        <p class="text-sm text-stone-600 leading-relaxed" data-i18n="ops5_how">Each host community elects a liaison committee that meets our site management on a fixed monthly schedule. Grievances are logged with a reference number and a response deadline, and local hiring targets are reported alongside production figures.</p>
+                    </div>
+                    <div class="bg-rose-50 rounded-xl border border-rose-200 p-7">
+                        <h3 class="font-heading font-bold text-rose-900 text-lg mb-3" data-i18n="ops_safeguards">Safeguards & compliance</h3>
+                        <p class="text-sm text-rose-900/80 leading-relaxed" data-i18n="ops5_safe">Free, prior and informed consent is obtained before entry. Compensation for crops and land use is assessed by an independent valuer and paid directly to identified rights-holders.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 bg-navy text-white relative overflow-hidden bg-grid-pattern">
+        <div class="absolute inset-0 bg-gradient-to-r from-sky-500/15 via-transparent to-emerald-500/15"></div>
+        <div class="relative z-10 max-w-3xl mx-auto px-6 text-center">
+            <h2 class="font-heading font-bold text-3xl mb-4" data-i18n="ops_cta_h">Want the full technical dossier?</h2>
+            <p class="text-stone-200 text-sm leading-relaxed mb-8" data-i18n="ops_cta_p">We share detailed method statements, licence documentation, and site data with serious partners and regulators on request.</p>
+            <a href="danbiba.html#contact" class="inline-flex items-center gap-2 bg-aqua hover:bg-aqua/90 text-white font-heading font-bold text-xs uppercase tracking-widest px-8 py-4 rounded transition shadow-lg" data-i18n="ops_cta_btn">
+                Contact the Operations Desk
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-stone-900 text-stone-300 py-12">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-400">
+            <span data-i18n="footer_copyright">© 2026 Danbiba Farms & Mining Co. Ltd. All Rights Reserved.</span>
+            <a href="danbiba.html" class="hover:text-white transition" data-i18n="nav_back">← Back to Home</a>
+        </div>
+    </footer>
+
+    <script src="site.js"></script>
+</body>
+</html>

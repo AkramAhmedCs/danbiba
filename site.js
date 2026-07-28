@@ -1,0 +1,291 @@
+const translations = {
+    nav_about: { en: 'About Us', ha: 'Game da Mu' },
+    nav_services: { en: 'Services', ha: 'Ayyukanmu' },
+    nav_tech: { en: 'Technology', ha: 'Fasaha' },
+    nav_products: { en: 'Products', ha: 'Kayayyaki' },
+    nav_gallery: { en: 'Equipment', ha: 'Kayan Aiki' },
+    nav_contact: { en: 'Contact', ha: 'Tuntube Mu' },
+    nav_partner: { en: 'Partner With Us', ha: 'Yi Hadin Gwiwa Da Mu' },
+    nav_contactme: { en: 'Contact Me', ha: 'Aiko Imel' },
+
+    hero_badge: { en: 'Abuja, Nigeria • Dual-Sector Operations', ha: 'Abuja, Najeriya • Sassa Biyu na Ayyuka' },
+    hero_h1: {
+        en: 'Sustainable Mining.<br><span class="text-stone-300">Responsible Farming.</span><br>Community Growth.',
+        ha: 'Hakar Ma’adinai Mai Dorewa.<br><span class="text-stone-300">Noma Mai Nauyi.</span><br>Ci Gaban Al’umma.'
+    },
+    hero_p: { en: 'Extracting high-grade heavy mineral sands and natural flake graphite alongside industrial agricultural development—working the earth with integrity.', ha: 'Muna hakar yashin ma’adinai mai inganci da graphite na halitta, tare da bunkasa noma na masana’antu — muna aiki da kasa cikin gaskiya da mutunci.' },
+    hero_btn1: { en: 'Explore Our Services', ha: 'Duba Ayyukanmu' },
+    hero_btn2: { en: 'Corporate Inquiries', ha: 'Tambayoyin Kamfani' },
+
+    about_eyebrow: { en: 'Corporate Profile', ha: 'Bayanin Kamfani' },
+    about_h2: { en: 'Setting the Standard for Responsible Earth Resource Management', ha: 'Kafa Ka’idar Gudanar da Albarkatun Kasa Cikin Nauyi' },
+    about_p: { en: 'Danbiba Farms & Mining Co. Ltd is a global-minded operational entity headquartered in Abuja. We bridge the gap between heavy industrial mineral extraction and sustainable food production. Operating with a safety-first methodology, our centralized hub manages the entire lifecycle of land management—from geophysical exploration to ecosystem post-mining remediation.', ha: 'Danbiba Farms & Mining Co. Ltd kamfani ne mai hedkwata a Abuja, wanda ke tunani a kan matakin duniya. Muna hada gwiwa tsakanin hakar ma’adinai na masana’antu da samar da abinci mai dorewa. Muna aiki bisa tsarin da ke ba da fifiko ga tsaro, kuma cibiyarmu ta tsakiya tana kula da dukkan matakan gudanar da kasa — daga bincike na farko har zuwa gyaran muhalli bayan hakar ma’adinai.' },
+    mission_title: { en: 'Our Mission', ha: 'Manufarmu' },
+    mission_p: { en: 'To operate as a centralized benchmark setting the national standard for sustainable quarrying across pre-mining, active extraction, and land restoration.', ha: 'Mu zama misali na kasa wajen hakar ma’adinai mai dorewa, daga matakin shirye-shirye, hakar aiki, har zuwa gyaran kasa.' },
+    vision_title: { en: 'Our Vision', ha: 'Hangen Nesanmu' },
+    vision_p: { en: 'To guide stakeholders through complex regulatory frameworks while deploying world-class conservation programs and low-impact agriculture.', ha: 'Mu jagoranci masu ruwa da tsaki ta cikin ka’idojin gwamnati masu sarkakiya, tare da aiwatar da shirye-shiryen kiyaye muhalli na duniya da noma mai karancin illa.' },
+
+    disclosure_title: { en: 'Corporate Disclosure Registry', ha: 'Bayanan Bayyanawa na Kamfani' },
+    disc1_title: { en: 'Registration & Incorporation', ha: 'Rijista da Kafuwar Kamfani' },
+    disc1_p: { en: 'Fully incorporated under the Corporate Affairs Commission (CAC) of Nigeria, holding active dual-sector operational licenses for solid mineral mining and commercial agricultural development.', ha: 'An rajista kamfanin gaba daya karkashin Hukumar Harkokin Kamfanoni (CAC) ta Najeriya, tare da lasisin gudanarwa mai aiki a fannonin hakar ma’adinai da bunkasa noma na kasuwanci.' },
+    disc2_title: { en: 'Governance Structure', ha: 'Tsarin Jagoranci' },
+    disc2_p: { en: 'Led by an executive board comprising geologists, agricultural engineers, and ESG compliance officers, ensuring strict separation of operational risk between mining and farming units.', ha: 'Ana jagorantar da kamfanin ta hannun kwamitin gudanarwa wanda ya kunshi masana kasa, injiniyoyin noma, da jami’an bin ka’idojin ESG, don tabbatar da rarrabuwar hadari tsakanin sashen hakar ma’adinai da na noma.' },
+    disc3_title: { en: 'Program Development Focus', ha: 'Manufar Ci Gaban Shirye-shirye' },
+    disc3_p: { en: 'Split into three distinct vectors: (1) Heavy Mineral Sands & Flake Graphite yield optimization, (2) Soil-rejuvenating crop rotation, and (3) Micro-infrastructure funding for host communities.', ha: 'An kasu kashi uku: (1) Inganta amfanin yashin ma’adinai da graphite, (2) Jujjuya amfanin gona don farfado da kasa, da (3) Tallafin gina karamin ababen more rayuwa ga al’ummomin da abin ya shafa.' },
+    disc4_title: { en: 'Monitoring & Evaluation', ha: 'Sa Ido da Kimantawa' },
+    disc4_p: { en: 'Strict quarterly internal auditing of groundwater safety, soil toxicity levels near extraction zones, and carbon-offset metrics published to institutional investors.', ha: 'Ana yin bincike na cikin gida kowane wata uku kan tsaftar ruwan karkashin kasa, matakan gubar kasa kusa da wuraren hakar ma’adinai, da adadin rage hayakin carbon, ana kuma buga sakamakon ga masu zuba jari.' },
+    disc5_title: { en: 'Transparency & Accountability', ha: 'Gaskiya da Lissafi' },
+    disc5_p: { en: 'Committed to NEITI (Nigeria Extractive Industries Transparency Initiative) reporting standards, ensuring 100% visibility on community royalties and environmental tax compliance.', ha: 'Muna bin ka’idojin bayar da rahoto na NEITI (Nigeria Extractive Industries Transparency Initiative), don tabbatar da bayyana kason al’umma da bin ka’idojin harajin muhalli gaba daya.' },
+    disc6_title: { en: 'Sustainability & Land Plan', ha: 'Dorewa da Shirin Kasa' },
+    disc6_p: { en: 'Every hectare of exhausted mineral quarry is systematically backfilled, treated for pH balance, and transferred directly to the Danbiba Agricultural division for arable farming.', ha: 'Kowane fadin kasa da aka gama hakar ma’adinai ana cika shi, a daidaita pH dinsa, sannan a mika shi kai tsaye ga sashen Noma na Danbiba domin noma.' },
+
+    services_eyebrow: { en: 'Lifecycle Operations', ha: 'Matakan Aiki' },
+    services_h2: { en: 'End-to-End Earth Operations', ha: 'Cikakken Sarkar Ayyukan Kasa' },
+    svc1_title: { en: 'Exploration', ha: 'Bincike' },
+    svc1_p: { en: 'Advanced geophysical and core-drilling surveys to map mineral density with zero speculative habitat disruption.', ha: 'Bincike na zamani da hako-gwaji don tantance yawan ma’adinai ba tare da tada muhalli ba.' },
+    svc2_title: { en: 'Extraction', ha: 'Hakowa' },
+    svc2_p: { en: 'Precision surface mining of natural flake graphite and heavy mineral sands utilizing low-vibration machinery.', ha: 'Hakar ma’adinai a saman kasa da injina masu karancin girgiza, don samun graphite da yashin ma’adinai.' },
+    svc3_title: { en: 'Processing', ha: 'Sarrafawa' },
+    svc3_p: { en: 'On-site mechanical screening and magnetic separation to refine raw ore into export-grade industrial concentrates.', ha: 'Ana tace da raba ma’adinai a wurin aiki don mai da danyen ma’adinai zuwa kaya mai inganci na fitarwa.' },
+    svc4_title: { en: 'Remediation', ha: 'Gyara Kasa' },
+    svc4_p: { en: 'Immediate top-soil replacement and organic fertilization to prepare post-extraction zones for agricultural planting.', ha: 'Ana maido da kasa nan take da takin gargajiya don shirya wurin da aka hako domin noma.' },
+    svc5_title: { en: 'Community', ha: 'Al’umma' },
+    svc5_p: { en: 'Direct reinvestment into local access roads, clean water boreholes, and outgrower farming schemes.', ha: 'Zuba jari kai tsaye a hanyoyi, rijiyoyin ruwa mai tsafta, da shirye-shiryen taimakon manoma a yankin.' },
+
+    values_eyebrow: { en: 'Our Commitment', ha: 'Alkawarinmu' },
+    values_h2: { en: 'The Core Values That Guide Every Decision', ha: 'Dabi’un da ke Jagorantar Kowane Shawara' },
+    values_p: { en: 'Four principles anchor how we operate across every mine pit, field, and community partnership.', ha: 'Ka’idoji hudu ne suke tafiyar da yadda muke aiki a kowane rami, gona, da hadin gwiwar al’umma.' },
+    val1_title: { en: 'Safety First', ha: 'Tsaro Farko' },
+    val1_p: { en: 'Zero-harm operational mandate across all mine pits and machine sheds.', ha: 'Manufar rashin illa a dukkan wuraren hakar ma’adinai da rumbunan injina.' },
+    val2_title: { en: 'Stewardship', ha: 'Kulawa da Amana' },
+    val2_p: { en: 'Treating Nigerian topsoil as a borrowed asset to be returned enriched.', ha: 'Muna dubi kasar Najeriya kamar rancen dukiya da za a mayar cikin ingantacciyar hali.' },
+    val3_title: { en: 'Absolute Integrity', ha: 'Gaskiya Cikakke' },
+    val3_p: { en: 'Transparent reporting to government regulators and joint venture partners.', ha: 'Rahoto bayyananne ga hukumomin gwamnati da abokan hulda.' },
+    val4_title: { en: 'Shared Prosperity', ha: 'Wadata Tare' },
+    val4_p: { en: 'Prioritizing Nyaya and FCT local talent in our technical workforce.', ha: 'Bai wa ’yan asalin Nyaya da FCT fifiko a ma’aikatanmu na fasaha.' },
+
+    tech_eyebrow: { en: '// INNOVATION ARCHITECTURE', ha: '// TSARIN KIRKIRE-KIRKIRE' },
+    tech_h2: { en: 'AI & ML-Driven Mining Operations', ha: 'Ayyukan Hakar Ma’adinai Karkashin AI & ML' },
+    tech_p: { en: 'Deploying predictive neural algorithms to maximize extraction yield while minimizing physical footprint.', ha: 'Muna amfani da fasahar hasashen kwamfuta don kara yawan amfanin hakar ma’adinai tare da rage tasirin muhalli.' },
+    tc1_title: { en: 'Advanced Data Analytics', ha: 'Nazarin Bayanai na Zamani' },
+    tc1_p: { en: 'Processing multi-spectral satellite imagery to pinpoint mineral sand pockets with 94% spatial accuracy.', ha: 'Nazarin hotunan tauraron dan adam domin gano wuraren ma’adinai da daidaito na kashi 94%.' },
+    tc2_title: { en: 'Predictive Maintenance', ha: 'Kula da Injina Kafin Lalacewa' },
+    tc2_p: { en: 'IoT acoustic telemetry on screening plants detects bearing fatigue 150 operational hours prior to failure.', ha: 'Na’urorin sadarwa suna gano matsalar injina awanni 150 kafin ta faru.' },
+    tc3_title: { en: 'Smart Resource Mgmt', ha: 'Gudanar da Albarkatu Cikin Wayo' },
+    tc3_p: { en: 'Real-time balancing of diesel consumption against solar-battery arrays across field outposts.', ha: 'Daidaita amfani da man dizal da makamashin hasken rana a wuraren aiki a lokaci guda.' },
+    tc4_title: { en: 'Autonomous Telemetry', ha: 'Sa Ido Ta Atomatik' },
+    tc4_p: { en: 'Geofenced GPS tracking on heavy haulage assets ensures strict route compliance and fuel custody.', ha: 'Na’urar GPS tana bin diddigin manyan motoci don tabbatar da bin hanya da amfani da mai yadda ya kamata.' },
+    tc5_title: { en: 'Ecosystem Monitoring', ha: 'Sa Ido Kan Muhalli' },
+    tc5_p: { en: 'Automated downstream water turbidity sensors log ecological data directly to immutable cloud ledgers.', ha: 'Na’urori suna auna tsaftar ruwa kai tsaye suna adana bayanan muhalli a girgije mai aminci.' },
+    tc6_title: { en: 'Computer-Vision Safety', ha: 'Tsaro Ta Idon Kwamfuta' },
+    tc6_p: { en: 'Pit cameras running edge ML instantly shut down conveyers if PPE non-compliance is detected.', ha: 'Kyamarori a wuraren aiki suna dakatar da injina nan take idan an gano rashin sanya kayan tsaro.' },
+
+    products_eyebrow: { en: 'Agriculture Division', ha: 'Sashen Noma' },
+    products_h2: { en: 'Our Farm Products', ha: 'Kayayyakin Gonarmu' },
+    products_p: { en: 'Staple grains, legumes, tubers, poultry, and aquaculture cultivated across our reclaimed and active farmland, available for bulk procurement.', ha: 'Hatsi, wake, rogo, kaji, da kifi da muke nomawa a gonakinmu, ana samun su don sayarwa da yawa.' },
+    products_cta: { en: 'Request Bulk Pricing', ha: 'Nemi Farashin Sayan Yawa' },
+    cat_aqua: { en: 'Aquaculture', ha: 'Kiwon Kifi' },
+    cat_poultry: { en: 'Poultry', ha: 'Kiwon Kaji' },
+    cat_grain: { en: 'Grains', ha: 'Hatsi' },
+    cat_grain2: { en: 'Grains', ha: 'Hatsi' },
+    cat_grain3: { en: 'Grains', ha: 'Hatsi' },
+    cat_grain4: { en: 'Grains', ha: 'Hatsi' },
+    cat_legume: { en: 'Legumes', ha: 'Dangin Wake' },
+    cat_legume2: { en: 'Legumes', ha: 'Dangin Wake' },
+    cat_legume3: { en: 'Legumes', ha: 'Dangin Wake' },
+    cat_tuber: { en: 'Tubers', ha: 'Amfanin Gona Mai Tushe' },
+    prod1_title: { en: 'Catfish', ha: 'Kifin Tarwada' },
+    prod1_p: { en: 'Pond-raised table-size catfish, harvested fresh year-round.', ha: 'Kifin tarwada da ake kiwo a tafki, ana girbe shi sabo duk shekara.' },
+    prod2_title: { en: 'Broiler Chickens', ha: 'Kaji Na Nama (Broiler)' },
+    prod2_p: { en: 'Full-weight white broilers reared for meat in managed pens.', ha: 'Farin kaji masu kiba da ake kiwo don nama a cikin gidajen kiwo.' },
+    prod3_title: { en: 'Rice', ha: 'Shinkafa' },
+    prod3_p: { en: 'Locally milled paddy rice supplied in graded bulk bags.', ha: 'Shinkafar gida da aka nika, ana bayarwa a buhuna masu inganci.' },
+    prod4_title: { en: 'Soya Beans', ha: 'Waken Soya' },
+    prod4_p: { en: 'High-protein soya for oil milling and feed processing.', ha: 'Waken soya mai gina jiki don matsa mai da yin abincin dabbobi.' },
+    prod5_title: { en: 'Corn (Maize)', ha: 'Masara' },
+    prod5_p: { en: 'Dried yellow and white maize for food and livestock feed.', ha: 'Busasshiyar masara rawaya da fara don abinci da abincin dabbobi.' },
+    prod6_title: { en: 'Groundnut', ha: 'Gyada' },
+    prod6_p: { en: 'Shelled and unshelled groundnut for oil pressing and retail.', ha: 'Gyada mai bawo da wadda aka bare, don matsa mai da sayarwa.' },
+    prod7_title: { en: 'Beans (Cowpea)', ha: 'Wake' },
+    prod7_p: { en: 'Cleaned, sorted cowpea supplied by the bag or truckload.', ha: 'Waken da aka tsabtace kuma aka tantance, ana sayarwa a buhu ko mota.' },
+    prod8_title: { en: 'Millet', ha: 'Gero' },
+    prod8_p: { en: 'Drought-hardy millet grown on our northern rotation plots.', ha: 'Gero mai jure fari da muke nomawa a gonakinmu na arewa.' },
+    prod9_title: { en: 'Sorghum / Guinea Corn', ha: 'Dawa' },
+    prod9_p: { en: 'Red and white sorghum for brewing, milling, and feed.', ha: 'Jar dawa da farar dawa don sha, nika, da abincin dabbobi.' },
+    prod10_title: { en: 'Cassava', ha: 'Rogo' },
+    prod10_p: { en: 'Fresh tubers and processed cassava for starch and garri.', ha: 'Sabon rogo da wanda aka sarrafa don sitaci da gari.' },
+
+    gallery_eyebrow: { en: 'On-Ground Assets', ha: 'Kayan Aiki A Filin Aiki' },
+    gallery_h2: { en: 'Operational Fleet Gallery', ha: 'Hotunan Motoci Da Injinan Aiki' },
+    tab_all: { en: 'All Assets', ha: 'Duka' },
+    tab_farming: { en: 'Farming', ha: 'Noma' },
+    tab_mining: { en: 'Mining', ha: 'Hakar Ma’adinai' },
+    tab_haulage: { en: 'Haulage', ha: 'Sufuri' },
+    g1_badge: { en: 'Agriculture Division', ha: 'Sashen Noma' },
+    g1_title: { en: 'Heavy Industrial Tractors & Plows', ha: 'Manyan Tarakta da Garuwa' },
+    g1_p: { en: 'Multi-hectare seed planting and tilling units.', ha: 'Injinan shuka iri da noman fadin gona.' },
+    g2_badge: { en: 'Extraction Division', ha: 'Sashen Hakar Ma’adinai' },
+    g2_title: { en: 'Crawler Excavators & Loaders', ha: 'Manyan Injinan Hakowa' },
+    g2_p: { en: 'High-capacity earth movers for mineral flake stripping.', ha: 'Manyan injina masu karfin cire kasa domin hakar ma’adinai.' },
+    g3_badge: { en: 'Logistics Division', ha: 'Sashen Sufuri' },
+    g3_title: { en: 'DAF & Iveco Tipper Fleet', ha: 'Motocin Dauke Kaya na DAF da Iveco' },
+    g3_p: { en: 'Dedicated cross-country transit trucks.', ha: 'Manyan motoci na jigilar kaya cikin kasa.' },
+    g3_overlay: { en: 'Branded: Danbiba Farms Ltd', ha: 'Alamar: Danbiba Farms Ltd' },
+
+    footer_tagline: { en: 'A responsible Nigerian dual-sector operator built on institutional transparency, environmental reclamation, and community empowerment.', ha: 'Kamfani ne na Najeriya mai sassa biyu, wanda aka gina bisa gaskiya, gyaran muhalli, da karfafa al’umma.' },
+    footer_hq_label: { en: 'Headquarters Location:', ha: 'Adireshin Hedkwata:' },
+    footer_enquiries_label: { en: 'Direct Enquiries:', ha: 'Tambayoyi Kai Tsaye:' },
+    footer_email_label: { en: 'Electronic Mail:', ha: 'Imel:' },
+    form_title: { en: 'Initiate Official Correspondence', ha: 'Fara Sadarwa Ta Hukuma' },
+    form_name_label: { en: 'Representative Name', ha: 'Sunan Wakili' },
+    form_name_ph: { en: 'e.g. Aliyu Musa', ha: 'misali: Aliyu Musa' },
+    form_org_label: { en: 'Organization / Agency', ha: 'Kungiya / Hukuma' },
+    form_org_ph: { en: 'Ministry / Venture Fund', ha: 'Ma’aikata / Asusun Zuba Jari' },
+    form_email_label: { en: 'Official Email Address', ha: 'Adireshin Imel' },
+    form_email_ph: { en: 'name@organization.gov.ng', ha: 'suna@hukuma.gov.ng' },
+    form_subject_label: { en: 'Subject Matter', ha: 'Batun Sako' },
+    form_subject_ph: { en: 'Specify interest in Graphite extraction licensing, agricultural produce bulk procurement, or ESG community relations...', ha: 'Bayyana bukatarka: lasisin hakar graphite, sayan amfanin gona da yawa, ko huldar al’umma...' },
+    form_submit: { en: 'Transmit Message', ha: 'Aika Sako' },
+    footer_copyright: { en: '© 2026 Danbiba Farms & Mining Co. Ltd. All Rights Reserved.', ha: '© 2026 Danbiba Farms & Mining Co. Ltd. Duk ’Yancin Mallaka an Kiyaye.' },
+    footer_link1: { en: 'CAC Verification', ha: 'Tabbatar da CAC' },
+    footer_link2: { en: 'Environmental Policy', ha: 'Manufar Muhalli' },
+    footer_link3: { en: 'Employee Portal', ha: 'Shafin Ma’aikata' },
+
+    /* ---------- Navigation additions ---------- */
+    nav_minerals: { en: 'Minerals', ha: 'Ma’adinai' },
+    nav_home: { en: 'Home', ha: 'Shafin Farko' },
+    nav_back: { en: '← Back to Home', ha: '← Koma Shafin Farko' },
+
+    /* ---------- Services section: links into the operations page ---------- */
+    services_hint: { en: 'Select any stage below to open the full operational breakdown.', ha: 'Danna kowane mataki a kasa domin ganin cikakken bayani.' },
+    svc_more:  { en: 'Read more →', ha: 'Kara karantawa →' },
+    svc_more2: { en: 'Read more →', ha: 'Kara karantawa →' },
+    svc_more3: { en: 'Read more →', ha: 'Kara karantawa →' },
+    svc_more4: { en: 'Read more →', ha: 'Kara karantawa →' },
+    svc_more5: { en: 'Read more →', ha: 'Kara karantawa →' },
+
+    /* ---------- Partner With Us modal ---------- */
+    pm_eyebrow: { en: 'Partnership Desk', ha: 'Sashen Hadin Gwiwa' },
+    pm_title: { en: 'Partner With Danbiba', ha: 'Yi Hadin Gwiwa Da Danbiba' },
+    pm_intro: { en: 'Tell us how you would like to work with us. Select a track, send your details, and our partnership desk will respond directly.', ha: 'Ka gaya mana yadda kake son yin aiki da mu. Zabi hanya, aiko da bayananka, sashen hadin gwiwarmu zai amsa maka kai tsaye.' },
+    pm_t1_title: { en: 'Produce Offtake', ha: 'Sayan Amfanin Gona' },
+    pm_t1_p: { en: 'Bulk purchase agreements for grains, legumes, poultry, and catfish.', ha: 'Yarjejeniyar sayan hatsi, wake, kaji, da kifi da yawa.' },
+    pm_t2_title: { en: 'Mineral Investment', ha: 'Zuba Jari A Ma’adinai' },
+    pm_t2_p: { en: 'Joint ventures, licensing, and offtake for our gemstone and industrial mineral portfolio.', ha: 'Hadin gwiwa, lasisi, da sayan duwatsu masu daraja da ma’adinan masana’antu.' },
+    pm_t3_title: { en: 'Community & ESG', ha: 'Al’umma da ESG' },
+    pm_t3_p: { en: 'Outgrower schemes, infrastructure funding, and development programmes.', ha: 'Shirye-shiryen manoma, tallafin ababen more rayuwa, da shirye-shiryen ci gaba.' },
+    pm_name_label: { en: 'Full Name', ha: 'Cikakken Suna' },
+    pm_org_label: { en: 'Organization', ha: 'Kungiya' },
+    pm_email_label: { en: 'Email Address', ha: 'Adireshin Imel' },
+    pm_track_label: { en: 'Partnership Track', ha: 'Nau’in Hadin Gwiwa' },
+    pm_msg_label: { en: 'Proposal Details', ha: 'Bayanin Shawara' },
+    pm_msg_ph: { en: 'Volumes, timelines, licensing scope, or programme focus...', ha: 'Adadi, lokaci, fannin lasisi, ko manufar shirin...' },
+    pm_opt1: { en: 'Produce Offtake', ha: 'Sayan Amfanin Gona' },
+    pm_opt2: { en: 'Mineral Investment', ha: 'Zuba Jari A Ma’adinai' },
+    pm_opt3: { en: 'Community & ESG', ha: 'Al’umma da ESG' },
+    pm_opt4: { en: 'Other', ha: 'Wani Abu' },
+    pm_submit: { en: 'Send Partnership Request', ha: 'Aika Bukatar Hadin Gwiwa' },
+    pm_cancel: { en: 'Cancel', ha: 'Soke' },
+    pm_note: { en: 'Submitting opens your email client with the details pre-filled, addressed to danbiba2008@outlook.com.', ha: 'Idan ka aika, za a bude imel dinka da bayanan a ciki, zuwa danbiba2008@outlook.com.' },
+
+    /* ---------- Operations detail page ---------- */
+    ops_title: { en: 'Lifecycle Operations', ha: 'Ayyukan Zagaye' },
+    ops_hero_h1: { en: 'End-to-End Earth Operations', ha: 'Cikakkun Ayyukan Kasa' },
+    ops_hero_p: { en: 'Every stage of how we work the land — from the first survey line to the last community handover. Each phase below runs under its own compliance regime, equipment set, and reporting cycle.', ha: 'Kowane mataki na yadda muke aiki da kasa — daga bincike na farko har zuwa mika wa al’umma. Kowane mataki yana da nasa ka’idoji, kayan aiki, da rahoto.' },
+    ops_jump: { en: 'Jump to stage', ha: 'Tsallaka zuwa mataki' },
+    ops_stage: { en: 'Stage', ha: 'Mataki' },
+    ops_what: { en: 'What this stage covers', ha: 'Abin da wannan matakin ya kunsa' },
+    ops_how: { en: 'How we do it', ha: 'Yadda muke aikata shi' },
+    ops_safeguards: { en: 'Safeguards & compliance', ha: 'Kariya da Bin Ka’ida' },
+    ops_cta_h: { en: 'Want the full technical dossier?', ha: 'Kana son cikakken bayanin fasaha?' },
+    ops_cta_p: { en: 'We share detailed method statements, licence documentation, and site data with serious partners and regulators on request.', ha: 'Muna raba cikakkun bayanan hanyoyin aiki, takardun lasisi, da bayanan wurin aiki ga abokan hulda da hukumomi idan aka nema.' },
+    ops_cta_btn: { en: 'Contact the Operations Desk', ha: 'Tuntubi Sashen Ayyuka' },
+
+    ops1_title: { en: 'Exploration', ha: 'Bincike' },
+    ops1_lead: { en: 'Establishing what is under the ground before a single machine touches it.', ha: 'Gano abin da ke karkashin kasa kafin a fara kowane aiki.' },
+    ops1_what: { en: 'Desktop geological review, airborne and ground geophysical survey, soil geochemistry sampling, and diamond core drilling to build a defensible resource model. We map both mineral density and the ecological baseline of the same block, so extraction planning and habitat protection are designed together rather than in sequence.', ha: 'Nazarin bayanan kasa, binciken sararin sama da na kasa, daukar samfurin kasa, da hakar rami don gina ingantaccen tsarin albarkatu. Muna auna yawan ma’adinai da yanayin muhalli a wuri guda, don haka ana tsara hakar da kariyar muhalli tare.' },
+    ops1_how: { en: 'Survey grids are laid at 50-metre spacing and tied to national geodetic control. Core samples are logged on site, split, and sent to accredited third-party assay laboratories. Results feed a block model that sets cut-off grade and pit outline before any capital is committed.', ha: 'Ana yin binciken a tazarar mita 50, tare da hade shi da ma’aunin kasa na kasa. Ana rubuta samfuran a wurin, a raba su, sannan a aika zuwa dakunan gwaje-gwaje masu izini. Sakamakon shi ne ke tsara iyakar rami kafin a kashe kudi.' },
+    ops1_safe: { en: 'No vegetation clearing beyond survey access paths. Drill pads are rehabilitated within 30 days. All exploration is conducted under an active Exploration Licence with community entry consent recorded in writing.', ha: 'Ba a share bishiyoyi banda hanyoyin bincike. Ana gyara wuraren hakar rami cikin kwana 30. Ana yin duk bincike da lasisi mai aiki tare da izinin al’umma a rubuce.' },
+
+    ops2_title: { en: 'Extraction', ha: 'Hakar Ma’adinai' },
+    ops2_lead: { en: 'Precision surface mining that takes the ore and leaves the landscape recoverable.', ha: 'Hakar ma’adinai da kyau, ana daukar ma’adinai ana kuma barin kasa mai yiwuwar gyarawa.' },
+    ops2_what: { en: 'Staged open-pit and alluvial extraction of natural flake graphite, heavy mineral sands, and gemstone-bearing pegmatite. Topsoil and overburden are stripped separately and stockpiled for reuse, never mixed, so the original soil profile can be rebuilt during remediation.', ha: 'Hakar ma’adinai a matakai, ciki har da graphite, yashin ma’adinai, da duwatsu masu daraja. Ana cire kasa ta sama daban a ajiye ta don sake amfani, ba a hada ta da sauran kasa ba, don a iya maido da kasar yadda take.' },
+    ops2_how: { en: 'Low-vibration hydraulic excavators and articulated haulers work in benched cuts. Blasting is minimised and, where unavoidable, is designed to controlled peak particle velocity limits and scheduled in published windows. Active pit faces are watered to suppress dust.', ha: 'Ana amfani da injinan hakar da ba sa girgiza kasa sosai. Ana rage tarwatsa duwatsu, idan kuma dole ne, ana yin sa cikin iyaka da lokaci sanannu. Ana zuba ruwa a wurin aiki don rage kura.' },
+    ops2_safe: { en: 'Daily pit-wall stability inspection, mandatory PPE enforced by computer vision, and sediment traps on every runoff channel. Extraction never proceeds outside the surveyed pit outline approved in the mine plan.', ha: 'Ana duba karfin bangon rami kullum, ana tilasta sanya kayan kariya ta hanyar kamara, ana kuma tarko laka a duk hanyar ruwa. Ba a hakowa a wajen iyakar da aka amince da ita.' },
+
+    ops3_title: { en: 'Processing', ha: 'Sarrafawa' },
+    ops3_lead: { en: 'Turning run-of-mine material into graded, export-ready concentrate on site.', ha: 'Mayar da danyen ma’adinai zuwa kayan da suka dace da fitarwa kasashen waje.' },
+    ops3_what: { en: 'Mechanical crushing, screening, gravity separation, and magnetic separation to lift raw ore to export specification. Gemstone material is hand-sorted and graded separately under supervised chain-of-custody rather than bulk processed.', ha: 'Nika, tantancewa, da raba ma’adinai ta hanyar nauyi da maganadisu don kai su matakin fitarwa. Ana tantance duwatsu masu daraja da hannu, karkashin kulawa mai tsauri.' },
+    ops3_how: { en: 'Our plants run dry-process circuits wherever the mineralogy allows, which removes the need for tailings dams. Where water is used, it is recirculated through settling ponds in a closed loop with routine turbidity logging.', ha: 'Muna amfani da hanyoyin da ba sa bukatar ruwa duk inda ya yiwu, don haka ba ma bukatar tafkin sharar ma’adinai. Idan an yi amfani da ruwa, ana sake amfani da shi bayan an tsarkake shi.' },
+    ops3_safe: { en: 'Every despatched lot carries an assay certificate from an accredited laboratory. Weighbridge records, lot numbers, and buyer documentation are retained for audit and regulator inspection.', ha: 'Duk kayan da aka fitar suna da takardar shaidar inganci daga dakin gwaje-gwaje mai izini. Ana ajiye bayanan awo da na masu saye don bincike.' },
+
+    ops4_title: { en: 'Remediation', ha: 'Gyaran Kasa' },
+    ops4_lead: { en: 'Returning mined blocks to productive farmland, not leaving them as pits.', ha: 'Maido da wuraren da aka haka zuwa gonaki masu amfani, ba barin su ramuka ba.' },
+    ops4_what: { en: 'Progressive backfilling, contour reshaping, replacement of the stockpiled topsoil, organic fertilisation, and a planned cropping sequence that rebuilds soil structure. Remediation begins on worked-out sections while extraction continues elsewhere on the lease.', ha: 'Cika ramuka, gyara siffar kasa, mayar da kasa ta sama da aka ajiye, zuba taki, da shuka amfanin gona da ke gyara kasa. Ana fara gyara wurin da aka gama hakowa yayin da ake ci gaba da aiki a wani wuri.' },
+    ops4_how: { en: 'The first two seasons after backfill are planted with nitrogen-fixing legumes — cowpea and soya — before the block enters the normal grain rotation. Soil organic carbon and pH are sampled each season and the block is only released to full production once it meets our agronomic threshold.', ha: 'Shekaru biyu na farko bayan cika rami ana shuka wake da soya da ke gina kasa, kafin a shiga shuka hatsi. Ana auna lafiyar kasa kowace shekara, ba a mika kasar don cikakken noma sai ta cika ka’ida.' },
+    ops4_safe: { en: 'Quarterly independent monitoring of groundwater quality and soil toxicity near every rehabilitated zone, with results published to institutional investors and filed with regulators.', ha: 'Ana bincike mai zaman kansa kowane wata uku kan ruwan karkashin kasa da lafiyar kasa, ana kuma buga sakamakon ga masu zuba jari da hukumomi.' },
+
+    ops5_title: { en: 'Community', ha: 'Al’umma' },
+    ops5_lead: { en: 'The host community holds the land. The programme is built around that fact.', ha: 'Al’umma ce ke da kasar. Duk shirin an gina shi bisa wannan gaskiya.' },
+    ops5_what: { en: 'Negotiated community development agreements covering access roads, clean water boreholes, classroom blocks, and an outgrower farming scheme that puts remediated land back into local hands with inputs and guaranteed offtake.', ha: 'Yarjejeniyar ci gaban al’umma da ta kunshi hanyoyi, rijiyoyin ruwa, azuzuwan makaranta, da shirin manoma da ke mayar da kasar da aka gyara ga al’umma tare da tallafi da tabbacin siyan amfanin gona.' },
+    ops5_how: { en: 'Each host community elects a liaison committee that meets our site management on a fixed monthly schedule. Grievances are logged with a reference number and a response deadline, and local hiring targets are reported alongside production figures.', ha: 'Kowace al’umma tana zaben kwamiti da ke ganawa da shugabannin wurin aiki kowane wata. Ana rubuta kowane kuka da lambar bibiya da lokacin amsa, ana kuma bayar da rahoton daukar ma’aikata na gida.' },
+    ops5_safe: { en: 'Free, prior and informed consent is obtained before entry. Compensation for crops and land use is assessed by an independent valuer and paid directly to identified rights-holders.', ha: 'Ana neman izinin al’umma cikin sani kafin shiga. Ana kimanta diyyar amfanin gona da kasa ta hannun masani mai zaman kansa, ana kuma biya kai tsaye ga masu hakki.' },
+
+    /* ---------- Minerals page ---------- */
+    min_title: { en: 'Minerals', ha: 'Ma’adinai' },
+    min_hero_h1: { en: 'Our Mineral Portfolio', ha: 'Ma’adinan Da Muke Hakowa' },
+    min_hero_p: { en: 'Gemstones and industrial minerals sourced from our licensed blocks, sorted and graded under supervised chain-of-custody. This list grows as new blocks come into production.', ha: 'Duwatsu masu daraja da ma’adinan masana’antu daga wuraren da muke da lasisi, ana tantance su karkashin kulawa mai tsauri. Wannan jerin zai karu yayin da sabbin wurare suka fara aiki.' },
+    min_note_h: { en: 'More minerals to be added', ha: 'Za a kara wasu ma’adinai' },
+    min_note_p: { en: 'This portfolio reflects current production. Additional stones and industrial minerals will be listed here as further blocks are brought online.', ha: 'Wannan jerin yana nuna abin da ake hakowa yanzu. Za a kara wasu duwatsu da ma’adinai a nan yayin da aka fara aiki a sabbin wurare.' },
+    min_cta_h: { en: 'Enquire about availability & grades', ha: 'Tambaya kan samuwa da inganci' },
+    min_cta_p: { en: 'Parcel sizes, grading reports, and export documentation are shared with verified buyers on request.', ha: 'Ana bayar da bayanan girman kaya, rahoton inganci, da takardun fitarwa ga masu saye da aka tantance.' },
+    min_cta_btn: { en: 'Contact the Minerals Desk', ha: 'Tuntubi Sashen Ma’adinai' },
+    min_type_gem: { en: 'Gemstone', ha: 'Dutse Mai Daraja' },
+    min_type_ind: { en: 'Industrial', ha: 'Na Masana’antu' },
+    min_type_pm: { en: 'Precious Metal', ha: 'Karfe Mai Daraja' },
+
+    min1_name: { en: 'Gold', ha: 'Zinare' },
+    min1_p: { en: 'Alluvial and hard-rock gold recovered by gravity concentration, with no mercury used anywhere in our circuit.', ha: 'Zinare daga kogi da dutse, ana samun sa ta hanyar nauyi, ba tare da amfani da dattin mercury ba.' },
+    min2_name: { en: 'Sapphire', ha: 'Saffaya' },
+    min2_p: { en: 'Blue corundum from pegmatite and alluvial workings, hand-sorted into rough parcels by colour and clarity.', ha: 'Shudin saffaya daga dutse da kogi, ana tantance shi da hannu bisa launi da tsarki.' },
+    min3_name: { en: 'Emerald', ha: 'Zamarrudu' },
+    min3_p: { en: 'Green beryl graded on colour saturation and inclusion level, released in supervised, sealed parcels.', ha: 'Koren beryl da ake tantancewa bisa launi da tsarki, ana fitar da shi cikin kunshi da aka rufe.' },
+    min4_name: { en: 'Lithium', ha: 'Lithium' },
+    min4_p: { en: 'Spodumene and lepidolite-bearing pegmatite feeding the battery supply chain, sold as graded concentrate.', ha: 'Duwatsun da ke dauke da lithium don masana’antar batir, ana sayar da su a matsayin kayan da aka tantance.' },
+    min5_name: { en: 'Topaz', ha: 'Topaz' },
+    min5_p: { en: 'Imperial, blue, and colourless topaz recovered from weathered pegmatite and screened by size fraction.', ha: 'Topaz mai launin ruwan zinare, shudi, da mara launi daga dutse, ana tantance shi bisa girma.' },
+    min6_name: { en: 'Tourmaline', ha: 'Turmalin' },
+    min6_p: { en: 'Multi-colour tourmaline including pink, green, and bi-colour rough, sorted individually rather than in bulk.', ha: 'Turmalin mai launuka daban-daban — ruwan hoda, kore, da mai launi biyu — ana tantance kowanne daban.' },
+    min7_name: { en: 'Ruby', ha: 'Yakutu' },
+    min7_p: { en: 'Red corundum parcels graded for colour depth and cutting yield, with origin documentation on every lot.', ha: 'Jan yakutu da ake tantancewa bisa zurfin launi, tare da takardar asali ga kowane kunshi.' },
+    min8_name: { en: 'Black Sapphire', ha: 'Bakar Saffaya' },
+    min8_p: { en: 'Dense opaque black corundum, supplied for cabochon cutting and industrial abrasive applications.', ha: 'Bakar saffaya mai kauri, ana bayar da ita don yankewa da amfanin masana’antu.' },
+};
+
+function setLanguage(lang) {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const entry = translations[el.getAttribute('data-i18n')];
+        if (entry && entry[lang]) el.innerHTML = entry[lang];
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const entry = translations[el.getAttribute('data-i18n-placeholder')];
+        if (entry && entry[lang]) el.setAttribute('placeholder', entry[lang]);
+    });
+
+    document.documentElement.lang = lang;
+
+    const enBtn = document.getElementById('lang-btn-en');
+    const haBtn = document.getElementById('lang-btn-ha');
+    if (enBtn && haBtn) {
+        [enBtn, haBtn].forEach(btn => btn.classList.remove('bg-white', 'text-navy', 'shadow-sm'));
+        [enBtn, haBtn].forEach(btn => btn.classList.add('text-stone-600'));
+        const active = lang === 'ha' ? haBtn : enBtn;
+        active.classList.add('bg-white', 'text-navy', 'shadow-sm');
+        active.classList.remove('text-stone-600');
+    }
+
+    localStorage.setItem('danbiba-lang', lang);
+}
+
+const savedLang = localStorage.getItem('danbiba-lang');
+if (savedLang === 'ha') setLanguage('ha');

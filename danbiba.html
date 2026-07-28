@@ -42,6 +42,29 @@
                               linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
         }
         .lang-hidden { display: none; }
+
+        /* Hero: slow drift on the farm photo so the landing feels alive */
+        .hero-photo {
+            transform: scale(1.08);
+            animation: heroDrift 28s ease-in-out infinite alternate;
+        }
+        @keyframes heroDrift {
+            from { transform: scale(1.08) translate3d(0, 0, 0); }
+            to   { transform: scale(1.16) translate3d(-1.5%, -1.5%, 0); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .hero-photo { animation: none; }
+        }
+        .hero-text { text-shadow: 0 2px 24px rgba(0, 0, 0, .55); }
+
+        /* Partner modal */
+        .modal-backdrop { background: rgba(15, 12, 40, .72); backdrop-filter: blur(6px); }
+        .modal-panel { animation: modalIn .22s cubic-bezier(.16,1,.3,1); }
+        @keyframes modalIn {
+            from { opacity: 0; transform: translateY(16px) scale(.97); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        body.modal-open { overflow: hidden; }
     </style>
 </head>
 <body class="bg-cream text-slate-800 font-sans selection:bg-navy selection:text-white">
@@ -64,6 +87,8 @@
                 <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-stone-600">
                     <a href="#about" class="hover:text-navy transition" data-i18n="nav_about">About Us</a>
                     <a href="#services" class="hover:text-navy transition" data-i18n="nav_services">Services</a>
+                    <a href="#products" class="hover:text-navy transition" data-i18n="nav_products">Products</a>
+                    <a href="minerals.html" class="hover:text-navy transition" data-i18n="nav_minerals">Minerals</a>
                     <a href="#technology" class="hover:text-navy transition" data-i18n="nav_tech">Technology</a>
                     <a href="#gallery" class="hover:text-navy transition" data-i18n="nav_gallery">Equipment</a>
                     <a href="#contact" class="hover:text-navy transition" data-i18n="nav_contact">Contact</a>
@@ -86,30 +111,35 @@
                     <span class="hidden sm:inline" data-i18n="nav_contactme">Contact Me</span>
                 </a>
 
-                <a href="#contact" class="bg-navy hover:bg-navy/90 text-white text-[11px] sm:text-xs uppercase tracking-wider font-semibold px-3 sm:px-5 py-3 rounded-md transition shadow-sm whitespace-nowrap" data-i18n="nav_partner">
+                <button type="button" onclick="openPartnerModal()" class="bg-navy hover:bg-navy/90 text-white text-[11px] sm:text-xs uppercase tracking-wider font-semibold px-3 sm:px-5 py-3 rounded-md transition shadow-sm whitespace-nowrap" data-i18n="nav_partner">
                     Partner With Us
-                </a>
+                </button>
             </div>
         </div>
     </header>
 
     <!-- HERO SECTION -->
-    <section class="relative min-h-[85vh] flex items-center justify-center bg-navy overflow-hidden">
-        <div class="absolute inset-0 opacity-30 mix-blend-overlay bg-[url('https://images.unsplash.com/photo-1781546441738-b85e43e733e3?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-navy via-navy/80 to-navy/40"></div>
-        <div class="absolute inset-0 bg-gradient-to-r from-plum/30 via-transparent to-aqua/20"></div>
+    <section class="relative min-h-[92vh] flex items-center justify-center overflow-hidden">
+        <!-- Farm photograph backdrop (swap the URL below to change the hero image) -->
+        <div class="hero-photo absolute inset-0 bg-cover bg-center"
+             style="background-image:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2400&q=85')"></div>
+        <!-- Legibility scrim: dark at the bottom where the text sits, lighter at the top -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/45 to-navy/85"></div>
+        <div class="absolute inset-0 bg-gradient-to-tr from-navy/70 via-transparent to-transparent"></div>
+        <!-- Soft vignette -->
+        <div class="absolute inset-0" style="box-shadow:inset 0 0 220px 60px rgba(0,0,0,.55)"></div>
 
         <div class="relative z-10 max-w-5xl mx-auto px-6 text-center py-20">
             <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/15 text-white/90 text-xs uppercase tracking-widest mb-8">
                 <span class="w-2 h-2 rounded-full bg-aqua animate-pulse"></span>
                 <span data-i18n="hero_badge">Abuja, Nigeria • Dual-Sector Operations</span>
             </div>
-            <h1 class="font-heading font-extrabold text-4xl sm:text-6xl lg:text-7xl text-white tracking-tight leading-[1.1] mb-6" data-i18n="hero_h1">
+            <h1 class="hero-text font-heading font-extrabold text-4xl sm:text-6xl lg:text-7xl text-white tracking-tight leading-[1.1] mb-6" data-i18n="hero_h1">
                 Sustainable Mining.<br>
                 <span class="text-stone-300">Responsible Farming.</span><br>
                 Community Growth.
             </h1>
-            <p class="text-stone-200 text-lg sm:text-xl max-w-2xl mx-auto font-light mb-10 leading-relaxed" data-i18n="hero_p">
+            <p class="hero-text text-stone-100 text-lg sm:text-xl max-w-2xl mx-auto font-light mb-10 leading-relaxed" data-i18n="hero_p">
                 Extracting high-grade heavy mineral sands and natural flake graphite alongside industrial agricultural development—working the earth with integrity.
             </p>
             <div class="flex flex-wrap items-center justify-center gap-4">
@@ -208,41 +238,150 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="max-w-2xl mb-16">
                 <span class="text-aqua text-xs uppercase font-bold tracking-widest block mb-2" data-i18n="services_eyebrow">Lifecycle Operations</span>
-                <h2 class="font-heading font-bold text-3xl text-navy" data-i18n="services_h2">End-to-End Earth Operations</h2>
+                <h2 class="font-heading font-bold text-3xl text-navy mb-3" data-i18n="services_h2">End-to-End Earth Operations</h2>
+                <p class="text-stone-600 text-sm leading-relaxed" data-i18n="services_hint">Select any stage below to open the full operational breakdown.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                <!-- Card 1 -->
-                <div class="bg-white p-6 rounded-xl border border-stone-200 relative group hover:border-navy transition">
-                    <div class="text-aqua font-heading font-black text-2xl mb-6">01</div>
+                <!-- Card 1 — Exploration (sky) -->
+                <a href="operations.html#exploration" class="group block bg-white p-6 rounded-xl border-t-4 border-sky-500 border border-stone-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-200">
+                    <div class="flex items-center justify-between mb-6">
+                        <span class="font-heading font-black text-2xl text-sky-600">01</span>
+                        <span class="w-9 h-9 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
+                        </span>
+                    </div>
                     <h3 class="font-heading font-bold text-navy text-base mb-2" data-i18n="svc1_title">Exploration</h3>
-                    <p class="text-sm text-stone-600 leading-relaxed" data-i18n="svc1_p">Advanced geophysical and core-drilling surveys to map mineral density with zero speculative habitat disruption.</p>
-                </div>
-                <!-- Card 2 -->
-                <div class="bg-white p-6 rounded-xl border border-stone-200 relative group hover:border-navy transition">
-                    <div class="text-aqua font-heading font-black text-2xl mb-6">02</div>
+                    <p class="text-sm text-stone-600 leading-relaxed mb-4" data-i18n="svc1_p">Advanced geophysical and core-drilling surveys to map mineral density with zero speculative habitat disruption.</p>
+                    <span class="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-sky-600" data-i18n="svc_more">Read more →</span>
+                </a>
+                <!-- Card 2 — Extraction (amber) -->
+                <a href="operations.html#extraction" class="group block bg-white p-6 rounded-xl border-t-4 border-amber-500 border border-stone-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-200">
+                    <div class="flex items-center justify-between mb-6">
+                        <span class="font-heading font-black text-2xl text-amber-600">02</span>
+                        <span class="w-9 h-9 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085z"/></svg>
+                        </span>
+                    </div>
                     <h3 class="font-heading font-bold text-navy text-base mb-2" data-i18n="svc2_title">Extraction</h3>
-                    <p class="text-sm text-stone-600 leading-relaxed" data-i18n="svc2_p">Precision surface mining of natural flake graphite and heavy mineral sands utilizing low-vibration machinery.</p>
-                </div>
-                <!-- Card 3 -->
-                <div class="bg-white p-6 rounded-xl border border-stone-200 relative group hover:border-navy transition">
-                    <div class="text-aqua font-heading font-black text-2xl mb-6">03</div>
+                    <p class="text-sm text-stone-600 leading-relaxed mb-4" data-i18n="svc2_p">Precision surface mining of natural flake graphite and heavy mineral sands utilizing low-vibration machinery.</p>
+                    <span class="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-amber-600" data-i18n="svc_more2">Read more →</span>
+                </a>
+                <!-- Card 3 — Processing (indigo) -->
+                <a href="operations.html#processing" class="group block bg-white p-6 rounded-xl border-t-4 border-indigo-500 border border-stone-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-200">
+                    <div class="flex items-center justify-between mb-6">
+                        <span class="font-heading font-black text-2xl text-indigo-600">03</span>
+                        <span class="w-9 h-9 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        </span>
+                    </div>
                     <h3 class="font-heading font-bold text-navy text-base mb-2" data-i18n="svc3_title">Processing</h3>
-                    <p class="text-sm text-stone-600 leading-relaxed" data-i18n="svc3_p">On-site mechanical screening and magnetic separation to refine raw ore into export-grade industrial concentrates.</p>
-                </div>
-                <!-- Card 4 -->
-                <div class="bg-white p-6 rounded-xl border border-stone-200 relative group hover:border-navy transition">
-                    <div class="text-aqua font-heading font-black text-2xl mb-6">04</div>
+                    <p class="text-sm text-stone-600 leading-relaxed mb-4" data-i18n="svc3_p">On-site mechanical screening and magnetic separation to refine raw ore into export-grade industrial concentrates.</p>
+                    <span class="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-indigo-600" data-i18n="svc_more3">Read more →</span>
+                </a>
+                <!-- Card 4 — Remediation (emerald) -->
+                <a href="operations.html#remediation" class="group block bg-white p-6 rounded-xl border-t-4 border-emerald-500 border border-stone-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-200">
+                    <div class="flex items-center justify-between mb-6">
+                        <span class="font-heading font-black text-2xl text-emerald-600">04</span>
+                        <span class="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg>
+                        </span>
+                    </div>
                     <h3 class="font-heading font-bold text-navy text-base mb-2" data-i18n="svc4_title">Remediation</h3>
-                    <p class="text-sm text-stone-600 leading-relaxed" data-i18n="svc4_p">Immediate top-soil replacement and organic fertilization to prepare post-extraction zones for agricultural planting.</p>
-                </div>
-                <!-- Card 5 -->
-                <div class="bg-white p-6 rounded-xl border border-stone-200 relative group hover:border-navy transition">
-                    <div class="text-aqua font-heading font-black text-2xl mb-6">05</div>
+                    <p class="text-sm text-stone-600 leading-relaxed mb-4" data-i18n="svc4_p">Immediate top-soil replacement and organic fertilization to prepare post-extraction zones for agricultural planting.</p>
+                    <span class="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-emerald-600" data-i18n="svc_more4">Read more →</span>
+                </a>
+                <!-- Card 5 — Community (rose) -->
+                <a href="operations.html#community" class="group block bg-white p-6 rounded-xl border-t-4 border-rose-500 border border-stone-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-200">
+                    <div class="flex items-center justify-between mb-6">
+                        <span class="font-heading font-black text-2xl text-rose-600">05</span>
+                        <span class="w-9 h-9 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
+                        </span>
+                    </div>
                     <h3 class="font-heading font-bold text-navy text-base mb-2" data-i18n="svc5_title">Community</h3>
-                    <p class="text-sm text-stone-600 leading-relaxed" data-i18n="svc5_p">Direct reinvestment into local access roads, clean water boreholes, and outgrower farming schemes.</p>
-                </div>
+                    <p class="text-sm text-stone-600 leading-relaxed mb-4" data-i18n="svc5_p">Direct reinvestment into local access roads, clean water boreholes, and outgrower farming schemes.</p>
+                    <span class="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-rose-600" data-i18n="svc_more5">Read more →</span>
+                </a>
             </div>
+        </div>
+    </section>
+
+    <!-- FARM PRODUCTS -->
+    <section id="products" class="py-24 max-w-7xl mx-auto px-6">
+        <div class="max-w-2xl mb-16">
+            <span class="text-aqua text-xs uppercase font-bold tracking-widest block mb-2" data-i18n="products_eyebrow">Agriculture Division</span>
+            <h2 class="font-heading font-bold text-3xl text-navy mb-3" data-i18n="products_h2">Our Farm Products</h2>
+            <p class="text-stone-600 text-sm leading-relaxed" data-i18n="products_p">Staple grains, legumes, tubers, poultry, and aquaculture cultivated across our reclaimed and active farmland, available for bulk procurement.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+            <!-- 1. Catfish -->
+            <div class="bg-white p-6 rounded-xl border border-stone-200 hover:border-navy transition">
+                <span class="text-[10px] uppercase font-bold text-aqua px-2 py-0.5 bg-aqua/10 rounded" data-i18n="cat_aqua">Aquaculture</span>
+                <h3 class="font-heading font-bold text-navy text-base mt-3 mb-1" data-i18n="prod1_title">Catfish</h3>
+                <p class="text-sm text-stone-600 leading-relaxed" data-i18n="prod1_p">Pond-raised table-size catfish, harvested fresh year-round.</p>
+            </div>
+            <!-- 2. Chickens -->
+            <div class="bg-white p-6 rounded-xl border border-stone-200 hover:border-navy transition">
+                <span class="text-[10px] uppercase font-bold text-aqua px-2 py-0.5 bg-aqua/10 rounded" data-i18n="cat_poultry">Poultry</span>
+                <h3 class="font-heading font-bold text-navy text-base mt-3 mb-1" data-i18n="prod2_title">Broiler Chickens</h3>
+                <p class="text-sm text-stone-600 leading-relaxed" data-i18n="prod2_p">Full-weight white broilers reared for meat in managed pens.</p>
+            </div>
+            <!-- 3. Rice -->
+            <div class="bg-white p-6 rounded-xl border border-stone-200 hover:border-navy transition">
+                <span class="text-[10px] uppercase font-bold text-aqua px-2 py-0.5 bg-aqua/10 rounded" data-i18n="cat_grain">Grains</span>
+                <h3 class="font-heading font-bold text-navy text-base mt-3 mb-1" data-i18n="prod3_title">Rice</h3>
+                <p class="text-sm text-stone-600 leading-relaxed" data-i18n="prod3_p">Locally milled paddy rice supplied in graded bulk bags.</p>
+            </div>
+            <!-- 4. Soya Beans -->
+            <div class="bg-white p-6 rounded-xl border border-stone-200 hover:border-navy transition">
+                <span class="text-[10px] uppercase font-bold text-aqua px-2 py-0.5 bg-aqua/10 rounded" data-i18n="cat_legume">Legumes</span>
+                <h3 class="font-heading font-bold text-navy text-base mt-3 mb-1" data-i18n="prod4_title">Soya Beans</h3>
+                <p class="text-sm text-stone-600 leading-relaxed" data-i18n="prod4_p">High-protein soya for oil milling and feed processing.</p>
+            </div>
+            <!-- 5. Corn -->
+            <div class="bg-white p-6 rounded-xl border border-stone-200 hover:border-navy transition">
+                <span class="text-[10px] uppercase font-bold text-aqua px-2 py-0.5 bg-aqua/10 rounded" data-i18n="cat_grain2">Grains</span>
+                <h3 class="font-heading font-bold text-navy text-base mt-3 mb-1" data-i18n="prod5_title">Corn (Maize)</h3>
+                <p class="text-sm text-stone-600 leading-relaxed" data-i18n="prod5_p">Dried yellow and white maize for food and livestock feed.</p>
+            </div>
+            <!-- 6. Groundnut -->
+            <div class="bg-white p-6 rounded-xl border border-stone-200 hover:border-navy transition">
+                <span class="text-[10px] uppercase font-bold text-aqua px-2 py-0.5 bg-aqua/10 rounded" data-i18n="cat_legume2">Legumes</span>
+                <h3 class="font-heading font-bold text-navy text-base mt-3 mb-1" data-i18n="prod6_title">Groundnut</h3>
+                <p class="text-sm text-stone-600 leading-relaxed" data-i18n="prod6_p">Shelled and unshelled groundnut for oil pressing and retail.</p>
+            </div>
+            <!-- 7. Beans -->
+            <div class="bg-white p-6 rounded-xl border border-stone-200 hover:border-navy transition">
+                <span class="text-[10px] uppercase font-bold text-aqua px-2 py-0.5 bg-aqua/10 rounded" data-i18n="cat_legume3">Legumes</span>
+                <h3 class="font-heading font-bold text-navy text-base mt-3 mb-1" data-i18n="prod7_title">Beans (Cowpea)</h3>
+                <p class="text-sm text-stone-600 leading-relaxed" data-i18n="prod7_p">Cleaned, sorted cowpea supplied by the bag or truckload.</p>
+            </div>
+            <!-- 8. Millet -->
+            <div class="bg-white p-6 rounded-xl border border-stone-200 hover:border-navy transition">
+                <span class="text-[10px] uppercase font-bold text-aqua px-2 py-0.5 bg-aqua/10 rounded" data-i18n="cat_grain3">Grains</span>
+                <h3 class="font-heading font-bold text-navy text-base mt-3 mb-1" data-i18n="prod8_title">Millet</h3>
+                <p class="text-sm text-stone-600 leading-relaxed" data-i18n="prod8_p">Drought-hardy millet grown on our northern rotation plots.</p>
+            </div>
+            <!-- 9. Sorghum -->
+            <div class="bg-white p-6 rounded-xl border border-stone-200 hover:border-navy transition">
+                <span class="text-[10px] uppercase font-bold text-aqua px-2 py-0.5 bg-aqua/10 rounded" data-i18n="cat_grain4">Grains</span>
+                <h3 class="font-heading font-bold text-navy text-base mt-3 mb-1" data-i18n="prod9_title">Sorghum / Guinea Corn</h3>
+                <p class="text-sm text-stone-600 leading-relaxed" data-i18n="prod9_p">Red and white sorghum for brewing, milling, and feed.</p>
+            </div>
+            <!-- 10. Cassava -->
+            <div class="bg-white p-6 rounded-xl border border-stone-200 hover:border-navy transition">
+                <span class="text-[10px] uppercase font-bold text-aqua px-2 py-0.5 bg-aqua/10 rounded" data-i18n="cat_tuber">Tubers</span>
+                <h3 class="font-heading font-bold text-navy text-base mt-3 mb-1" data-i18n="prod10_title">Cassava</h3>
+                <p class="text-sm text-stone-600 leading-relaxed" data-i18n="prod10_p">Fresh tubers and processed cassava for starch and garri.</p>
+            </div>
+        </div>
+
+        <div class="mt-12">
+            <a href="#contact" class="inline-flex items-center gap-2 bg-navy hover:bg-navy/90 text-white font-heading font-bold text-xs uppercase tracking-widest px-6 py-3.5 rounded transition shadow-sm" data-i18n="products_cta">
+                Request Bulk Pricing
+            </a>
         </div>
     </section>
 
@@ -274,11 +413,11 @@
     </section>
 
     <!-- TECHNOLOGY & INNOVATION -->
-    <section id="technology" class="py-24 bg-plum text-white relative overflow-hidden bg-grid-pattern">
+    <section id="technology" class="py-24 text-white relative overflow-hidden bg-grid-pattern bg-gradient-to-br from-[#0C1512] via-[#101A21] to-[#0B1418]">
         <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                 <div>
-                    <span class="text-aqua font-mono text-xs uppercase tracking-widest block mb-2" data-i18n="tech_eyebrow">// INNOVATION ARCHITECTURE</span>
+                    <span class="text-cyan-400 font-mono text-xs uppercase tracking-widest block mb-2" data-i18n="tech_eyebrow">// INNOVATION ARCHITECTURE</span>
                     <h2 class="font-heading font-bold text-3xl sm:text-4xl text-cream" data-i18n="tech_h2">AI & ML-Driven Mining Operations</h2>
                 </div>
                 <p class="text-stone-200 text-sm max-w-md font-light" data-i18n="tech_p">
@@ -287,46 +426,52 @@
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-white/5 border border-white/10 p-8 rounded-xl backdrop-blur-sm">
-                    <div class="w-10 h-10 rounded-lg bg-aqua/20 text-cyan-300 flex items-center justify-center mb-6">
+                <div class="group bg-white/[0.04] border border-white/10 p-8 rounded-xl backdrop-blur-sm hover:bg-cyan-500/10 hover:border-cyan-400/50 transition duration-200 relative overflow-hidden">
+                    <span class="absolute inset-x-0 top-0 h-1 bg-cyan-400"></span>
+                    <div class="w-10 h-10 rounded-lg bg-cyan-400/15 text-cyan-300 ring-1 ring-cyan-400/30 flex items-center justify-center mb-6">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>
                     </div>
-                    <h3 class="font-heading font-bold text-lg text-cream mb-2" data-i18n="tc1_title">Advanced Data Analytics</h3>
+                    <h3 class="font-heading font-bold text-lg text-cyan-200 mb-2" data-i18n="tc1_title">Advanced Data Analytics</h3>
                     <p class="text-sm text-stone-200 leading-relaxed" data-i18n="tc1_p">Processing multi-spectral satellite imagery to pinpoint mineral sand pockets with 94% spatial accuracy.</p>
                 </div>
-                <div class="bg-white/5 border border-white/10 p-8 rounded-xl backdrop-blur-sm">
-                    <div class="w-10 h-10 rounded-lg bg-aqua/20 text-cyan-300 flex items-center justify-center mb-6">
+                <div class="group bg-white/[0.04] border border-white/10 p-8 rounded-xl backdrop-blur-sm hover:bg-amber-500/10 hover:border-amber-400/50 transition duration-200 relative overflow-hidden">
+                    <span class="absolute inset-x-0 top-0 h-1 bg-amber-400"></span>
+                    <div class="w-10 h-10 rounded-lg bg-amber-400/15 text-amber-300 ring-1 ring-amber-400/30 flex items-center justify-center mb-6">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085z"/></svg>
                     </div>
-                    <h3 class="font-heading font-bold text-lg text-cream mb-2" data-i18n="tc2_title">Predictive Maintenance</h3>
+                    <h3 class="font-heading font-bold text-lg text-amber-200 mb-2" data-i18n="tc2_title">Predictive Maintenance</h3>
                     <p class="text-sm text-stone-200 leading-relaxed" data-i18n="tc2_p">IoT acoustic telemetry on screening plants detects bearing fatigue 150 operational hours prior to failure.</p>
                 </div>
-                <div class="bg-white/5 border border-white/10 p-8 rounded-xl backdrop-blur-sm">
-                    <div class="w-10 h-10 rounded-lg bg-aqua/20 text-cyan-300 flex items-center justify-center mb-6">
+                <div class="group bg-white/[0.04] border border-white/10 p-8 rounded-xl backdrop-blur-sm hover:bg-lime-500/10 hover:border-lime-400/50 transition duration-200 relative overflow-hidden">
+                    <span class="absolute inset-x-0 top-0 h-1 bg-lime-400"></span>
+                    <div class="w-10 h-10 rounded-lg bg-lime-400/15 text-lime-300 ring-1 ring-lime-400/30 flex items-center justify-center mb-6">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
                     </div>
-                    <h3 class="font-heading font-bold text-lg text-cream mb-2" data-i18n="tc3_title">Smart Resource Mgmt</h3>
+                    <h3 class="font-heading font-bold text-lg text-lime-200 mb-2" data-i18n="tc3_title">Smart Resource Mgmt</h3>
                     <p class="text-sm text-stone-200 leading-relaxed" data-i18n="tc3_p">Real-time balancing of diesel consumption against solar-battery arrays across field outposts.</p>
                 </div>
-                <div class="bg-white/5 border border-white/10 p-8 rounded-xl backdrop-blur-sm">
-                    <div class="w-10 h-10 rounded-lg bg-aqua/20 text-cyan-300 flex items-center justify-center mb-6">
+                <div class="group bg-white/[0.04] border border-white/10 p-8 rounded-xl backdrop-blur-sm hover:bg-orange-500/10 hover:border-orange-400/50 transition duration-200 relative overflow-hidden">
+                    <span class="absolute inset-x-0 top-0 h-1 bg-orange-400"></span>
+                    <div class="w-10 h-10 rounded-lg bg-orange-400/15 text-orange-300 ring-1 ring-orange-400/30 flex items-center justify-center mb-6">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
                     </div>
-                    <h3 class="font-heading font-bold text-lg text-cream mb-2" data-i18n="tc4_title">Autonomous Telemetry</h3>
+                    <h3 class="font-heading font-bold text-lg text-orange-200 mb-2" data-i18n="tc4_title">Autonomous Telemetry</h3>
                     <p class="text-sm text-stone-200 leading-relaxed" data-i18n="tc4_p">Geofenced GPS tracking on heavy haulage assets ensures strict route compliance and fuel custody.</p>
                 </div>
-                <div class="bg-white/5 border border-white/10 p-8 rounded-xl backdrop-blur-sm">
-                    <div class="w-10 h-10 rounded-lg bg-aqua/20 text-cyan-300 flex items-center justify-center mb-6">
+                <div class="group bg-white/[0.04] border border-white/10 p-8 rounded-xl backdrop-blur-sm hover:bg-emerald-500/10 hover:border-emerald-400/50 transition duration-200 relative overflow-hidden">
+                    <span class="absolute inset-x-0 top-0 h-1 bg-emerald-400"></span>
+                    <div class="w-10 h-10 rounded-lg bg-emerald-400/15 text-emerald-300 ring-1 ring-emerald-400/30 flex items-center justify-center mb-6">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a7.5 7.5 0 007.5-7.5c0-4.142-7.5-11.25-7.5-11.25S4.5 9.358 4.5 13.5A7.5 7.5 0 0012 21z"/></svg>
                     </div>
-                    <h3 class="font-heading font-bold text-lg text-cream mb-2" data-i18n="tc5_title">Ecosystem Monitoring</h3>
+                    <h3 class="font-heading font-bold text-lg text-emerald-200 mb-2" data-i18n="tc5_title">Ecosystem Monitoring</h3>
                     <p class="text-sm text-stone-200 leading-relaxed" data-i18n="tc5_p">Automated downstream water turbidity sensors log ecological data directly to immutable cloud ledgers.</p>
                 </div>
-                <div class="bg-white/5 border border-white/10 p-8 rounded-xl backdrop-blur-sm">
-                    <div class="w-10 h-10 rounded-lg bg-aqua/20 text-cyan-300 flex items-center justify-center mb-6">
+                <div class="group bg-white/[0.04] border border-white/10 p-8 rounded-xl backdrop-blur-sm hover:bg-rose-500/10 hover:border-rose-400/50 transition duration-200 relative overflow-hidden">
+                    <span class="absolute inset-x-0 top-0 h-1 bg-rose-400"></span>
+                    <div class="w-10 h-10 rounded-lg bg-rose-400/15 text-rose-300 ring-1 ring-rose-400/30 flex items-center justify-center mb-6">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
                     </div>
-                    <h3 class="font-heading font-bold text-lg text-cream mb-2" data-i18n="tc6_title">Computer-Vision Safety</h3>
+                    <h3 class="font-heading font-bold text-lg text-rose-200 mb-2" data-i18n="tc6_title">Computer-Vision Safety</h3>
                     <p class="text-sm text-stone-200 leading-relaxed" data-i18n="tc6_p">Pit cameras running edge ML instantly shut down conveyers if PPE non-compliance is detected.</p>
                 </div>
             </div>
@@ -450,6 +595,87 @@
         </div>
     </footer>
 
+    <!-- PARTNER WITH US — MODAL -->
+    <div id="partner-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-6" role="dialog" aria-modal="true" aria-labelledby="partner-modal-title">
+        <div class="modal-backdrop absolute inset-0" onclick="closePartnerModal()"></div>
+
+        <div class="modal-panel relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-cream rounded-2xl shadow-2xl">
+            <!-- Header -->
+            <div class="relative bg-navy text-white px-8 py-8 rounded-t-2xl overflow-hidden">
+                <div class="absolute inset-0 bg-grid-pattern opacity-60"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-emerald-600/30 via-transparent to-aqua/30"></div>
+                <button type="button" onclick="closePartnerModal()" aria-label="Close" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-lg bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+                <div class="relative z-10">
+                    <span class="text-emerald-300 text-xs uppercase font-bold tracking-widest block mb-2" data-i18n="pm_eyebrow">Partnership Desk</span>
+                    <h2 id="partner-modal-title" class="font-heading font-bold text-2xl sm:text-3xl" data-i18n="pm_title">Partner With Danbiba</h2>
+                    <p class="text-stone-200 text-sm mt-2 max-w-xl font-light" data-i18n="pm_intro">Tell us how you would like to work with us. Select a track, send your details, and our partnership desk will respond directly.</p>
+                </div>
+            </div>
+
+            <!-- Tracks -->
+            <div class="px-8 pt-8">
+                <div class="grid sm:grid-cols-3 gap-4">
+                    <div class="bg-white rounded-xl border border-stone-200 border-t-4 border-t-emerald-500 p-5">
+                        <h3 class="font-heading font-bold text-navy text-sm mb-1" data-i18n="pm_t1_title">Produce Offtake</h3>
+                        <p class="text-xs text-stone-600 leading-relaxed" data-i18n="pm_t1_p">Bulk purchase agreements for grains, legumes, poultry, and catfish.</p>
+                    </div>
+                    <div class="bg-white rounded-xl border border-stone-200 border-t-4 border-t-amber-500 p-5">
+                        <h3 class="font-heading font-bold text-navy text-sm mb-1" data-i18n="pm_t2_title">Mineral Investment</h3>
+                        <p class="text-xs text-stone-600 leading-relaxed" data-i18n="pm_t2_p">Joint ventures, licensing, and offtake for our gemstone and industrial mineral portfolio.</p>
+                    </div>
+                    <div class="bg-white rounded-xl border border-stone-200 border-t-4 border-t-sky-500 p-5">
+                        <h3 class="font-heading font-bold text-navy text-sm mb-1" data-i18n="pm_t3_title">Community & ESG</h3>
+                        <p class="text-xs text-stone-600 leading-relaxed" data-i18n="pm_t3_p">Outgrower schemes, infrastructure funding, and development programmes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <form id="partner-form" class="px-8 py-8 space-y-5">
+                <div class="grid sm:grid-cols-2 gap-5">
+                    <div>
+                        <label for="pm-name" class="block text-xs font-semibold uppercase tracking-wider text-stone-500 mb-2" data-i18n="pm_name_label">Full Name</label>
+                        <input id="pm-name" type="text" required class="w-full bg-white border border-stone-300 rounded-md px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-navy/30 focus:border-navy transition" placeholder="e.g. Aliyu Musa" data-i18n-placeholder="form_name_ph">
+                    </div>
+                    <div>
+                        <label for="pm-org" class="block text-xs font-semibold uppercase tracking-wider text-stone-500 mb-2" data-i18n="pm_org_label">Organization</label>
+                        <input id="pm-org" type="text" class="w-full bg-white border border-stone-300 rounded-md px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-navy/30 focus:border-navy transition" placeholder="Ministry / Venture Fund" data-i18n-placeholder="form_org_ph">
+                    </div>
+                </div>
+                <div class="grid sm:grid-cols-2 gap-5">
+                    <div>
+                        <label for="pm-email" class="block text-xs font-semibold uppercase tracking-wider text-stone-500 mb-2" data-i18n="pm_email_label">Email Address</label>
+                        <input id="pm-email" type="email" required class="w-full bg-white border border-stone-300 rounded-md px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-navy/30 focus:border-navy transition" placeholder="name@organization.gov.ng" data-i18n-placeholder="form_email_ph">
+                    </div>
+                    <div>
+                        <label for="pm-track" class="block text-xs font-semibold uppercase tracking-wider text-stone-500 mb-2" data-i18n="pm_track_label">Partnership Track</label>
+                        <select id="pm-track" class="w-full bg-white border border-stone-300 rounded-md px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-navy/30 focus:border-navy transition">
+                            <option value="Produce Offtake" data-i18n="pm_opt1">Produce Offtake</option>
+                            <option value="Mineral Investment" data-i18n="pm_opt2">Mineral Investment</option>
+                            <option value="Community &amp; ESG" data-i18n="pm_opt3">Community &amp; ESG</option>
+                            <option value="Other" data-i18n="pm_opt4">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label for="pm-message" class="block text-xs font-semibold uppercase tracking-wider text-stone-500 mb-2" data-i18n="pm_msg_label">Proposal Details</label>
+                    <textarea id="pm-message" rows="4" required class="w-full bg-white border border-stone-300 rounded-md px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-navy/30 focus:border-navy transition resize-none" placeholder="Volumes, timelines, licensing scope, or programme focus..." data-i18n-placeholder="pm_msg_ph"></textarea>
+                </div>
+                <div class="flex flex-col sm:flex-row items-center gap-3 pt-2">
+                    <button type="submit" class="w-full sm:w-auto bg-navy hover:bg-navy/90 text-white font-heading font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-md transition shadow-sm" data-i18n="pm_submit">
+                        Send Partnership Request
+                    </button>
+                    <button type="button" onclick="closePartnerModal()" class="w-full sm:w-auto text-stone-600 hover:text-navy font-semibold text-xs uppercase tracking-widest px-6 py-4 transition" data-i18n="pm_cancel">
+                        Cancel
+                    </button>
+                </div>
+                <p class="text-xs text-stone-500 pt-1" data-i18n="pm_note">Submitting opens your email client with the details pre-filled, addressed to danbiba2008@outlook.com.</p>
+            </form>
+        </div>
+    </div>
+
     <!-- Vanilla JS for Gallery Filtering, Contact Form and Language Toggle -->
     <script>
         function filterFleet(category) {
@@ -492,149 +718,62 @@
             window.location.href = 'mailto:danbiba2008@outlook.com?subject=' + subject + '&body=' + body;
         });
 
-        const translations = {
-            nav_about: { en: 'About Us', ha: 'Game da Mu' },
-            nav_services: { en: 'Services', ha: 'Ayyukanmu' },
-            nav_tech: { en: 'Technology', ha: 'Fasaha' },
-            nav_gallery: { en: 'Equipment', ha: 'Kayan Aiki' },
-            nav_contact: { en: 'Contact', ha: 'Tuntube Mu' },
-            nav_partner: { en: 'Partner With Us', ha: 'Yi Hadin Gwiwa Da Mu' },
-            nav_contactme: { en: 'Contact Me', ha: 'Aiko Imel' },
+        /* ---------- Partner With Us modal ---------- */
+        let lastFocusedBeforeModal = null;
 
-            hero_badge: { en: 'Abuja, Nigeria • Dual-Sector Operations', ha: 'Abuja, Najeriya • Sassa Biyu na Ayyuka' },
-            hero_h1: {
-                en: 'Sustainable Mining.<br><span class="text-stone-300">Responsible Farming.</span><br>Community Growth.',
-                ha: 'Hakar Ma’adinai Mai Dorewa.<br><span class="text-stone-300">Noma Mai Nauyi.</span><br>Ci Gaban Al’umma.'
-            },
-            hero_p: { en: 'Extracting high-grade heavy mineral sands and natural flake graphite alongside industrial agricultural development—working the earth with integrity.', ha: 'Muna hakar yashin ma’adinai mai inganci da graphite na halitta, tare da bunkasa noma na masana’antu — muna aiki da kasa cikin gaskiya da mutunci.' },
-            hero_btn1: { en: 'Explore Our Services', ha: 'Duba Ayyukanmu' },
-            hero_btn2: { en: 'Corporate Inquiries', ha: 'Tambayoyin Kamfani' },
-
-            about_eyebrow: { en: 'Corporate Profile', ha: 'Bayanin Kamfani' },
-            about_h2: { en: 'Setting the Standard for Responsible Earth Resource Management', ha: 'Kafa Ka’idar Gudanar da Albarkatun Kasa Cikin Nauyi' },
-            about_p: { en: 'Danbiba Farms & Mining Co. Ltd is a global-minded operational entity headquartered in Abuja. We bridge the gap between heavy industrial mineral extraction and sustainable food production. Operating with a safety-first methodology, our centralized hub manages the entire lifecycle of land management—from geophysical exploration to ecosystem post-mining remediation.', ha: 'Danbiba Farms & Mining Co. Ltd kamfani ne mai hedkwata a Abuja, wanda ke tunani a kan matakin duniya. Muna hada gwiwa tsakanin hakar ma’adinai na masana’antu da samar da abinci mai dorewa. Muna aiki bisa tsarin da ke ba da fifiko ga tsaro, kuma cibiyarmu ta tsakiya tana kula da dukkan matakan gudanar da kasa — daga bincike na farko har zuwa gyaran muhalli bayan hakar ma’adinai.' },
-            mission_title: { en: 'Our Mission', ha: 'Manufarmu' },
-            mission_p: { en: 'To operate as a centralized benchmark setting the national standard for sustainable quarrying across pre-mining, active extraction, and land restoration.', ha: 'Mu zama misali na kasa wajen hakar ma’adinai mai dorewa, daga matakin shirye-shirye, hakar aiki, har zuwa gyaran kasa.' },
-            vision_title: { en: 'Our Vision', ha: 'Hangen Nesanmu' },
-            vision_p: { en: 'To guide stakeholders through complex regulatory frameworks while deploying world-class conservation programs and low-impact agriculture.', ha: 'Mu jagoranci masu ruwa da tsaki ta cikin ka’idojin gwamnati masu sarkakiya, tare da aiwatar da shirye-shiryen kiyaye muhalli na duniya da noma mai karancin illa.' },
-
-            disclosure_title: { en: 'Corporate Disclosure Registry', ha: 'Bayanan Bayyanawa na Kamfani' },
-            disc1_title: { en: 'Registration & Incorporation', ha: 'Rijista da Kafuwar Kamfani' },
-            disc1_p: { en: 'Fully incorporated under the Corporate Affairs Commission (CAC) of Nigeria, holding active dual-sector operational licenses for solid mineral mining and commercial agricultural development.', ha: 'An rajista kamfanin gaba daya karkashin Hukumar Harkokin Kamfanoni (CAC) ta Najeriya, tare da lasisin gudanarwa mai aiki a fannonin hakar ma’adinai da bunkasa noma na kasuwanci.' },
-            disc2_title: { en: 'Governance Structure', ha: 'Tsarin Jagoranci' },
-            disc2_p: { en: 'Led by an executive board comprising geologists, agricultural engineers, and ESG compliance officers, ensuring strict separation of operational risk between mining and farming units.', ha: 'Ana jagorantar da kamfanin ta hannun kwamitin gudanarwa wanda ya kunshi masana kasa, injiniyoyin noma, da jami’an bin ka’idojin ESG, don tabbatar da rarrabuwar hadari tsakanin sashen hakar ma’adinai da na noma.' },
-            disc3_title: { en: 'Program Development Focus', ha: 'Manufar Ci Gaban Shirye-shirye' },
-            disc3_p: { en: 'Split into three distinct vectors: (1) Heavy Mineral Sands & Flake Graphite yield optimization, (2) Soil-rejuvenating crop rotation, and (3) Micro-infrastructure funding for host communities.', ha: 'An kasu kashi uku: (1) Inganta amfanin yashin ma’adinai da graphite, (2) Jujjuya amfanin gona don farfado da kasa, da (3) Tallafin gina karamin ababen more rayuwa ga al’ummomin da abin ya shafa.' },
-            disc4_title: { en: 'Monitoring & Evaluation', ha: 'Sa Ido da Kimantawa' },
-            disc4_p: { en: 'Strict quarterly internal auditing of groundwater safety, soil toxicity levels near extraction zones, and carbon-offset metrics published to institutional investors.', ha: 'Ana yin bincike na cikin gida kowane wata uku kan tsaftar ruwan karkashin kasa, matakan gubar kasa kusa da wuraren hakar ma’adinai, da adadin rage hayakin carbon, ana kuma buga sakamakon ga masu zuba jari.' },
-            disc5_title: { en: 'Transparency & Accountability', ha: 'Gaskiya da Lissafi' },
-            disc5_p: { en: 'Committed to NEITI (Nigeria Extractive Industries Transparency Initiative) reporting standards, ensuring 100% visibility on community royalties and environmental tax compliance.', ha: 'Muna bin ka’idojin bayar da rahoto na NEITI (Nigeria Extractive Industries Transparency Initiative), don tabbatar da bayyana kason al’umma da bin ka’idojin harajin muhalli gaba daya.' },
-            disc6_title: { en: 'Sustainability & Land Plan', ha: 'Dorewa da Shirin Kasa' },
-            disc6_p: { en: 'Every hectare of exhausted mineral quarry is systematically backfilled, treated for pH balance, and transferred directly to the Danbiba Agricultural division for arable farming.', ha: 'Kowane fadin kasa da aka gama hakar ma’adinai ana cika shi, a daidaita pH dinsa, sannan a mika shi kai tsaye ga sashen Noma na Danbiba domin noma.' },
-
-            services_eyebrow: { en: 'Lifecycle Operations', ha: 'Matakan Aiki' },
-            services_h2: { en: 'End-to-End Earth Operations', ha: 'Cikakken Sarkar Ayyukan Kasa' },
-            svc1_title: { en: 'Exploration', ha: 'Bincike' },
-            svc1_p: { en: 'Advanced geophysical and core-drilling surveys to map mineral density with zero speculative habitat disruption.', ha: 'Bincike na zamani da hako-gwaji don tantance yawan ma’adinai ba tare da tada muhalli ba.' },
-            svc2_title: { en: 'Extraction', ha: 'Hakowa' },
-            svc2_p: { en: 'Precision surface mining of natural flake graphite and heavy mineral sands utilizing low-vibration machinery.', ha: 'Hakar ma’adinai a saman kasa da injina masu karancin girgiza, don samun graphite da yashin ma’adinai.' },
-            svc3_title: { en: 'Processing', ha: 'Sarrafawa' },
-            svc3_p: { en: 'On-site mechanical screening and magnetic separation to refine raw ore into export-grade industrial concentrates.', ha: 'Ana tace da raba ma’adinai a wurin aiki don mai da danyen ma’adinai zuwa kaya mai inganci na fitarwa.' },
-            svc4_title: { en: 'Remediation', ha: 'Gyara Kasa' },
-            svc4_p: { en: 'Immediate top-soil replacement and organic fertilization to prepare post-extraction zones for agricultural planting.', ha: 'Ana maido da kasa nan take da takin gargajiya don shirya wurin da aka hako domin noma.' },
-            svc5_title: { en: 'Community', ha: 'Al’umma' },
-            svc5_p: { en: 'Direct reinvestment into local access roads, clean water boreholes, and outgrower farming schemes.', ha: 'Zuba jari kai tsaye a hanyoyi, rijiyoyin ruwa mai tsafta, da shirye-shiryen taimakon manoma a yankin.' },
-
-            values_eyebrow: { en: 'Our Commitment', ha: 'Alkawarinmu' },
-            values_h2: { en: 'The Core Values That Guide Every Decision', ha: 'Dabi’un da ke Jagorantar Kowane Shawara' },
-            values_p: { en: 'Four principles anchor how we operate across every mine pit, field, and community partnership.', ha: 'Ka’idoji hudu ne suke tafiyar da yadda muke aiki a kowane rami, gona, da hadin gwiwar al’umma.' },
-            val1_title: { en: 'Safety First', ha: 'Tsaro Farko' },
-            val1_p: { en: 'Zero-harm operational mandate across all mine pits and machine sheds.', ha: 'Manufar rashin illa a dukkan wuraren hakar ma’adinai da rumbunan injina.' },
-            val2_title: { en: 'Stewardship', ha: 'Kulawa da Amana' },
-            val2_p: { en: 'Treating Nigerian topsoil as a borrowed asset to be returned enriched.', ha: 'Muna dubi kasar Najeriya kamar rancen dukiya da za a mayar cikin ingantacciyar hali.' },
-            val3_title: { en: 'Absolute Integrity', ha: 'Gaskiya Cikakke' },
-            val3_p: { en: 'Transparent reporting to government regulators and joint venture partners.', ha: 'Rahoto bayyananne ga hukumomin gwamnati da abokan hulda.' },
-            val4_title: { en: 'Shared Prosperity', ha: 'Wadata Tare' },
-            val4_p: { en: 'Prioritizing Nyaya and FCT local talent in our technical workforce.', ha: 'Bai wa ’yan asalin Nyaya da FCT fifiko a ma’aikatanmu na fasaha.' },
-
-            tech_eyebrow: { en: '// INNOVATION ARCHITECTURE', ha: '// TSARIN KIRKIRE-KIRKIRE' },
-            tech_h2: { en: 'AI & ML-Driven Mining Operations', ha: 'Ayyukan Hakar Ma’adinai Karkashin AI & ML' },
-            tech_p: { en: 'Deploying predictive neural algorithms to maximize extraction yield while minimizing physical footprint.', ha: 'Muna amfani da fasahar hasashen kwamfuta don kara yawan amfanin hakar ma’adinai tare da rage tasirin muhalli.' },
-            tc1_title: { en: 'Advanced Data Analytics', ha: 'Nazarin Bayanai na Zamani' },
-            tc1_p: { en: 'Processing multi-spectral satellite imagery to pinpoint mineral sand pockets with 94% spatial accuracy.', ha: 'Nazarin hotunan tauraron dan adam domin gano wuraren ma’adinai da daidaito na kashi 94%.' },
-            tc2_title: { en: 'Predictive Maintenance', ha: 'Kula da Injina Kafin Lalacewa' },
-            tc2_p: { en: 'IoT acoustic telemetry on screening plants detects bearing fatigue 150 operational hours prior to failure.', ha: 'Na’urorin sadarwa suna gano matsalar injina awanni 150 kafin ta faru.' },
-            tc3_title: { en: 'Smart Resource Mgmt', ha: 'Gudanar da Albarkatu Cikin Wayo' },
-            tc3_p: { en: 'Real-time balancing of diesel consumption against solar-battery arrays across field outposts.', ha: 'Daidaita amfani da man dizal da makamashin hasken rana a wuraren aiki a lokaci guda.' },
-            tc4_title: { en: 'Autonomous Telemetry', ha: 'Sa Ido Ta Atomatik' },
-            tc4_p: { en: 'Geofenced GPS tracking on heavy haulage assets ensures strict route compliance and fuel custody.', ha: 'Na’urar GPS tana bin diddigin manyan motoci don tabbatar da bin hanya da amfani da mai yadda ya kamata.' },
-            tc5_title: { en: 'Ecosystem Monitoring', ha: 'Sa Ido Kan Muhalli' },
-            tc5_p: { en: 'Automated downstream water turbidity sensors log ecological data directly to immutable cloud ledgers.', ha: 'Na’urori suna auna tsaftar ruwa kai tsaye suna adana bayanan muhalli a girgije mai aminci.' },
-            tc6_title: { en: 'Computer-Vision Safety', ha: 'Tsaro Ta Idon Kwamfuta' },
-            tc6_p: { en: 'Pit cameras running edge ML instantly shut down conveyers if PPE non-compliance is detected.', ha: 'Kyamarori a wuraren aiki suna dakatar da injina nan take idan an gano rashin sanya kayan tsaro.' },
-
-            gallery_eyebrow: { en: 'On-Ground Assets', ha: 'Kayan Aiki A Filin Aiki' },
-            gallery_h2: { en: 'Operational Fleet Gallery', ha: 'Hotunan Motoci Da Injinan Aiki' },
-            tab_all: { en: 'All Assets', ha: 'Duka' },
-            tab_farming: { en: 'Farming', ha: 'Noma' },
-            tab_mining: { en: 'Mining', ha: 'Hakar Ma’adinai' },
-            tab_haulage: { en: 'Haulage', ha: 'Sufuri' },
-            g1_badge: { en: 'Agriculture Division', ha: 'Sashen Noma' },
-            g1_title: { en: 'Heavy Industrial Tractors & Plows', ha: 'Manyan Tarakta da Garuwa' },
-            g1_p: { en: 'Multi-hectare seed planting and tilling units.', ha: 'Injinan shuka iri da noman fadin gona.' },
-            g2_badge: { en: 'Extraction Division', ha: 'Sashen Hakar Ma’adinai' },
-            g2_title: { en: 'Crawler Excavators & Loaders', ha: 'Manyan Injinan Hakowa' },
-            g2_p: { en: 'High-capacity earth movers for mineral flake stripping.', ha: 'Manyan injina masu karfin cire kasa domin hakar ma’adinai.' },
-            g3_badge: { en: 'Logistics Division', ha: 'Sashen Sufuri' },
-            g3_title: { en: 'DAF & Iveco Tipper Fleet', ha: 'Motocin Dauke Kaya na DAF da Iveco' },
-            g3_p: { en: 'Dedicated cross-country transit trucks.', ha: 'Manyan motoci na jigilar kaya cikin kasa.' },
-            g3_overlay: { en: 'Branded: Danbiba Farms Ltd', ha: 'Alamar: Danbiba Farms Ltd' },
-
-            footer_tagline: { en: 'A responsible Nigerian dual-sector operator built on institutional transparency, environmental reclamation, and community empowerment.', ha: 'Kamfani ne na Najeriya mai sassa biyu, wanda aka gina bisa gaskiya, gyaran muhalli, da karfafa al’umma.' },
-            footer_hq_label: { en: 'Headquarters Location:', ha: 'Adireshin Hedkwata:' },
-            footer_enquiries_label: { en: 'Direct Enquiries:', ha: 'Tambayoyi Kai Tsaye:' },
-            footer_email_label: { en: 'Electronic Mail:', ha: 'Imel:' },
-            form_title: { en: 'Initiate Official Correspondence', ha: 'Fara Sadarwa Ta Hukuma' },
-            form_name_label: { en: 'Representative Name', ha: 'Sunan Wakili' },
-            form_name_ph: { en: 'e.g. Aliyu Musa', ha: 'misali: Aliyu Musa' },
-            form_org_label: { en: 'Organization / Agency', ha: 'Kungiya / Hukuma' },
-            form_org_ph: { en: 'Ministry / Venture Fund', ha: 'Ma’aikata / Asusun Zuba Jari' },
-            form_email_label: { en: 'Official Email Address', ha: 'Adireshin Imel' },
-            form_email_ph: { en: 'name@organization.gov.ng', ha: 'suna@hukuma.gov.ng' },
-            form_subject_label: { en: 'Subject Matter', ha: 'Batun Sako' },
-            form_subject_ph: { en: 'Specify interest in Graphite extraction licensing, agricultural produce bulk procurement, or ESG community relations...', ha: 'Bayyana bukatarka: lasisin hakar graphite, sayan amfanin gona da yawa, ko huldar al’umma...' },
-            form_submit: { en: 'Transmit Message', ha: 'Aika Sako' },
-            footer_copyright: { en: '© 2026 Danbiba Farms & Mining Co. Ltd. All Rights Reserved.', ha: '© 2026 Danbiba Farms & Mining Co. Ltd. Duk ’Yancin Mallaka an Kiyaye.' },
-            footer_link1: { en: 'CAC Verification', ha: 'Tabbatar da CAC' },
-            footer_link2: { en: 'Environmental Policy', ha: 'Manufar Muhalli' },
-            footer_link3: { en: 'Employee Portal', ha: 'Shafin Ma’aikata' },
-        };
-
-        function setLanguage(lang) {
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const entry = translations[el.getAttribute('data-i18n')];
-                if (entry && entry[lang]) el.innerHTML = entry[lang];
-            });
-            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-                const entry = translations[el.getAttribute('data-i18n-placeholder')];
-                if (entry && entry[lang]) el.setAttribute('placeholder', entry[lang]);
-            });
-
-            document.documentElement.lang = lang;
-
-            const enBtn = document.getElementById('lang-btn-en');
-            const haBtn = document.getElementById('lang-btn-ha');
-            [enBtn, haBtn].forEach(btn => btn.classList.remove('bg-white', 'text-navy', 'shadow-sm'));
-            [enBtn, haBtn].forEach(btn => btn.classList.add('text-stone-600'));
-            const active = lang === 'ha' ? haBtn : enBtn;
-            active.classList.add('bg-white', 'text-navy', 'shadow-sm');
-            active.classList.remove('text-stone-600');
-
-            localStorage.setItem('danbiba-lang', lang);
+        function openPartnerModal() {
+            const modal = document.getElementById('partner-modal');
+            lastFocusedBeforeModal = document.activeElement;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.classList.add('modal-open');
+            const firstField = document.getElementById('pm-name');
+            if (firstField) setTimeout(() => firstField.focus(), 60);
         }
 
-        const savedLang = localStorage.getItem('danbiba-lang');
-        if (savedLang === 'ha') setLanguage('ha');
+        function closePartnerModal() {
+            const modal = document.getElementById('partner-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.classList.remove('modal-open');
+            if (lastFocusedBeforeModal) lastFocusedBeforeModal.focus();
+        }
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key !== 'Escape') return;
+            const modal = document.getElementById('partner-modal');
+            if (modal && !modal.classList.contains('hidden')) closePartnerModal();
+        });
+
+        document.getElementById('partner-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const name = document.getElementById('pm-name').value;
+            const org = document.getElementById('pm-org').value;
+            const email = document.getElementById('pm-email').value;
+            const track = document.getElementById('pm-track').value;
+            const message = document.getElementById('pm-message').value;
+
+            const subject = encodeURIComponent('Partnership Request (' + track + '): ' + (org || name));
+            const body = encodeURIComponent(
+                'Partnership Track: ' + track + '\n' +
+                'Name: ' + name + '\n' +
+                'Organization: ' + org + '\n' +
+                'Reply-to Email: ' + email + '\n\n' +
+                'Proposal Details:\n' + message
+            );
+
+            window.location.href = 'mailto:danbiba2008@outlook.com?subject=' + subject + '&body=' + body;
+            closePartnerModal();
+        });
+
+        /* Sub-pages link here with ?partner=1 to open the modal on arrival */
+        if (new URLSearchParams(window.location.search).get('partner') === '1') {
+            openPartnerModal();
+            history.replaceState(null, '', window.location.pathname + window.location.hash);
+        }
     </script>
+
+    <!-- Shared bilingual dictionary + language switcher (used by every page) -->
+    <script src="site.js"></script>
 </body>
 </html>

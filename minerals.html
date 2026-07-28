@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minerals — Danbiba Farms & Mining Co. Ltd</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FBF9F5',
+                        navy: '#1E1B4B',
+                        plum: '#4C1D95',
+                        aqua: '#0E7490',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    fontSize: {
+                        'xs': ['0.875rem', { lineHeight: '1.25rem' }],
+                        'sm': ['1rem', { lineHeight: '1.5rem' }],
+                        'base': ['1.125rem', { lineHeight: '1.75rem' }],
+                        'lg': ['1.25rem', { lineHeight: '1.875rem' }],
+                        'xl': ['1.375rem', { lineHeight: '2rem' }],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        }
+        /* Gemstone swatch: a faceted sheen over each stone's characteristic colour */
+        .stone-swatch {
+            position: relative;
+            overflow: hidden;
+        }
+        .stone-swatch::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 28% 24%, rgba(255,255,255,.55) 0%, transparent 42%),
+                radial-gradient(circle at 78% 78%, rgba(255,255,255,.18) 0%, transparent 38%);
+        }
+        .stone-swatch::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(115deg, transparent 38%, rgba(255,255,255,.22) 46%, transparent 54%),
+                linear-gradient(58deg, transparent 62%, rgba(0,0,0,.18) 70%, transparent 78%);
+        }
+        .mineral-card { transition: transform .2s ease, box-shadow .2s ease; }
+        .mineral-card:hover { transform: translateY(-4px); }
+    </style>
+</head>
+<body class="bg-cream text-slate-800 font-sans selection:bg-navy selection:text-white">
+
+    <!-- STICKY NAVIGATION -->
+    <header class="sticky top-0 z-50 bg-cream/90 backdrop-blur-md border-b border-stone-200">
+        <div class="w-full mx-auto px-4 sm:px-6 min-h-20 py-3 flex flex-wrap lg:flex-nowrap items-center justify-center lg:justify-between gap-3 sm:gap-6">
+            <div class="flex items-center gap-8">
+                <a href="danbiba.html" class="flex items-center gap-3 shrink-0">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-700 via-purple-600 to-cyan-500 flex items-center justify-center text-white font-heading font-extrabold text-xl shadow-sm">
+                        DB
+                    </div>
+                    <div>
+                        <span class="font-heading font-bold text-lg text-navy tracking-tight block leading-none">DANBIBA</span>
+                        <span class="text-xs tracking-widest uppercase font-semibold text-plum">Farms & Mining Co.</span>
+                    </div>
+                </a>
+
+                <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-stone-600">
+                    <a href="danbiba.html" class="hover:text-navy transition" data-i18n="nav_home">Home</a>
+                    <a href="danbiba.html#about" class="hover:text-navy transition" data-i18n="nav_about">About Us</a>
+                    <a href="danbiba.html#products" class="hover:text-navy transition" data-i18n="nav_products">Products</a>
+                    <a href="operations.html" class="hover:text-navy transition" data-i18n="nav_services">Services</a>
+                    <a href="danbiba.html#contact" class="hover:text-navy transition" data-i18n="nav_contact">Contact</a>
+                </nav>
+            </div>
+
+            <div class="flex items-center justify-center gap-2 sm:gap-3 shrink-0 w-full lg:w-auto">
+                <div class="flex bg-stone-200/70 p-1 rounded-lg text-xs font-semibold">
+                    <button onclick="setLanguage('en')" id="lang-btn-en" class="px-2.5 sm:px-3 py-2 rounded-md bg-white text-navy shadow-sm transition">EN</button>
+                    <button onclick="setLanguage('ha')" id="lang-btn-ha" class="px-2.5 sm:px-3 py-2 rounded-md text-stone-600 hover:text-navy transition">HA</button>
+                </div>
+
+                <a href="danbiba.html?partner=1" class="bg-navy hover:bg-navy/90 text-white text-[11px] sm:text-xs uppercase tracking-wider font-semibold px-3 sm:px-5 py-3 rounded-md transition shadow-sm whitespace-nowrap" data-i18n="nav_partner">
+                    Partner With Us
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- PAGE HERO -->
+    <section class="relative py-24 overflow-hidden bg-gradient-to-br from-[#12101F] via-[#0E1520] to-[#150F19] bg-grid-pattern text-white">
+        <div class="absolute inset-0" style="background:
+            radial-gradient(circle at 12% 30%, rgba(251,191,36,.16) 0%, transparent 45%),
+            radial-gradient(circle at 82% 26%, rgba(56,189,248,.16) 0%, transparent 45%),
+            radial-gradient(circle at 62% 84%, rgba(244,63,94,.14) 0%, transparent 45%)"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-6">
+            <a href="danbiba.html" class="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-semibold text-stone-300 hover:text-white transition mb-8" data-i18n="nav_back">← Back to Home</a>
+            <span class="text-amber-300 text-xs uppercase font-bold tracking-widest block mb-3" data-i18n="min_title">Minerals</span>
+            <h1 class="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight mb-6 max-w-4xl" data-i18n="min_hero_h1">Our Mineral Portfolio</h1>
+            <p class="text-stone-200 text-lg max-w-3xl font-light leading-relaxed" data-i18n="min_hero_p">
+                Gemstones and industrial minerals sourced from our licensed blocks, sorted and graded under supervised chain-of-custody. This list grows as new blocks come into production.
+            </p>
+        </div>
+    </section>
+
+    <!-- MINERAL GRID -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7">
+
+                <!-- Gold -->
+                <div class="mineral-card bg-white rounded-2xl border border-stone-200 shadow-sm hover:shadow-xl overflow-hidden">
+                    <div class="stone-swatch h-40" style="background:linear-gradient(140deg,#FDE68A 0%,#F5B301 38%,#B45309 100%)"></div>
+                    <div class="p-6">
+                        <span class="text-[10px] uppercase font-bold text-amber-700 px-2 py-0.5 bg-amber-100 rounded" data-i18n="min_type_pm">Precious Metal</span>
+                        <h3 class="font-heading font-bold text-navy text-lg mt-3 mb-2" data-i18n="min1_name">Gold</h3>
+                        <p class="text-sm text-stone-600 leading-relaxed" data-i18n="min1_p">Alluvial and hard-rock gold recovered by gravity concentration, with no mercury used anywhere in our circuit.</p>
+                    </div>
+                </div>
+
+                <!-- Sapphire -->
+                <div class="mineral-card bg-white rounded-2xl border border-stone-200 shadow-sm hover:shadow-xl overflow-hidden">
+                    <div class="stone-swatch h-40" style="background:linear-gradient(140deg,#60A5FA 0%,#1D4ED8 42%,#111C4E 100%)"></div>
+                    <div class="p-6">
+                        <span class="text-[10px] uppercase font-bold text-blue-700 px-2 py-0.5 bg-blue-100 rounded" data-i18n="min_type_gem">Gemstone</span>
+                        <h3 class="font-heading font-bold text-navy text-lg mt-3 mb-2" data-i18n="min2_name">Sapphire</h3>
+                        <p class="text-sm text-stone-600 leading-relaxed" data-i18n="min2_p">Blue corundum from pegmatite and alluvial workings, hand-sorted into rough parcels by colour and clarity.</p>
+                    </div>
+                </div>
+
+                <!-- Emerald -->
+                <div class="mineral-card bg-white rounded-2xl border border-stone-200 shadow-sm hover:shadow-xl overflow-hidden">
+                    <div class="stone-swatch h-40" style="background:linear-gradient(140deg,#6EE7B7 0%,#059669 40%,#064E3B 100%)"></div>
+                    <div class="p-6">
+                        <span class="text-[10px] uppercase font-bold text-emerald-700 px-2 py-0.5 bg-emerald-100 rounded" data-i18n="min_type_gem">Gemstone</span>
+                        <h3 class="font-heading font-bold text-navy text-lg mt-3 mb-2" data-i18n="min3_name">Emerald</h3>
+                        <p class="text-sm text-stone-600 leading-relaxed" data-i18n="min3_p">Green beryl graded on colour saturation and inclusion level, released in supervised, sealed parcels.</p>
+                    </div>
+                </div>
+
+                <!-- Lithium -->
+                <div class="mineral-card bg-white rounded-2xl border border-stone-200 shadow-sm hover:shadow-xl overflow-hidden">
+                    <div class="stone-swatch h-40" style="background:linear-gradient(140deg,#E2E8F0 0%,#94A3B8 40%,#475569 100%)"></div>
+                    <div class="p-6">
+                        <span class="text-[10px] uppercase font-bold text-slate-700 px-2 py-0.5 bg-slate-200 rounded" data-i18n="min_type_ind">Industrial</span>
+                        <h3 class="font-heading font-bold text-navy text-lg mt-3 mb-2" data-i18n="min4_name">Lithium</h3>
+                        <p class="text-sm text-stone-600 leading-relaxed" data-i18n="min4_p">Spodumene and lepidolite-bearing pegmatite feeding the battery supply chain, sold as graded concentrate.</p>
+                    </div>
+                </div>
+
+                <!-- Topaz -->
+                <div class="mineral-card bg-white rounded-2xl border border-stone-200 shadow-sm hover:shadow-xl overflow-hidden">
+                    <div class="stone-swatch h-40" style="background:linear-gradient(140deg,#FEF3C7 0%,#FB923C 45%,#9A3412 100%)"></div>
+                    <div class="p-6">
+                        <span class="text-[10px] uppercase font-bold text-orange-700 px-2 py-0.5 bg-orange-100 rounded" data-i18n="min_type_gem">Gemstone</span>
+                        <h3 class="font-heading font-bold text-navy text-lg mt-3 mb-2" data-i18n="min5_name">Topaz</h3>
+                        <p class="text-sm text-stone-600 leading-relaxed" data-i18n="min5_p">Imperial, blue, and colourless topaz recovered from weathered pegmatite and screened by size fraction.</p>
+                    </div>
+                </div>
+
+                <!-- Tourmaline -->
+                <div class="mineral-card bg-white rounded-2xl border border-stone-200 shadow-sm hover:shadow-xl overflow-hidden">
+                    <div class="stone-swatch h-40" style="background:linear-gradient(140deg,#F9A8D4 0%,#DB2777 32%,#15803D 72%,#052E16 100%)"></div>
+                    <div class="p-6">
+                        <span class="text-[10px] uppercase font-bold text-pink-700 px-2 py-0.5 bg-pink-100 rounded" data-i18n="min_type_gem">Gemstone</span>
+                        <h3 class="font-heading font-bold text-navy text-lg mt-3 mb-2" data-i18n="min6_name">Tourmaline</h3>
+                        <p class="text-sm text-stone-600 leading-relaxed" data-i18n="min6_p">Multi-colour tourmaline including pink, green, and bi-colour rough, sorted individually rather than in bulk.</p>
+                    </div>
+                </div>
+
+                <!-- Ruby -->
+                <div class="mineral-card bg-white rounded-2xl border border-stone-200 shadow-sm hover:shadow-xl overflow-hidden">
+                    <div class="stone-swatch h-40" style="background:linear-gradient(140deg,#FCA5A5 0%,#DC2626 40%,#7F1D1D 100%)"></div>
+                    <div class="p-6">
+                        <span class="text-[10px] uppercase font-bold text-red-700 px-2 py-0.5 bg-red-100 rounded" data-i18n="min_type_gem">Gemstone</span>
+                        <h3 class="font-heading font-bold text-navy text-lg mt-3 mb-2" data-i18n="min7_name">Ruby</h3>
+                        <p class="text-sm text-stone-600 leading-relaxed" data-i18n="min7_p">Red corundum parcels graded for colour depth and cutting yield, with origin documentation on every lot.</p>
+                    </div>
+                </div>
+
+                <!-- Black Sapphire -->
+                <div class="mineral-card bg-white rounded-2xl border border-stone-200 shadow-sm hover:shadow-xl overflow-hidden">
+                    <div class="stone-swatch h-40" style="background:linear-gradient(140deg,#475569 0%,#1E293B 38%,#020617 100%)"></div>
+                    <div class="p-6">
+                        <span class="text-[10px] uppercase font-bold text-slate-200 px-2 py-0.5 bg-slate-800 rounded" data-i18n="min_type_gem">Gemstone</span>
+                        <h3 class="font-heading font-bold text-navy text-lg mt-3 mb-2" data-i18n="min8_name">Black Sapphire</h3>
+                        <p class="text-sm text-stone-600 leading-relaxed" data-i18n="min8_p">Dense opaque black corundum, supplied for cabochon cutting and industrial abrasive applications.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Growth note -->
+            <div class="mt-12 bg-white rounded-xl border border-dashed border-stone-300 p-8 flex flex-col sm:flex-row items-start gap-5">
+                <div class="w-12 h-12 rounded-xl bg-stone-100 text-stone-500 flex items-center justify-center shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+                </div>
+                <div>
+                    <h3 class="font-heading font-bold text-navy text-lg mb-2" data-i18n="min_note_h">More minerals to be added</h3>
+                    <p class="text-sm text-stone-600 leading-relaxed" data-i18n="min_note_p">This portfolio reflects current production. Additional stones and industrial minerals will be listed here as further blocks are brought online.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 bg-navy text-white relative overflow-hidden bg-grid-pattern">
+        <div class="absolute inset-0" style="background:
+            radial-gradient(circle at 18% 50%, rgba(251,191,36,.18) 0%, transparent 46%),
+            radial-gradient(circle at 84% 50%, rgba(56,189,248,.18) 0%, transparent 46%)"></div>
+        <div class="relative z-10 max-w-3xl mx-auto px-6 text-center">
+            <h2 class="font-heading font-bold text-3xl mb-4" data-i18n="min_cta_h">Enquire about availability & grades</h2>
+            <p class="text-stone-200 text-sm leading-relaxed mb-8" data-i18n="min_cta_p">Parcel sizes, grading reports, and export documentation are shared with verified buyers on request.</p>
+            <a href="danbiba.html#contact" class="inline-flex items-center gap-2 bg-aqua hover:bg-aqua/90 text-white font-heading font-bold text-xs uppercase tracking-widest px-8 py-4 rounded transition shadow-lg" data-i18n="min_cta_btn">
+                Contact the Minerals Desk
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-stone-900 text-stone-300 py-12">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-400">
+            <span data-i18n="footer_copyright">© 2026 Danbiba Farms & Mining Co. Ltd. All Rights Reserved.</span>
+            <a href="danbiba.html" class="hover:text-white transition" data-i18n="nav_back">← Back to Home</a>
+        </div>
+    </footer>
+
+    <script src="site.js"></script>
+</body>
+</html>
