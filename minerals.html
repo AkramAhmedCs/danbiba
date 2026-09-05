@@ -1,247 +1,295 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minerals — Danbiba Farms & Mining Co. Ltd</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        cream: '#FBF9F5',
-                        navy: '#1E1B4B',
-                        plum: '#4C1D95',
-                        aqua: '#0E7490',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        heading: ['Plus Jakarta Sans', 'sans-serif'],
-                    },
-                    fontSize: {
-                        'xs': ['0.875rem', { lineHeight: '1.25rem' }],
-                        'sm': ['1rem', { lineHeight: '1.5rem' }],
-                        'base': ['1.125rem', { lineHeight: '1.75rem' }],
-                        'lg': ['1.25rem', { lineHeight: '1.875rem' }],
-                        'xl': ['1.375rem', { lineHeight: '2rem' }],
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        .bg-grid-pattern {
-            background-size: 40px 40px;
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-        }
-        /* Gemstone swatch: a faceted sheen over each stone's characteristic colour */
-        .stone-swatch {
-            position: relative;
-            overflow: hidden;
-        }
-        .stone-swatch::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(circle at 28% 24%, rgba(255,255,255,.55) 0%, transparent 42%),
-                radial-gradient(circle at 78% 78%, rgba(255,255,255,.18) 0%, transparent 38%);
-        }
-        .stone-swatch::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background:
-                linear-gradient(115deg, transparent 38%, rgba(255,255,255,.22) 46%, transparent 54%),
-                linear-gradient(58deg, transparent 62%, rgba(0,0,0,.18) 70%, transparent 78%);
-        }
-        .mineral-card { transition: transform .2s ease, box-shadow .2s ease; }
-        .mineral-card:hover { transform: translateY(-4px); }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mineral portfolio &mdash; Danbiba Farms &amp; Mining Co. Ltd</title>
+<meta name="description" content="Gold, sapphire, emerald, lithium, topaz, tourmaline, ruby and black sapphire from licensed blocks, graded under supervised chain of custody.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23EDEAE3'/><rect x='6' y='6' width='20' height='20' fill='%23A8331E'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="scrollcraft.css">
+<link rel="stylesheet" href="danbiba.css">
 </head>
-<body class="bg-cream text-slate-800 font-sans selection:bg-navy selection:text-white">
+<body>
 
-    <!-- STICKY NAVIGATION -->
-    <header class="sticky top-0 z-50 bg-cream/90 backdrop-blur-md border-b border-stone-200">
-        <div class="w-full mx-auto px-4 sm:px-6 min-h-20 py-3 flex flex-wrap lg:flex-nowrap items-center justify-center lg:justify-between gap-3 sm:gap-6">
-            <div class="flex items-center gap-8">
-                <a href="danbiba.html" class="flex items-center gap-3 shrink-0">
-                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-700 via-purple-600 to-cyan-500 flex items-center justify-center text-white font-heading font-extrabold text-xl shadow-sm">
-                        DB
-                    </div>
-                    <div>
-                        <span class="font-heading font-bold text-lg text-navy tracking-tight block leading-none">DANBIBA</span>
-                        <span class="text-xs tracking-widest uppercase font-semibold text-plum">Farms & Mining Co.</span>
-                    </div>
-                </a>
+<span data-sc-progress></span>
+<div class="sc-grain" aria-hidden="true"></div>
 
-                <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-stone-600">
-                    <a href="danbiba.html" class="hover:text-navy transition" data-i18n="nav_home">Home</a>
-                    <a href="danbiba.html#about" class="hover:text-navy transition" data-i18n="nav_about">About Us</a>
-                    <a href="danbiba.html#products" class="hover:text-navy transition" data-i18n="nav_products">Products</a>
-                    <a href="operations.html" class="hover:text-navy transition" data-i18n="nav_services">Services</a>
-                    <a href="danbiba.html#contact" class="hover:text-navy transition" data-i18n="nav_contact">Contact</a>
-                </nav>
-            </div>
+<nav class="folio" aria-label="Site navigation">
+  <a class="folio__mark" href="index.html">Danbiba<span>Farms &amp; Mining Co. Ltd</span></a>
 
-            <div class="flex items-center justify-center gap-2 sm:gap-3 shrink-0 w-full lg:w-auto">
-                <div class="flex bg-stone-200/70 p-1 rounded-lg text-xs font-semibold">
-                    <button onclick="setLanguage('en')" id="lang-btn-en" class="px-2.5 sm:px-3 py-2 rounded-md bg-white text-navy shadow-sm transition">EN</button>
-                    <button onclick="setLanguage('ha')" id="lang-btn-ha" class="px-2.5 sm:px-3 py-2 rounded-md text-stone-600 hover:text-navy transition">HA</button>
-                </div>
+  <span class="folio__mobile-here" data-folio-title>Minerals</span>
 
-                <a href="danbiba.html?partner=1" class="bg-navy hover:bg-navy/90 text-white text-[11px] sm:text-xs uppercase tracking-wider font-semibold px-3 sm:px-5 py-3 rounded-md transition shadow-sm whitespace-nowrap" data-i18n="nav_partner">
-                    Partner With Us
-                </a>
-            </div>
+  <ul class="folio__nav">
+      <li><a href="index.html" data-i18n="nav_home"></a></li>
+      <li><a href="minerals.html" aria-current="page" data-i18n="nav_minerals"></a></li>
+      <li><a href="produce.html" data-i18n="nav_products"></a></li>
+      <li><a href="fleet.html" data-i18n="nav_gallery"></a></li>
+      <li><a href="operations.html" data-i18n="nav_services"></a></li>
+      <li><a href="governance.html" data-ha="Bayyanawa">Disclosure</a></li>
+      <li><a href="contact.html" data-i18n="nav_contact"></a></li>
+  </ul>
+
+  <div class="folio__lang" role="group" aria-label="Language">
+    <button type="button" id="lang-en" aria-pressed="true" data-lang="en">EN</button>
+    <span class="folio__sep" aria-hidden="true">/</span>
+    <button type="button" id="lang-ha" aria-pressed="false" data-lang="ha">HA</button>
+  </div>
+
+  <aside class="parcel" id="parcel" hidden aria-live="polite">
+    <p class="parcel__h" data-ha="Takardar Kaya">Your parcel sheet</p>
+    <ul class="parcel__list" id="parcel-list"></ul>
+  </aside>
+
+  <div class="index">
+    <p class="index__h" data-ha="Tarin">The collection</p>
+    <ul class="index__list" id="index-list">
+      <li><button type="button" data-jump="0">Gold <i>01</i></button></li>
+      <li><button type="button" data-jump="1">Sapphire <i>02</i></button></li>
+      <li><button type="button" data-jump="2">Emerald <i>03</i></button></li>
+      <li><button type="button" data-jump="3">Lithium <i>04</i></button></li>
+      <li><button type="button" data-jump="4">Topaz <i>05</i></button></li>
+      <li><button type="button" data-jump="5">Tourmaline <i>06</i></button></li>
+      <li><button type="button" data-jump="6">Ruby <i>07</i></button></li>
+      <li><button type="button" data-jump="7">Black Sapphire <i>08</i></button></li>
+    </ul>
+  </div>
+  <div class="folio__here">
+    <span class="folio__num" data-folio-num>Minerals</span>
+    <span class="folio__title" data-folio-title-desktop>Minerals</span>
+  </div>
+</nav>
+
+<main class="page page--catalog" id="top">
+
+  <h1 class="sr-only" data-ha="Ma&rsquo;adinan da muke da su">Mineral portfolio</h1>
+
+  <!-- SPINE: pan. Walking a room, not following an argument. Object one is
+       already in view and already labelled: the collection starts at the top of
+       the page, so there is no separate title treatment and no hero claim. -->
+  <section class="plate-act stock--dark" data-sc-act="pan" data-sc-span="6" id="collection"
+           data-chapter="Minerals" data-chapter-name="The collection">
+    <div data-sc-stage>
+      <div class="collection" data-sc-pan="0.03" id="plates">
+      <article class="object" id="object-0">
+        <div class="plate__frame object__crop" data-stone="Gold" data-src="assets/stone-gold.webp">
+          <img src="assets/stone-gold.webp" width="900" height="1200" alt="Gold rough, photographed as a plate." loading="lazy">
         </div>
-    </header>
-
-    <!-- PAGE HERO -->
-    <section class="relative py-24 overflow-hidden bg-gradient-to-br from-[#12101F] via-[#0E1520] to-[#150F19] bg-grid-pattern text-white">
-        <div class="absolute inset-0" style="background:
-            radial-gradient(circle at 12% 30%, rgba(251,191,36,.16) 0%, transparent 45%),
-            radial-gradient(circle at 82% 26%, rgba(56,189,248,.16) 0%, transparent 45%),
-            radial-gradient(circle at 62% 84%, rgba(244,63,94,.14) 0%, transparent 45%)"></div>
-        <div class="relative z-10 max-w-7xl mx-auto px-6">
-            <a href="danbiba.html" class="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-semibold text-stone-300 hover:text-white transition mb-8" data-i18n="nav_back">← Back to Home</a>
-            <span class="text-amber-300 text-xs uppercase font-bold tracking-widest block mb-3" data-i18n="min_title">Minerals</span>
-            <h1 class="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight mb-6 max-w-4xl" data-i18n="min_hero_h1">Our Mineral Portfolio</h1>
-            <p class="text-stone-200 text-lg max-w-3xl font-light leading-relaxed" data-i18n="min_hero_p">
-                Gemstones and industrial minerals sourced from our licensed blocks, sorted and graded under supervised chain-of-custody. This list grows as new blocks come into production.
-            </p>
+        <h2 class="object__name" data-i18n="min1_name"></h2>
+        <p class="object__note" data-i18n="min1_p"></p>
+        <dl class="schema">
+          <dt>Type</dt><dd>Precious metal</dd>
+          <dt>Source</dt><dd>Alluvial and hard rock</dd>
+          <dt>Recovery</dt><dd>Gravity concentration</dd>
+          <dt>Mercury</dt><dd>None in the circuit</dd>
+          <dt>Supplied as</dt><dd>Recovered metal</dd>
+          <dt>Documentation</dt><dd>Per lot, on request</dd>
+        </dl>
+      </article>
+      <article class="object" id="object-1">
+        <div class="plate__frame object__crop" data-stone="Sapphire" data-src="assets/stone-sapphire.webp">
+          <img src="assets/stone-sapphire.webp" width="900" height="1200" alt="Sapphire rough, photographed as a plate." loading="lazy">
         </div>
-    </section>
-
-    <!-- MINERAL GRID -->
-    <section class="py-20">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7">
-
-                <!-- Gold -->
-                <div class="mineral-card bg-white rounded-2xl border border-stone-200 shadow-sm hover:shadow-xl overflow-hidden">
-                    <div class="stone-swatch h-40" style="background:linear-gradient(140deg,#FDE68A 0%,#F5B301 38%,#B45309 100%)"></div>
-                    <div class="p-6">
-                        <span class="text-[10px] uppercase font-bold text-amber-700 px-2 py-0.5 bg-amber-100 rounded" data-i18n="min_type_pm">Precious Metal</span>
-                        <h3 class="font-heading font-bold text-navy text-lg mt-3 mb-2" data-i18n="min1_name">Gold</h3>
-                        <p class="text-sm text-stone-600 leading-relaxed" data-i18n="min1_p">Alluvial and hard-rock gold recovered by gravity concentration, with no mercury used anywhere in our circuit.</p>
-                    </div>
-                </div>
-
-                <!-- Sapphire -->
-                <div class="mineral-card bg-white rounded-2xl border border-stone-200 shadow-sm hover:shadow-xl overflow-hidden">
-                    <div class="stone-swatch h-40" style="background:linear-gradient(140deg,#60A5FA 0%,#1D4ED8 42%,#111C4E 100%)"></div>
-                    <div class="p-6">
-                        <span class="text-[10px] uppercase font-bold text-blue-700 px-2 py-0.5 bg-blue-100 rounded" data-i18n="min_type_gem">Gemstone</span>
-                        <h3 class="font-heading font-bold text-navy text-lg mt-3 mb-2" data-i18n="min2_name">Sapphire</h3>
-                        <p class="text-sm text-stone-600 leading-relaxed" data-i18n="min2_p">Blue corundum from pegmatite and alluvial workings, hand-sorted into rough parcels by colour and clarity.</p>
-                    </div>
-                </div>
-
-                <!-- Emerald -->
-                <div class="mineral-card bg-white rounded-2xl border border-stone-200 shadow-sm hover:shadow-xl overflow-hidden">
-                    <div class="stone-swatch h-40" style="background:linear-gradient(140deg,#6EE7B7 0%,#059669 40%,#064E3B 100%)"></div>
-                    <div class="p-6">
-                        <span class="text-[10px] uppercase font-bold text-emerald-700 px-2 py-0.5 bg-emerald-100 rounded" data-i18n="min_type_gem">Gemstone</span>
-                        <h3 class="font-heading font-bold text-navy text-lg mt-3 mb-2" data-i18n="min3_name">Emerald</h3>
-                        <p class="text-sm text-stone-600 leading-relaxed" data-i18n="min3_p">Green beryl graded on colour saturation and inclusion level, released in supervised, sealed parcels.</p>
-                    </div>
-                </div>
-
-                <!-- Lithium -->
-                <div class="mineral-card bg-white rounded-2xl border border-stone-200 shadow-sm hover:shadow-xl overflow-hidden">
-                    <div class="stone-swatch h-40" style="background:linear-gradient(140deg,#E2E8F0 0%,#94A3B8 40%,#475569 100%)"></div>
-                    <div class="p-6">
-                        <span class="text-[10px] uppercase font-bold text-slate-700 px-2 py-0.5 bg-slate-200 rounded" data-i18n="min_type_ind">Industrial</span>
-                        <h3 class="font-heading font-bold text-navy text-lg mt-3 mb-2" data-i18n="min4_name">Lithium</h3>
-                        <p class="text-sm text-stone-600 leading-relaxed" data-i18n="min4_p">Spodumene and lepidolite-bearing pegmatite feeding the battery supply chain, sold as graded concentrate.</p>
-                    </div>
-                </div>
-
-                <!-- Topaz -->
-                <div class="mineral-card bg-white rounded-2xl border border-stone-200 shadow-sm hover:shadow-xl overflow-hidden">
-                    <div class="stone-swatch h-40" style="background:linear-gradient(140deg,#FEF3C7 0%,#FB923C 45%,#9A3412 100%)"></div>
-                    <div class="p-6">
-                        <span class="text-[10px] uppercase font-bold text-orange-700 px-2 py-0.5 bg-orange-100 rounded" data-i18n="min_type_gem">Gemstone</span>
-                        <h3 class="font-heading font-bold text-navy text-lg mt-3 mb-2" data-i18n="min5_name">Topaz</h3>
-                        <p class="text-sm text-stone-600 leading-relaxed" data-i18n="min5_p">Imperial, blue, and colourless topaz recovered from weathered pegmatite and screened by size fraction.</p>
-                    </div>
-                </div>
-
-                <!-- Tourmaline -->
-                <div class="mineral-card bg-white rounded-2xl border border-stone-200 shadow-sm hover:shadow-xl overflow-hidden">
-                    <div class="stone-swatch h-40" style="background:linear-gradient(140deg,#F9A8D4 0%,#DB2777 32%,#15803D 72%,#052E16 100%)"></div>
-                    <div class="p-6">
-                        <span class="text-[10px] uppercase font-bold text-pink-700 px-2 py-0.5 bg-pink-100 rounded" data-i18n="min_type_gem">Gemstone</span>
-                        <h3 class="font-heading font-bold text-navy text-lg mt-3 mb-2" data-i18n="min6_name">Tourmaline</h3>
-                        <p class="text-sm text-stone-600 leading-relaxed" data-i18n="min6_p">Multi-colour tourmaline including pink, green, and bi-colour rough, sorted individually rather than in bulk.</p>
-                    </div>
-                </div>
-
-                <!-- Ruby -->
-                <div class="mineral-card bg-white rounded-2xl border border-stone-200 shadow-sm hover:shadow-xl overflow-hidden">
-                    <div class="stone-swatch h-40" style="background:linear-gradient(140deg,#FCA5A5 0%,#DC2626 40%,#7F1D1D 100%)"></div>
-                    <div class="p-6">
-                        <span class="text-[10px] uppercase font-bold text-red-700 px-2 py-0.5 bg-red-100 rounded" data-i18n="min_type_gem">Gemstone</span>
-                        <h3 class="font-heading font-bold text-navy text-lg mt-3 mb-2" data-i18n="min7_name">Ruby</h3>
-                        <p class="text-sm text-stone-600 leading-relaxed" data-i18n="min7_p">Red corundum parcels graded for colour depth and cutting yield, with origin documentation on every lot.</p>
-                    </div>
-                </div>
-
-                <!-- Black Sapphire -->
-                <div class="mineral-card bg-white rounded-2xl border border-stone-200 shadow-sm hover:shadow-xl overflow-hidden">
-                    <div class="stone-swatch h-40" style="background:linear-gradient(140deg,#475569 0%,#1E293B 38%,#020617 100%)"></div>
-                    <div class="p-6">
-                        <span class="text-[10px] uppercase font-bold text-slate-200 px-2 py-0.5 bg-slate-800 rounded" data-i18n="min_type_gem">Gemstone</span>
-                        <h3 class="font-heading font-bold text-navy text-lg mt-3 mb-2" data-i18n="min8_name">Black Sapphire</h3>
-                        <p class="text-sm text-stone-600 leading-relaxed" data-i18n="min8_p">Dense opaque black corundum, supplied for cabochon cutting and industrial abrasive applications.</p>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Growth note -->
-            <div class="mt-12 bg-white rounded-xl border border-dashed border-stone-300 p-8 flex flex-col sm:flex-row items-start gap-5">
-                <div class="w-12 h-12 rounded-xl bg-stone-100 text-stone-500 flex items-center justify-center shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
-                </div>
-                <div>
-                    <h3 class="font-heading font-bold text-navy text-lg mb-2" data-i18n="min_note_h">More minerals to be added</h3>
-                    <p class="text-sm text-stone-600 leading-relaxed" data-i18n="min_note_p">This portfolio reflects current production. Additional stones and industrial minerals will be listed here as further blocks are brought online.</p>
-                </div>
-            </div>
+        <h2 class="object__name" data-i18n="min2_name"></h2>
+        <p class="object__note" data-i18n="min2_p"></p>
+        <dl class="schema">
+          <dt>Type</dt><dd>Gemstone</dd>
+          <dt>Source</dt><dd>Pegmatite and alluvial</dd>
+          <dt>Recovery</dt><dd>Hand sorted</dd>
+          <dt>Graded on</dt><dd>Colour and clarity</dd>
+          <dt>Supplied as</dt><dd>Rough parcels</dd>
+          <dt>Documentation</dt><dd>Per lot, on request</dd>
+        </dl>
+      </article>
+      <article class="object" id="object-2">
+        <div class="plate__frame object__crop" data-stone="Emerald" data-src="assets/stone-emerald.webp">
+          <img src="assets/stone-emerald.webp" width="900" height="1200" alt="Emerald rough, photographed as a plate." loading="lazy">
         </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="py-20 bg-navy text-white relative overflow-hidden bg-grid-pattern">
-        <div class="absolute inset-0" style="background:
-            radial-gradient(circle at 18% 50%, rgba(251,191,36,.18) 0%, transparent 46%),
-            radial-gradient(circle at 84% 50%, rgba(56,189,248,.18) 0%, transparent 46%)"></div>
-        <div class="relative z-10 max-w-3xl mx-auto px-6 text-center">
-            <h2 class="font-heading font-bold text-3xl mb-4" data-i18n="min_cta_h">Enquire about availability & grades</h2>
-            <p class="text-stone-200 text-sm leading-relaxed mb-8" data-i18n="min_cta_p">Parcel sizes, grading reports, and export documentation are shared with verified buyers on request.</p>
-            <a href="danbiba.html#contact" class="inline-flex items-center gap-2 bg-aqua hover:bg-aqua/90 text-white font-heading font-bold text-xs uppercase tracking-widest px-8 py-4 rounded transition shadow-lg" data-i18n="min_cta_btn">
-                Contact the Minerals Desk
-            </a>
+        <h2 class="object__name" data-i18n="min3_name"></h2>
+        <p class="object__note" data-i18n="min3_p"></p>
+        <dl class="schema">
+          <dt>Type</dt><dd>Gemstone</dd>
+          <dt>Source</dt><dd>Beryl</dd>
+          <dt>Recovery</dt><dd>Supervised sorting</dd>
+          <dt>Graded on</dt><dd>Saturation and inclusions</dd>
+          <dt>Supplied as</dt><dd>Sealed parcels</dd>
+          <dt>Documentation</dt><dd>Per lot, on request</dd>
+        </dl>
+      </article>
+      <article class="object" id="object-3">
+        <div class="plate__frame object__crop" data-stone="Lithium" data-src="assets/stone-lithium.webp">
+          <img src="assets/stone-lithium.webp" width="900" height="1200" alt="Lithium rough, photographed as a plate." loading="lazy">
         </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="bg-stone-900 text-stone-300 py-12">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-400">
-            <span data-i18n="footer_copyright">© 2026 Danbiba Farms & Mining Co. Ltd. All Rights Reserved.</span>
-            <a href="danbiba.html" class="hover:text-white transition" data-i18n="nav_back">← Back to Home</a>
+        <h2 class="object__name" data-i18n="min4_name"></h2>
+        <p class="object__note" data-i18n="min4_p"></p>
+        <dl class="schema">
+          <dt>Type</dt><dd>Industrial</dd>
+          <dt>Source</dt><dd>Pegmatite</dd>
+          <dt>Recovery</dt><dd>Spodumene, lepidolite</dd>
+          <dt>Graded on</dt><dd>Concentrate grade</dd>
+          <dt>Supplied as</dt><dd>Graded concentrate</dd>
+          <dt>Documentation</dt><dd>Accredited assay</dd>
+        </dl>
+      </article>
+      <article class="object" id="object-4">
+        <div class="plate__frame object__crop" data-stone="Topaz" data-src="assets/stone-topaz.webp">
+          <img src="assets/stone-topaz.webp" width="900" height="1200" alt="Topaz rough, photographed as a plate." loading="lazy">
         </div>
-    </footer>
+        <h2 class="object__name" data-i18n="min5_name"></h2>
+        <p class="object__note" data-i18n="min5_p"></p>
+        <dl class="schema">
+          <dt>Type</dt><dd>Gemstone</dd>
+          <dt>Source</dt><dd>Weathered pegmatite</dd>
+          <dt>Recovery</dt><dd>Screened</dd>
+          <dt>Graded on</dt><dd>Size fraction</dd>
+          <dt>Supplied as</dt><dd>Imperial, blue, colourless</dd>
+          <dt>Documentation</dt><dd>Per lot, on request</dd>
+        </dl>
+      </article>
+      <article class="object" id="object-5">
+        <div class="plate__frame object__crop" data-stone="Tourmaline" data-src="assets/stone-tourmaline.webp">
+          <img src="assets/stone-tourmaline.webp" width="900" height="1200" alt="Tourmaline rough, photographed as a plate." loading="lazy">
+        </div>
+        <h2 class="object__name" data-i18n="min6_name"></h2>
+        <p class="object__note" data-i18n="min6_p"></p>
+        <dl class="schema">
+          <dt>Type</dt><dd>Gemstone</dd>
+          <dt>Source</dt><dd>Pegmatite</dd>
+          <dt>Recovery</dt><dd>Sorted individually</dd>
+          <dt>Graded on</dt><dd>Colour</dd>
+          <dt>Supplied as</dt><dd>Pink, green, bi-colour rough</dd>
+          <dt>Documentation</dt><dd>Per lot, on request</dd>
+        </dl>
+      </article>
+      <article class="object" id="object-6">
+        <div class="plate__frame object__crop" data-stone="Ruby" data-src="assets/stone-ruby.webp">
+          <img src="assets/stone-ruby.webp" width="900" height="1200" alt="Ruby rough, photographed as a plate." loading="lazy">
+        </div>
+        <h2 class="object__name" data-i18n="min7_name"></h2>
+        <p class="object__note" data-i18n="min7_p"></p>
+        <dl class="schema">
+          <dt>Type</dt><dd>Gemstone</dd>
+          <dt>Source</dt><dd>Corundum</dd>
+          <dt>Recovery</dt><dd>Parcel graded</dd>
+          <dt>Graded on</dt><dd>Colour depth, cutting yield</dd>
+          <dt>Supplied as</dt><dd>Graded parcels</dd>
+          <dt>Documentation</dt><dd>Origin on every lot</dd>
+        </dl>
+      </article>
+      <article class="object" id="object-7">
+        <div class="plate__frame object__crop" data-stone="Black Sapphire" data-src="assets/stone-black.webp">
+          <img src="assets/stone-black.webp" width="900" height="1200" alt="Black Sapphire rough, photographed as a plate." loading="lazy">
+        </div>
+        <h2 class="object__name" data-i18n="min8_name"></h2>
+        <p class="object__note" data-i18n="min8_p"></p>
+        <dl class="schema">
+          <dt>Type</dt><dd>Gemstone</dd>
+          <dt>Source</dt><dd>Corundum</dd>
+          <dt>Recovery</dt><dd>Opaque black</dd>
+          <dt>Graded on</dt><dd>Density</dd>
+          <dt>Supplied as</dt><dd>Cabochon and abrasive grades</dd>
+          <dt>Documentation</dt><dd>Per lot, on request</dd>
+        </dl>
+      </article>
 
-    <script src="site.js"></script>
+        <!-- the close of the collection is an inquiry plate, typeset exactly
+             like a label so the ask reads as part of the collection -->
+        <div class="inquiry">
+          <h2 data-i18n="min_note_h"></h2>
+          <p data-i18n="min_note_p"></p>
+        </div>
+
+        <div class="inquiry" id="object-8">
+          <h2 data-i18n="min_cta_h">Enquire about availability and grades</h2>
+          <p data-i18n="min_cta_p">Parcel sizes, grading reports, and export documentation are shared with verified buyers on request.</p>
+          <dl class="schema">
+            <dt>Desk</dt><dd>Minerals</dd>
+            <dt>Shared</dt><dd data-ha="Girman kaya, aunawa, takardu">Parcel size, grading, documentation</dd>
+            <dt>Buyers</dt><dd data-ha="Wadanda aka tabbatar">Verified</dd>
+            <dt>Contact</dt><dd><a class="runlink" id="minerals-desk" href="mailto:danbiba2008@outlook.com?subject=Minerals%20desk%20enquiry">danbiba2008@outlook.com</a></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAIN OF CUSTODY: flow. A process note set as labels so it stays inside
+       the catalog idiom rather than becoming a second collection. -->
+  <section class="chapter stock--bone" data-sc-act="flow" data-chapter="Minerals" data-chapter-name="How a lot leaves">
+    <div class="chapter__inner">
+      <header class="chapter__head">
+        <span class="chapter__num" data-ha="Sarkar tsarewa">Chain of custody</span>
+        <h2 class="chapter__title" data-ha="Yadda kaya ke barin wurin">How a lot leaves the site</h2>
+      </header>
+      <div class="spread">
+        <div class="prose">
+          <ol class="stages" data-sc-in data-sc-stagger="60">
+            <li><span class="stages__n">01</span><div><h3 data-ha="An rarrabe a wurin">Sorted on site</h3><p data-ha="Ana rarrabe duwatsu da hannu karkashin kulawa, ba a hada su a yawa ba.">Gemstone material is hand-sorted and graded under supervision rather than bulk processed.</p></div></li>
+            <li><span class="stages__n">02</span><div><h3 data-ha="An auna, an ba da lamba">Weighed and numbered</h3><p data-ha="Ana rike ma&rsquo;aunin nauyi, lambar kaya da takardun mai saye domin bincike da duba na hukuma.">Weighbridge records, lot numbers and buyer documentation are retained for audit and regulator inspection.</p></div></li>
+            <li><span class="stages__n">03</span><div><h3 data-ha="Takardar assay">Assay certificate</h3><p data-ha="Kowane kaya da aka aika yana dauke da takardar assay daga dakin gwaje-gwaje mai izini.">Every despatched lot carries an assay certificate from an accredited laboratory.</p></div></li>
+          </ol>
+        </div>
+        <div class="mediacol">
+          <dl class="marginalia">
+            <dt data-ha="Ma&rsquo;adinan da ake samarwa">Stones in production</dt>
+            <dd><span class="sc-nums" data-sc-count="0 8" data-sc-count-at="0.15 0.5">0</span> <span data-ha="za a kara wasu yayin bude sabbin filaye">listed here, with more as blocks come online</span></dd>
+            <dt data-ha="Tafkin sharar ma&rsquo;adinai">Tailings dams</dt>
+            <dd data-ha="Babu. Ana amfani da tsarin bushe duk inda ma&rsquo;adinan ya yarda.">None. Dry-process circuits wherever the mineralogy allows.</dd>
+          </dl>
+          <p class="plate__hint" style="margin-top:var(--sc-5)"><a class="runlink" href="operations.html" data-ha="Duba dukkan matakan aiki">See the full lifecycle</a></p>
+        </div>
+      </div>
+      <nav class="readon" aria-label="Continue">
+        <a href="produce.html"><span class="k" data-ha="Noma">Agriculture</span><span class="t" data-i18n="products_h2">Our Farm Products</span></a>
+        <a href="contact.html"><span class="k" data-ha="Tuntube mu">Contact</span><span class="t" data-i18n="nav_partner">Partner With Us</span></a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- The collection's own resolution is the inquiry plate in the rail. The
+       PAGE still has to resolve, so it closes on a held plate typeset exactly
+       like a label, with cues that hold so the last screen is not empty. -->
+  <section class="colophon stock--deepest" id="desk" data-sc-act="pin" data-sc-span="1.2"
+           data-chapter="Colophon" data-chapter-name="The desks">
+    <div data-sc-stage>
+      <div class="colophon__inner">
+        <h2 data-sc-cue="0 1 0 0" data-ha="Ana sayar da kaya bisa takardu, ba bisa bayani ba.">Parcels move on documentation, not on description.</h2>
+        <div class="colophon__cols" data-sc-cue="0.05">
+          <div>
+            <p data-ha="Kowane kaya yana barin wurin da takardar assay daga dakin gwaje-gwaje mai izini, lambar kaya, da bayanan ma&rsquo;auni. Ka gaya wa sashen abin da kake saya, takardun za su zo tare da farashi.">Every lot leaves with an assay certificate from an accredited laboratory, a lot number, and weighbridge records retained for audit. Tell the desk what you are buying and the paperwork comes with the quote.</p>
+            <p><a class="runlink" href="mailto:danbiba2008@outlook.com?subject=Minerals%20desk%20enquiry" data-ha="Tuntubi sashen ma&rsquo;adinai">Contact the minerals desk</a></p>
+          </div>
+          <div>
+            <dl class="marginalia">
+              <dt data-i18n="footer_hq_label">Headquarters Location:</dt>
+              <dd>Block 155, Room 9/10, Area C, Nyaya, Abuja, FCT, Nigeria</dd>
+              <dt data-i18n="footer_email_label">Electronic Mail:</dt>
+              <dd><a class="runlink" href="mailto:danbiba2008@outlook.com">danbiba2008@outlook.com</a></dd>
+            </dl>
+          </div>
+        </div>
+        <p class="colophon__tagline" data-sc-cue="0.05" data-i18n="footer_tagline"></p>
+        <footer class="colophon__foot" data-sc-cue="0.05">
+          <span data-i18n="footer_copyright"></span>
+          <a href="minerals.html" data-i18n="nav_minerals"></a>
+          <a href="produce.html" data-i18n="nav_products"></a>
+          <a href="fleet.html" data-i18n="nav_gallery"></a>
+          <a href="operations.html" data-i18n="nav_services"></a>
+          <a href="governance.html" data-ha="Bayyanawa">Disclosure</a>
+          <a href="contact.html" data-i18n="nav_contact"></a>
+        </footer>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="i18n.js"></script>
+<script src="scrollcraft.js"></script>
+<script src="danbiba.js"></script>
+<script src="interactions.js"></script>
+<script>ScrollCraft.mount(document.body);</script>
 </body>
 </html>

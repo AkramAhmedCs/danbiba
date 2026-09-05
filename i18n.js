@@ -1,4 +1,5 @@
-const translations = {
+/* EN/HA corpus lifted verbatim from the existing danbiba site.js. */
+window.DANBIBA_I18N = {
     nav_about: { en: 'About Us', ha: 'Game da Mu' },
     nav_services: { en: 'Services', ha: 'Ayyukanmu' },
     nav_tech: { en: 'Technology', ha: 'Fasaha' },
@@ -13,13 +14,13 @@ const translations = {
         en: 'Sustainable Mining.<br><span class="text-stone-300">Responsible Farming.</span><br>Community Growth.',
         ha: 'Hakar Ma’adinai Mai Dorewa.<br><span class="text-stone-300">Noma Mai Nauyi.</span><br>Ci Gaban Al’umma.'
     },
-    hero_p: { en: 'Extracting high-grade heavy mineral sands and natural flake graphite alongside industrial agricultural development—working the earth with integrity.', ha: 'Muna hakar yashin ma’adinai mai inganci da graphite na halitta, tare da bunkasa noma na masana’antu — muna aiki da kasa cikin gaskiya da mutunci.' },
+    hero_p: { en: 'Extracting high-grade heavy mineral sands and natural flake graphite alongside industrial agricultural development, working the earth with integrity.', ha: 'Muna hakar yashin ma’adinai mai inganci da graphite na halitta, tare da bunkasa noma na masana’antu, muna aiki da kasa cikin gaskiya da mutunci.' },
     hero_btn1: { en: 'Explore Our Services', ha: 'Duba Ayyukanmu' },
     hero_btn2: { en: 'Corporate Inquiries', ha: 'Tambayoyin Kamfani' },
 
     about_eyebrow: { en: 'Corporate Profile', ha: 'Bayanin Kamfani' },
     about_h2: { en: 'Setting the Standard for Responsible Earth Resource Management', ha: 'Kafa Ka’idar Gudanar da Albarkatun Kasa Cikin Nauyi' },
-    about_p: { en: 'Danbiba Farms & Mining Co. Ltd is a global-minded operational entity headquartered in Abuja. We bridge the gap between heavy industrial mineral extraction and sustainable food production. Operating with a safety-first methodology, our centralized hub manages the entire lifecycle of land management—from geophysical exploration to ecosystem post-mining remediation.', ha: 'Danbiba Farms & Mining Co. Ltd kamfani ne mai hedkwata a Abuja, wanda ke tunani a kan matakin duniya. Muna hada gwiwa tsakanin hakar ma’adinai na masana’antu da samar da abinci mai dorewa. Muna aiki bisa tsarin da ke ba da fifiko ga tsaro, kuma cibiyarmu ta tsakiya tana kula da dukkan matakan gudanar da kasa — daga bincike na farko har zuwa gyaran muhalli bayan hakar ma’adinai.' },
+    about_p: { en: 'Danbiba Farms & Mining Co. Ltd is a global-minded operational entity headquartered in Abuja. We bridge the gap between heavy industrial mineral extraction and sustainable food production. Operating with a safety-first methodology, our centralized hub manages the entire lifecycle of land management, from geophysical exploration to ecosystem post-mining remediation.', ha: 'Danbiba Farms & Mining Co. Ltd kamfani ne mai hedkwata a Abuja, wanda ke tunani a kan matakin duniya. Muna hada gwiwa tsakanin hakar ma’adinai na masana’antu da samar da abinci mai dorewa. Muna aiki bisa tsarin da ke ba da fifiko ga tsaro, kuma cibiyarmu ta tsakiya tana kula da dukkan matakan gudanar da kasa, daga bincike na farko har zuwa gyaran muhalli bayan hakar ma’adinai.' },
     mission_title: { en: 'Our Mission', ha: 'Manufarmu' },
     mission_p: { en: 'To operate as a centralized benchmark setting the national standard for sustainable quarrying across pre-mining, active extraction, and land restoration.', ha: 'Mu zama misali na kasa wajen hakar ma’adinai mai dorewa, daga matakin shirye-shirye, hakar aiki, har zuwa gyaran kasa.' },
     vision_title: { en: 'Our Vision', ha: 'Hangen Nesanmu' },
@@ -37,7 +38,7 @@ const translations = {
     disc5_title: { en: 'Transparency & Accountability', ha: 'Gaskiya da Lissafi' },
     disc5_p: { en: 'Committed to NEITI (Nigeria Extractive Industries Transparency Initiative) reporting standards, ensuring 100% visibility on community royalties and environmental tax compliance.', ha: 'Muna bin ka’idojin bayar da rahoto na NEITI (Nigeria Extractive Industries Transparency Initiative), don tabbatar da bayyana kason al’umma da bin ka’idojin harajin muhalli gaba daya.' },
     disc6_title: { en: 'Sustainability & Land Plan', ha: 'Dorewa da Shirin Kasa' },
-    disc6_p: { en: 'Every hectare of exhausted mineral quarry is systematically backfilled, treated for pH balance, and transferred directly to the Danbiba Agricultural division for arable farming.', ha: 'Kowane fadin kasa da aka gama hakar ma’adinai ana cika shi, a daidaita pH dinsa, sannan a mika shi kai tsaye ga sashen Noma na Danbiba domin noma.' },
+    disc6_p: { en: 'Every worked-out quarry is systematically backfilled, contour-reshaped and treated for pH balance, then rehabilitated under a conservation plan that runs alongside the mining programme, restoring the ecosystem on the block where it was disturbed.', ha: 'Ana cika kowane ramin da aka gama hakar ma’adinai, a gyara siffarsa da daidaita pH dinsa, sannan a farfado da shi bisa shirin kiyaye muhalli da ke tafiya tare da aikin hakar ma’adinai, domin maido da muhallin wurin.' },
 
     services_eyebrow: { en: 'Lifecycle Operations', ha: 'Matakan Aiki' },
     services_h2: { en: 'End-to-End Earth Operations', ha: 'Cikakken Sarkar Ayyukan Kasa' },
@@ -48,7 +49,7 @@ const translations = {
     svc3_title: { en: 'Processing', ha: 'Sarrafawa' },
     svc3_p: { en: 'On-site mechanical screening and magnetic separation to refine raw ore into export-grade industrial concentrates.', ha: 'Ana tace da raba ma’adinai a wurin aiki don mai da danyen ma’adinai zuwa kaya mai inganci na fitarwa.' },
     svc4_title: { en: 'Remediation', ha: 'Gyara Kasa' },
-    svc4_p: { en: 'Immediate top-soil replacement and organic fertilization to prepare post-extraction zones for agricultural planting.', ha: 'Ana maido da kasa nan take da takin gargajiya don shirya wurin da aka hako domin noma.' },
+    svc4_p: { en: 'Immediate top-soil replacement and organic fertilisation to restore the ecosystem on worked-out extraction zones.', ha: 'Maido da kasa mai albarka nan take da takin gargajiya domin farfado da muhallin wuraren da aka gama hakar ma’adinai.' },
     svc5_title: { en: 'Community', ha: 'Al’umma' },
     svc5_p: { en: 'Direct reinvestment into local access roads, clean water boreholes, and outgrower farming schemes.', ha: 'Zuba jari kai tsaye a hanyoyi, rijiyoyin ruwa mai tsafta, da shirye-shiryen taimakon manoma a yankin.' },
 
@@ -82,7 +83,7 @@ const translations = {
 
     products_eyebrow: { en: 'Agriculture Division', ha: 'Sashen Noma' },
     products_h2: { en: 'Our Farm Products', ha: 'Kayayyakin Gonarmu' },
-    products_p: { en: 'Staple grains, legumes, tubers, poultry, and aquaculture cultivated across our reclaimed and active farmland, available for bulk procurement.', ha: 'Hatsi, wake, rogo, kaji, da kifi da muke nomawa a gonakinmu, ana samun su don sayarwa da yawa.' },
+    products_p: { en: 'Staple grains, legumes, tubers, poultry and aquaculture, grown on Danbiba farmland in a separate operation from the mining blocks, available for bulk procurement.', ha: 'Hatsi, wake, doya, kaji da kifi, ana noma su a gonakin Danbiba a wani aiki daban da na hakar ma’adinai, kuma ana sayar da su da yawa.' },
     products_cta: { en: 'Request Bulk Pricing', ha: 'Nemi Farashin Sayan Yawa' },
     cat_aqua: { en: 'Aquaculture', ha: 'Kiwon Kifi' },
     cat_poultry: { en: 'Poultry', ha: 'Kiwon Kaji' },
@@ -191,7 +192,7 @@ const translations = {
     /* ---------- Operations detail page ---------- */
     ops_title: { en: 'Lifecycle Operations', ha: 'Ayyukan Zagaye' },
     ops_hero_h1: { en: 'End-to-End Earth Operations', ha: 'Cikakkun Ayyukan Kasa' },
-    ops_hero_p: { en: 'Every stage of how we work the land — from the first survey line to the last community handover. Each phase below runs under its own compliance regime, equipment set, and reporting cycle.', ha: 'Kowane mataki na yadda muke aiki da kasa — daga bincike na farko har zuwa mika wa al’umma. Kowane mataki yana da nasa ka’idoji, kayan aiki, da rahoto.' },
+    ops_hero_p: { en: 'Every stage of how we work the land, from the first survey line to the last community handover. Each phase below runs under its own compliance regime, equipment set, and reporting cycle.', ha: 'Kowane mataki na yadda muke aiki da kasa, daga bincike na farko har zuwa mika wa al’umma. Kowane mataki yana da nasa ka’idoji, kayan aiki, da rahoto.' },
     ops_jump: { en: 'Jump to stage', ha: 'Tsallaka zuwa mataki' },
     ops_stage: { en: 'Stage', ha: 'Mataki' },
     ops_what: { en: 'What this stage covers', ha: 'Abin da wannan matakin ya kunsa' },
@@ -220,9 +221,9 @@ const translations = {
     ops3_safe: { en: 'Every despatched lot carries an assay certificate from an accredited laboratory. Weighbridge records, lot numbers, and buyer documentation are retained for audit and regulator inspection.', ha: 'Duk kayan da aka fitar suna da takardar shaidar inganci daga dakin gwaje-gwaje mai izini. Ana ajiye bayanan awo da na masu saye don bincike.' },
 
     ops4_title: { en: 'Remediation', ha: 'Gyaran Kasa' },
-    ops4_lead: { en: 'Returning mined blocks to productive farmland, not leaving them as pits.', ha: 'Maido da wuraren da aka haka zuwa gonaki masu amfani, ba barin su ramuka ba.' },
-    ops4_what: { en: 'Progressive backfilling, contour reshaping, replacement of the stockpiled topsoil, organic fertilisation, and a planned cropping sequence that rebuilds soil structure. Remediation begins on worked-out sections while extraction continues elsewhere on the lease.', ha: 'Cika ramuka, gyara siffar kasa, mayar da kasa ta sama da aka ajiye, zuba taki, da shuka amfanin gona da ke gyara kasa. Ana fara gyara wurin da aka gama hakowa yayin da ake ci gaba da aiki a wani wuri.' },
-    ops4_how: { en: 'The first two seasons after backfill are planted with nitrogen-fixing legumes — cowpea and soya — before the block enters the normal grain rotation. Soil organic carbon and pH are sampled each season and the block is only released to full production once it meets our agronomic threshold.', ha: 'Shekaru biyu na farko bayan cika rami ana shuka wake da soya da ke gina kasa, kafin a shiga shuka hatsi. Ana auna lafiyar kasa kowace shekara, ba a mika kasar don cikakken noma sai ta cika ka’ida.' },
+    ops4_lead: { en: 'Restoring worked-out blocks to stable, vegetated ground rather than leaving them as pits.', ha: 'Maido da filayen da aka gama aiki a kansu su zama kasa mai karko da tsire-tsire, maimakon barin su a matsayin rami.' },
+    ops4_what: { en: 'Progressive backfilling, contour reshaping, replacement of the stockpiled topsoil, and a seeded cover crop that rebuilds soil structure. Remediation begins on worked-out sections while extraction continues elsewhere on the lease.', ha: 'Cika ramuka mataki-mataki, gyara siffar kasa, maido da kasa mai albarka da aka ajiye, da shuka tsire-tsire da ke gyara kasa. Ana fara gyara sassan da aka gama aiki a kansu yayin da hakar ke ci gaba a wani bangaren.' },
+    ops4_how: { en: 'Backfilled blocks are contour-reshaped, given back their stockpiled topsoil, and seeded with a nitrogen-fixing cover of cowpea and soya to rebuild soil structure. Soil organic carbon and pH are sampled each season until the block meets its restoration threshold.', ha: 'Ana gyara siffar filayen da aka cika, a mayar musu da kasarsu mai albarka da aka ajiye, sannan a shuka wake da waken soya domin gyara kasar. Ana auna carbon da pH na kasa kowace kakar shuka har sai filin ya cimma matakin farfadowa.' },
     ops4_safe: { en: 'Quarterly independent monitoring of groundwater quality and soil toxicity near every rehabilitated zone, with results published to institutional investors and filed with regulators.', ha: 'Ana bincike mai zaman kansa kowane wata uku kan ruwan karkashin kasa da lafiyar kasa, ana kuma buga sakamakon ga masu zuba jari da hukumomi.' },
 
     ops5_title: { en: 'Community', ha: 'Al’umma' },
@@ -255,37 +256,9 @@ const translations = {
     min5_name: { en: 'Topaz', ha: 'Topaz' },
     min5_p: { en: 'Imperial, blue, and colourless topaz recovered from weathered pegmatite and screened by size fraction.', ha: 'Topaz mai launin ruwan zinare, shudi, da mara launi daga dutse, ana tantance shi bisa girma.' },
     min6_name: { en: 'Tourmaline', ha: 'Turmalin' },
-    min6_p: { en: 'Multi-colour tourmaline including pink, green, and bi-colour rough, sorted individually rather than in bulk.', ha: 'Turmalin mai launuka daban-daban — ruwan hoda, kore, da mai launi biyu — ana tantance kowanne daban.' },
+    min6_p: { en: 'Multi-colour tourmaline including pink, green, and bi-colour rough, sorted individually rather than in bulk.', ha: 'Turmalin mai launuka daban-daban, ruwan hoda, kore, da mai launi biyu, ana tantance kowanne daban.' },
     min7_name: { en: 'Ruby', ha: 'Yakutu' },
     min7_p: { en: 'Red corundum parcels graded for colour depth and cutting yield, with origin documentation on every lot.', ha: 'Jan yakutu da ake tantancewa bisa zurfin launi, tare da takardar asali ga kowane kunshi.' },
     min8_name: { en: 'Black Sapphire', ha: 'Bakar Saffaya' },
     min8_p: { en: 'Dense opaque black corundum, supplied for cabochon cutting and industrial abrasive applications.', ha: 'Bakar saffaya mai kauri, ana bayar da ita don yankewa da amfanin masana’antu.' },
 };
-
-function setLanguage(lang) {
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-        const entry = translations[el.getAttribute('data-i18n')];
-        if (entry && entry[lang]) el.innerHTML = entry[lang];
-    });
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-        const entry = translations[el.getAttribute('data-i18n-placeholder')];
-        if (entry && entry[lang]) el.setAttribute('placeholder', entry[lang]);
-    });
-
-    document.documentElement.lang = lang;
-
-    const enBtn = document.getElementById('lang-btn-en');
-    const haBtn = document.getElementById('lang-btn-ha');
-    if (enBtn && haBtn) {
-        [enBtn, haBtn].forEach(btn => btn.classList.remove('bg-white', 'text-navy', 'shadow-sm'));
-        [enBtn, haBtn].forEach(btn => btn.classList.add('text-stone-600'));
-        const active = lang === 'ha' ? haBtn : enBtn;
-        active.classList.add('bg-white', 'text-navy', 'shadow-sm');
-        active.classList.remove('text-stone-600');
-    }
-
-    localStorage.setItem('danbiba-lang', lang);
-}
-
-const savedLang = localStorage.getItem('danbiba-lang');
-if (savedLang === 'ha') setLanguage('ha');

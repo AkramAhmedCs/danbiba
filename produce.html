@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Farm products &mdash; Danbiba Farms &amp; Mining Co. Ltd</title>
+<meta name="description" content="Grains, legumes, tubers, poultry and catfish from reclaimed and active farmland outside Abuja, available for bulk procurement.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23EDEAE3'/><rect x='6' y='6' width='20' height='20' fill='%23A8331E'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="scrollcraft.css">
+<link rel="stylesheet" href="danbiba.css">
+</head>
+<body>
+
+<span data-sc-progress></span>
+<div class="sc-grain" aria-hidden="true"></div>
+
+<nav class="folio" aria-label="Site navigation">
+  <a class="folio__mark" href="index.html">Danbiba<span>Farms &amp; Mining Co. Ltd</span></a>
+
+  <span class="folio__mobile-here" data-folio-title>Produce</span>
+
+  <ul class="folio__nav">
+      <li><a href="index.html" data-i18n="nav_home"></a></li>
+      <li><a href="minerals.html" data-i18n="nav_minerals"></a></li>
+      <li><a href="produce.html" aria-current="page" data-i18n="nav_products"></a></li>
+      <li><a href="fleet.html" data-i18n="nav_gallery"></a></li>
+      <li><a href="operations.html" data-i18n="nav_services"></a></li>
+      <li><a href="governance.html" data-ha="Bayyanawa">Disclosure</a></li>
+      <li><a href="contact.html" data-i18n="nav_contact"></a></li>
+  </ul>
+
+  <div class="folio__lang" role="group" aria-label="Language">
+    <button type="button" id="lang-en" aria-pressed="true" data-lang="en">EN</button>
+    <span class="folio__sep" aria-hidden="true">/</span>
+    <button type="button" id="lang-ha" aria-pressed="false" data-lang="ha">HA</button>
+  </div>
+
+  <aside class="parcel" id="parcel" hidden aria-live="polite">
+    <p class="parcel__h" data-ha="Takardar Kaya">Your parcel sheet</p>
+    <ul class="parcel__list" id="parcel-list"></ul>
+  </aside>
+
+  <div class="index">
+    <p class="index__h" data-ha="Layukan">The lines</p>
+    <ul class="index__list" id="index-list">
+      <li><button type="button" data-jump="0">Rice <i>01</i></button></li>
+      <li><button type="button" data-jump="1">Corn (Maize) <i>02</i></button></li>
+      <li><button type="button" data-jump="2">Sorghum <i>03</i></button></li>
+      <li><button type="button" data-jump="3">Millet <i>04</i></button></li>
+      <li><button type="button" data-jump="4">Beans (Cowpea) <i>05</i></button></li>
+      <li><button type="button" data-jump="5">Soya Beans <i>06</i></button></li>
+      <li><button type="button" data-jump="6">Groundnut <i>07</i></button></li>
+      <li><button type="button" data-jump="7">Cassava <i>08</i></button></li>
+      <li><button type="button" data-jump="8">Broiler Chickens <i>09</i></button></li>
+      <li><button type="button" data-jump="9">Catfish <i>10</i></button></li>
+    </ul>
+  </div>
+  <div class="folio__here">
+    <span class="folio__num" data-folio-num>Produce</span>
+    <span class="folio__title" data-folio-title-desktop>Produce</span>
+  </div>
+</nav>
+
+<main class="page page--catalog" id="top">
+
+  <h1 class="sr-only" data-ha="Kayan gonarmu">Farm products</h1>
+
+  <!-- SPINE: pan. Same grammar as the minerals collection, same label schema,
+       different objects. What the reader wants here is "what are the options",
+       not "should I believe you". -->
+  <section class="plate-act stock--dark" data-sc-act="pan" data-sc-span="6.4" id="collection"
+           data-chapter="Produce" data-chapter-name="The lines">
+    <div data-sc-stage>
+      <div class="collection" data-sc-pan="0.03" id="plates">
+      <article class="object" id="object-0">
+        <div class="object__crop" style="background:#B98C3A">
+          <img src="assets/crop-rice.webp" width="900" height="1200" alt="A flooded rice paddy in production on Danbiba farmland." loading="lazy">
+        </div>
+        <h2 class="object__name" data-i18n="prod3_title"></h2>
+        <p class="object__note" data-i18n="prod3_p"></p>
+        <dl class="schema">
+          <dt>Category</dt><dd data-i18n="cat_grain"></dd>
+          <dt>Form</dt><dd>Paddy, locally milled</dd>
+          <dt>Supplied as</dt><dd>Graded bulk bags</dd>
+          <dt>Use</dt><dd>Food</dd>
+        </dl>
+      </article>
+      <article class="object" id="object-1">
+        <div class="object__crop" style="background:#B98C3A">
+          <img src="assets/crop-maize.webp" width="900" height="1200" alt="Maize ripening on the stalk on Danbiba farmland." loading="lazy">
+        </div>
+        <h2 class="object__name" data-i18n="prod5_title"></h2>
+        <p class="object__note" data-i18n="prod5_p"></p>
+        <dl class="schema">
+          <dt>Category</dt><dd data-i18n="cat_grain"></dd>
+          <dt>Form</dt><dd>Dried, yellow and white</dd>
+          <dt>Supplied as</dt><dd>Bulk</dd>
+          <dt>Use</dt><dd>Food and livestock feed</dd>
+        </dl>
+      </article>
+      <article class="object" id="object-2">
+        <div class="object__crop" style="background:#B98C3A">
+          <img src="assets/crop-sorghum.webp" width="900" height="1200" alt="Sorghum in seed head on Danbiba farmland." loading="lazy">
+        </div>
+        <h2 class="object__name" data-i18n="prod9_title"></h2>
+        <p class="object__note" data-i18n="prod9_p"></p>
+        <dl class="schema">
+          <dt>Category</dt><dd data-i18n="cat_grain"></dd>
+          <dt>Form</dt><dd>Red and white</dd>
+          <dt>Supplied as</dt><dd>Bulk</dd>
+          <dt>Use</dt><dd>Brewing, milling, feed</dd>
+        </dl>
+      </article>
+      <article class="object" id="object-3">
+        <div class="object__crop" style="background:#B98C3A">
+          <img src="assets/crop-millet.webp" width="900" height="1200" alt="Pearl millet standing on Danbiba farmland." loading="lazy">
+        </div>
+        <h2 class="object__name" data-i18n="prod8_title"></h2>
+        <p class="object__note" data-i18n="prod8_p"></p>
+        <dl class="schema">
+          <dt>Category</dt><dd data-i18n="cat_grain"></dd>
+          <dt>Form</dt><dd>Drought-hardy</dd>
+          <dt>Supplied as</dt><dd>Bulk</dd>
+          <dt>Use</dt><dd>Food</dd>
+        </dl>
+      </article>
+      <article class="object" id="object-4">
+        <div class="object__crop" style="background:#6E7F43">
+          <img src="assets/crop-cowpea.webp" width="900" height="1200" alt="Cowpea in leaf on red soil on Danbiba farmland." loading="lazy">
+        </div>
+        <h2 class="object__name" data-i18n="prod7_title"></h2>
+        <p class="object__note" data-i18n="prod7_p"></p>
+        <dl class="schema">
+          <dt>Category</dt><dd data-i18n="cat_legume"></dd>
+          <dt>Form</dt><dd>Cleaned and sorted</dd>
+          <dt>Supplied as</dt><dd>By the bag or truckload</dd>
+          <dt>Use</dt><dd>Food</dd>
+        </dl>
+      </article>
+      <article class="object" id="object-5">
+        <div class="object__crop" style="background:#6E7F43">
+          <img src="assets/crop-soya.webp" width="900" height="1200" alt="Soya beans in row on Danbiba farmland." loading="lazy">
+        </div>
+        <h2 class="object__name" data-i18n="prod4_title"></h2>
+        <p class="object__note" data-i18n="prod4_p"></p>
+        <dl class="schema">
+          <dt>Category</dt><dd data-i18n="cat_legume"></dd>
+          <dt>Form</dt><dd>High protein</dd>
+          <dt>Supplied as</dt><dd>Bulk</dd>
+          <dt>Use</dt><dd>Oil milling, feed processing</dd>
+        </dl>
+      </article>
+      <article class="object" id="object-6">
+        <div class="object__crop" style="background:#6E7F43">
+          <img src="assets/crop-groundnut.webp" width="900" height="1200" alt="Groundnut lifted into windrows at harvest on Danbiba farmland." loading="lazy">
+        </div>
+        <h2 class="object__name" data-i18n="prod6_title"></h2>
+        <p class="object__note" data-i18n="prod6_p"></p>
+        <dl class="schema">
+          <dt>Category</dt><dd data-i18n="cat_legume"></dd>
+          <dt>Form</dt><dd>Shelled and unshelled</dd>
+          <dt>Supplied as</dt><dd>Bulk</dd>
+          <dt>Use</dt><dd>Oil pressing, retail</dd>
+        </dl>
+      </article>
+      <article class="object" id="object-7">
+        <div class="object__crop" style="background:#8A6A52">
+          <img src="assets/crop-cassava.webp" width="900" height="1200" alt="Cassava with tubers lifted on Danbiba farmland." loading="lazy">
+        </div>
+        <h2 class="object__name" data-i18n="prod10_title"></h2>
+        <p class="object__note" data-i18n="prod10_p"></p>
+        <dl class="schema">
+          <dt>Category</dt><dd data-i18n="cat_tuber"></dd>
+          <dt>Form</dt><dd>Fresh and processed</dd>
+          <dt>Supplied as</dt><dd>Bulk</dd>
+          <dt>Use</dt><dd>Starch and garri</dd>
+        </dl>
+      </article>
+      <article class="object" id="object-8">
+        <div class="object__crop" style="background:#A8552F">
+          <img src="assets/crop-poultry.webp" width="900" height="1200" alt="Broiler chickens in a managed house on a Danbiba farm." loading="lazy">
+        </div>
+        <h2 class="object__name" data-i18n="prod2_title"></h2>
+        <p class="object__note" data-i18n="prod2_p"></p>
+        <dl class="schema">
+          <dt>Category</dt><dd data-i18n="cat_poultry"></dd>
+          <dt>Form</dt><dd>Full-weight white broilers</dd>
+          <dt>Supplied as</dt><dd>Reared in managed pens</dd>
+          <dt>Use</dt><dd>Meat</dd>
+        </dl>
+      </article>
+      <article class="object" id="object-9">
+        <div class="object__crop" style="background:#3F6E7A">
+          <img src="assets/crop-catfish.webp" width="900" height="1200" alt="An earthen catfish pond on a Danbiba farm." loading="lazy">
+        </div>
+        <h2 class="object__name" data-i18n="prod1_title"></h2>
+        <p class="object__note" data-i18n="prod1_p"></p>
+        <dl class="schema">
+          <dt>Category</dt><dd data-i18n="cat_aqua"></dd>
+          <dt>Form</dt><dd>Pond-raised, table size</dd>
+          <dt>Supplied as</dt><dd>Fresh, year-round</dd>
+          <dt>Use</dt><dd>Food</dd>
+        </dl>
+      </article>
+
+        <div class="inquiry" id="object-10">
+          <h2 data-i18n="products_cta">Request Bulk Pricing</h2>
+          <p data-ha="Muna raba farashi, adadin da ake da shi da lokutan girbi ga masu saye da yawa.">Pricing, available tonnage and harvest windows are shared with bulk buyers on request.</p>
+          <dl class="schema">
+            <dt>Desk</dt><dd>Produce</dd>
+            <dt>Shared</dt><dd data-ha="Farashi, adadi, lokacin girbi">Pricing, tonnage, harvest window</dd>
+            <dt>Land</dt><dd data-ha="Gonaki da aka gyara da masu aiki">Reclaimed and active farmland</dd>
+            <dt>Contact</dt><dd><a class="runlink" href="mailto:danbiba2008@outlook.com?subject=Produce%20offtake%20enquiry">danbiba2008@outlook.com</a></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter stock--bone" data-sc-act="flow" data-chapter="Produce" data-chapter-name="Where it grows">
+    <div class="chapter__inner">
+      <header class="chapter__head">
+        <span class="chapter__num" data-ha="Kasar">The ground</span>
+        <h2 class="chapter__title" data-ha="Inda yake girma">Where it grows</h2>
+      </header>
+      <div class="spread">
+        <div class="prose">
+          <p class="lede" data-i18n="products_p"></p>
+          <p data-i18n="disc6_p"></p>
+          <p data-ha="Ana jujjuya shuka tsakanin wake da hatsi domin kiyaye lafiyar kasa, ana auna kasar kowace kaka.">Rotation runs nitrogen-fixing legumes against grain to hold soil condition, and the soil is sampled each season.</p>
+        </div>
+        <div class="mediacol">
+          <dl class="marginalia">
+            <dt data-ha="Layukan amfanin gona">Produce lines</dt>
+            <dd><span class="sc-nums" data-sc-count="0 10" data-sc-count-at="0.15 0.5">0</span> <span data-ha="ana sayarwa da yawa">available for bulk procurement</span></dd>
+            <dt data-ha="Jerin shuka">Rotation</dt>
+            <dd data-ha="Wake da waken soya shekaru biyu, sannan hatsi.">Two seasons of legumes, then grain</dd>
+          </dl>
+          <p class="plate__hint" style="margin-top:var(--sc-5)"><a class="runlink" href="operations.html" data-ha="Duba matakin gyaran kasa">See the remediation stage</a></p>
+        </div>
+      </div>
+      <nav class="readon" aria-label="Continue">
+        <a href="minerals.html"><span class="k" data-ha="Ma&rsquo;adinai">Portfolio</span><span class="t" data-i18n="min_hero_p">Our Mineral Portfolio</span></a>
+        <a href="contact.html"><span class="k" data-ha="Tuntube mu">Contact</span><span class="t" data-i18n="nav_partner">Partner With Us</span></a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- The collection's own resolution is the inquiry plate in the rail. The
+       PAGE still has to resolve, so it closes on a held plate typeset exactly
+       like a label, with cues that hold so the last screen is not empty. -->
+  <section class="colophon stock--deepest" id="desk" data-sc-act="pin" data-sc-span="1.2"
+           data-chapter="Colophon" data-chapter-name="The desks">
+    <div data-sc-stage>
+      <div class="colophon__inner">
+        <h2 data-sc-cue="0 1 0 0" data-ha="Adadi, lokacin girbi, da farashi.">Tonnage, harvest window, and a price.</h2>
+        <div class="colophon__cols" data-sc-cue="0.05">
+          <div>
+            <p data-ha="Ka gaya wa sashen kayan gona irin amfanin, adadin da lokacin kawowa. Za a mayar da farashi da adadin da ake da shi bisa kwanakinka.">Tell the produce desk the line, the volume and the delivery window. Pricing and available tonnage come back against your dates, not against a general enquiry.</p>
+            <p><a class="runlink" href="mailto:danbiba2008@outlook.com?subject=Produce%20offtake%20enquiry" data-ha="Tuntubi sashen kayan gona">Contact the produce desk</a></p>
+          </div>
+          <div>
+            <dl class="marginalia">
+              <dt data-i18n="footer_hq_label">Headquarters Location:</dt>
+              <dd>Block 155, Room 9/10, Area C, Nyaya, Abuja, FCT, Nigeria</dd>
+              <dt data-i18n="footer_email_label">Electronic Mail:</dt>
+              <dd><a class="runlink" href="mailto:danbiba2008@outlook.com">danbiba2008@outlook.com</a></dd>
+            </dl>
+          </div>
+        </div>
+        <p class="colophon__tagline" data-sc-cue="0.05" data-i18n="footer_tagline"></p>
+        <footer class="colophon__foot" data-sc-cue="0.05">
+          <span data-i18n="footer_copyright"></span>
+          <a href="minerals.html" data-i18n="nav_minerals"></a>
+          <a href="produce.html" data-i18n="nav_products"></a>
+          <a href="fleet.html" data-i18n="nav_gallery"></a>
+          <a href="operations.html" data-i18n="nav_services"></a>
+          <a href="governance.html" data-ha="Bayyanawa">Disclosure</a>
+          <a href="contact.html" data-i18n="nav_contact"></a>
+        </footer>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="i18n.js"></script>
+<script src="scrollcraft.js"></script>
+<script src="danbiba.js"></script>
+<script src="interactions.js"></script>
+<script>ScrollCraft.mount(document.body);</script>
+</body>
+</html>

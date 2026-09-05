@@ -1,7 +1,13 @@
 {
+  "redirects": [
+    { "source": "/danbiba.html", "destination": "/", "permanent": true }
+  ],
   "rewrites": [
-    { "source": "/", "destination": "/danbiba.html" },
+    { "source": "/minerals", "destination": "/minerals.html" },
+    { "source": "/produce", "destination": "/produce.html" },
+    { "source": "/fleet", "destination": "/fleet.html" },
     { "source": "/operations", "destination": "/operations.html" },
-    { "source": "/minerals", "destination": "/minerals.html" }
+    { "source": "/governance", "destination": "/governance.html" },
+    { "source": "/contact", "destination": "/contact.html" }
   ]
 }

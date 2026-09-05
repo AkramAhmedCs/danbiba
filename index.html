@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Danbiba Farms &amp; Mining Co. Ltd</title>
+<meta name="description" content="Licensed gemstone, graphite and mineral sand blocks outside Abuja, worked and then returned to arable farmland. Grading, chain of custody and offtake for bulk buyers.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230F0D0B'/><rect x='6' y='6' width='20' height='20' fill='%23E2694E'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="scrollcraft.css">
+<link rel="stylesheet" href="danbiba.css">
+</head>
+<body>
+
+<span data-sc-progress></span>
+<div class="sc-grain" aria-hidden="true"></div>
+
+<!-- CHROME: a folio in the margin. Not a bar, no wordmark-plus-CTA. -->
+<nav class="folio" aria-label="Site navigation">
+  <a class="folio__mark" href="index.html">Danbiba<span>Farms &amp; Mining Co. Ltd</span></a>
+
+  <span class="folio__mobile-here" data-folio-title>Title page</span>
+
+  <ul class="folio__nav">
+      <li><a href="index.html" aria-current="page" data-i18n="nav_home"></a></li>
+      <li><a href="minerals.html" data-i18n="nav_minerals"></a></li>
+      <li><a href="produce.html" data-i18n="nav_products"></a></li>
+      <li><a href="fleet.html" data-i18n="nav_gallery"></a></li>
+      <li><a href="operations.html" data-i18n="nav_services"></a></li>
+      <li><a href="governance.html" data-ha="Bayyanawa">Disclosure</a></li>
+      <li><a href="contact.html" data-i18n="nav_contact"></a></li>
+  </ul>
+
+  <div class="folio__lang" role="group" aria-label="Language">
+    <button type="button" id="lang-en" aria-pressed="true" data-lang="en">EN</button>
+    <span class="folio__sep" aria-hidden="true">/</span>
+    <button type="button" id="lang-ha" aria-pressed="false" data-lang="ha">HA</button>
+  </div>
+
+  <aside class="parcel" id="parcel" hidden aria-live="polite">
+    <p class="parcel__h" data-ha="Takardar Kaya">Your parcel sheet</p>
+    <ul class="parcel__list" id="parcel-list"></ul>
+  </aside>
+
+  <div class="folio__here">
+    <span class="folio__num" data-folio-num>Title page</span>
+    <span class="folio__title" data-folio-title-desktop>Title page</span>
+  </div>
+</nav>
+
+<main class="page" id="top">
+
+  <!-- 1 · THE FARM, IN DEPTH
+       The scene sits behind the type and moves with the pointer: three layers
+       at different rates inside one perspective, so it reads as a window into
+       the place rather than a flat photograph. The copy does NOT fade. It
+       greets and it stays, because a headline that dissolves as you scroll is
+       the thing that made this feel like a text effect rather than a place. -->
+  <section class="hero3d stock--bone" data-sc-act="flow"
+           data-chapter="Title" data-chapter-name="The farm">
+
+    <!-- The farm is geometry, built at runtime and rasterised by the GPU every
+         frame you look at it. The photograph is the placeholder while three.js
+         loads, and the fallback wherever WebGL cannot run. -->
+    <div class="farm" data-farm>
+      <!-- The fallback, and ONLY the fallback. It carries no src, so nothing is
+           fetched unless hero-farm.js decides it is needed: with one it both
+           flashed before the scene arrived and, at high priority, delayed the
+           three.js that replaces it. -->
+      <img class="farm__still" data-src="assets/farm.webp"
+           data-srcset="assets/farm-m.webp 1200w, assets/farm.webp 2400w" sizes="120vw"
+           width="2400" height="1334" alt="" aria-hidden="true" decoding="async">
+
+      <p class="farm__hint" aria-hidden="true">
+        <span class="farm__hint-fine"><span data-ha="Ja don juyawa">Drag to look</span>
+          <b>&#183;</b>
+          <span data-ha="gungura don kusantawa">scroll to zoom</span></span>
+        <span class="farm__hint-coarse" data-ha="Taba don bincike">Tap to explore</span>
+      </p>
+
+      <button type="button" class="farm__release" hidden
+              data-ha="An gama">Done</button>
+    </div>
+
+    <div class="hero3d__scrim" aria-hidden="true"></div>
+
+    <div class="hero3d__copy">
+      <div class="titlepage__inner sc-stack">
+        <div class="hero3d__plate">
+        <p class="kicker" data-ha="Abuja, Najeriya · Sassa Biyu na Ayyuka">Abuja, Nigeria · Dual-sector operations</p>
+        <h1 class="masthead" data-ha="Filaye daban. Ka’ida daya.">Different ground. The same standard.</h1>
+        <p class="standfirst" data-ha="Danbiba Farms &amp; Mining Co. Ltd na gudanar da ayyuka biyu a filaye daban-daban: filayen ma’adinai masu lasisi, da gonaki a wani wuri daban. Wurare daban, kayan aiki daban, ka’ida daya. Ga yadda ake gudanar da su, da abin da mai saye zai iya tabbatarwa.">Danbiba Farms &amp; Mining Co. Ltd runs two operations on separate ground: licensed mineral blocks for gemstones, graphite and heavy mineral sands, and arable farmland at its own sites. Different places, different equipment, one compliance standard. This is how both are run, and what a buyer can verify.</p>
+        <p class="byline">
+          <span data-ha="Babban Ofis: Nyaya, Abuja">Headquarters, Nyaya, Abuja</span>
+          <span data-ha="An rajista a CAC">CAC incorporated</span>
+          <span data-ha="Ka’idojin NEITI">NEITI reporting standards</span>
+        </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · RECOGNITION: the chapter opens on the working pit, the title rides on
+       the photograph, and the reading panel comes up over its lower edge. -->
+  <section class="chapter has-ground stock--bone" data-sc-act="flow"
+           data-chapter="01" data-chapter-name="Where we work">
+    <div class="ground">
+      <img class="ground__img" src="assets/mine-real.webp"
+           srcset="assets/mine-real-m.webp 1000w, assets/mine-real.webp 2000w" sizes="100vw"
+           width="2000" height="1125" alt="A crawler excavator loading a haul truck on a Danbiba working face." loading="lazy">
+      <div class="ground__scrim" aria-hidden="true"></div>
+      <div class="ground__title">
+        <header class="chapter__head">
+          <span class="chapter__num">Chapter one</span>
+          <h2 class="chapter__title" data-sc-cue="0.06 0.96 0.14 0.06" data-sc-kinetic="lines" data-ha="Inda muke hakar ma’adinai">Where we mine</h2>
+        </header>
+      </div>
+      <p class="ground__cap"><b>Loading out.</b> Excavator and haul truck on a working face. The mineral blocks are worked and rehabilitated on their own ground.</p>
+    </div>
+
+    <div class="panel">
+      <div class="chapter__inner">
+        <div class="spread">
+          <div class="prose" data-sc-in data-sc-stagger="60">
+            <p class="lede" data-i18n="about_h2"></p>
+            <p class="drop" data-i18n="about_p"></p>
+            <p data-ha="Kowane filin ma’adinai yana da lasisin bincike ko na hakar ma’adinai, kuma an rubuta izinin shiga daga al’ummar wurin kafin a fara aiki. Gonakinmu suna a wasu wurare daban, ana gudanar da su a matsayin sashe mai zaman kansa.">Each mineral block is held under an active exploration or mining licence, and community entry consent is recorded in writing before any work begins. The farmland is on separate sites and is run as its own division, with its own equipment and its own reporting.</p>
+          </div>
+
+          <div class="mediacol">
+            <dl class="marginalia">
+              <dt data-ha="Hedkwata">Headquarters</dt>
+              <dd>Block 155, Room 9/10, Area C, Nyaya, Abuja, FCT</dd>
+              <dt data-ha="Sassa">Divisions</dt>
+              <dd data-ha="Hakar ma’adinai da Noma">Mining and Agriculture, run as separate operational units</dd>
+              <dt data-ha="Lasisi">Licensing</dt>
+              <dd>Dual-sector operational licences under the Corporate Affairs Commission</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · CONFIDENCE: the one paper chapter. Type only, no photograph at all.
+       The stock change IS the device: it reads as the document you were handed
+       after being shown the site. -->
+  <section class="chapter stock--paper" data-sc-act="flow"
+           data-chapter="02" data-chapter-name="From survey line to handover">
+    <div class="chapter__inner">
+      <header class="chapter__head">
+        <span class="chapter__num">Chapter two</span>
+        <h2 class="chapter__title" data-ha="Daga layin bincike zuwa mika wa al’umma">From survey line to handover</h2>
+      </header>
+
+      <div class="spread spread--flip">
+        <div class="prose">
+          <ol class="stages" data-sc-in data-sc-stagger="60">
+            <li><span class="stages__n">01</span><div><h3 data-i18n="svc1_title"></h3><p data-i18n="svc1_p"></p></div></li>
+            <li><span class="stages__n">02</span><div><h3 data-i18n="svc2_title"></h3><p data-i18n="svc2_p"></p></div></li>
+            <li><span class="stages__n">03</span><div><h3 data-i18n="svc3_title"></h3><p data-i18n="svc3_p"></p></div></li>
+            <li><span class="stages__n">04</span><div><h3 data-i18n="svc4_title"></h3><p data-i18n="svc4_p"></p></div></li>
+            <li><span class="stages__n">05</span><div><h3 data-i18n="svc5_title"></h3><p data-i18n="svc5_p"></p></div></li>
+          </ol>
+        </div>
+
+        <div class="mediacol">
+          <dl class="marginalia">
+            <dt data-ha="Matakai">Stages in the lifecycle</dt>
+            <dd><span class="sc-nums" data-sc-count="0 5" data-sc-count-at="0.15 0.5">0</span> <span data-ha="dukkansu ana bin ka’ida daban">each under its own compliance regime, equipment set and reporting cycle</span></dd>
+            <dt data-ha="Tafkin sharar ma’adinai">Tailings dams</dt>
+            <dd data-ha="Babu. Ana amfani da tsarin bushe duk inda ma’adinan ya yarda.">None. Plants run dry-process circuits wherever the mineralogy allows.</dd>
+            <dt data-ha="Takardar shaida">Certification</dt>
+            <dd data-ha="Kowane kaya da aka aika yana dauke da takardar assay daga dakin gwaje-gwaje mai izini.">Every despatched lot carries an assay certificate from an accredited laboratory.</dd>
+          </dl>
+          <p class="plate__hint" style="margin-top:var(--sc-5)">
+            <a class="runlink" href="operations.html" data-ha="Karanta cikakken bayanin matakan aiki">Read the full lifecycle breakdown</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · SILENCE, authored. Type only. The stock has just cut back to dark and
+       the reader does not yet know why. NOT dead scroll. -->
+  <section class="halftitle stock--dark" data-sc-act="flow" data-chapter="Plates" data-chapter-name="Plate section">
+    <div class="halftitle__inner">
+      <p class="kicker" data-ha="Sashen Hotuna">Plate section</p>
+      <h2 data-ha="Ma’adinan">The portfolio</h2>
+      <div class="halftitle__rule" data-sc-reveal="left" data-sc-reveal-at="0.2 0.6"></div>
+      <p data-ha="Hudu daga cikin ma’adinan da ake samarwa yanzu. Sauran suna kan shafin ma’adinai.">Four of the stones currently in production. The rest of the portfolio is listed on the minerals page.</p>
+    </div>
+  </section>
+
+  <!-- 5 · THE PEAK: pan. Largest span on the page by a visible margin. The
+       loupe is the signature move. -->
+  <section class="plate-act stock--dark" data-sc-act="pan" data-sc-span="4.6" data-chapter="Plates" data-chapter-name="The portfolio">
+    <div data-sc-stage>
+      <div class="plates" data-sc-pan="0.04" id="plates">
+
+        <div class="plates__lead">
+          <p class="kicker" data-ha="Teburin Aunawa">The grading desk</p>
+          <h2 data-ha="Dauka ka duba.">Pick one up.</h2>
+          <p data-ha="Ja gilashin duba a kan kowane hoto. Duk abin da ka duba za a rubuta shi a takardar kayanka.">Drag across a plate to inspect it. Anything you look at is written onto your parcel sheet, and the sheet travels with you to the desk.</p>
+        </div>
+
+        <article class="plate">
+          <div class="plate__frame" data-stone="Gold" data-src="assets/stone-gold.webp">
+            <img src="assets/stone-gold.webp" width="900" height="1200" alt="Alluvial gold, rough, photographed as a plate.">
+          </div>
+          <div class="plate__meta">
+            <h3 class="plate__name" data-i18n="min1_name"></h3>
+            <span class="plate__type" data-i18n="min_type_pm"></span>
+          </div>
+          <p class="plate__cap" data-i18n="min1_p"></p>
+          <div class="grade" data-grade>
+            <div><span class="k">Recovery</span><span class="v">Gravity concentration</span></div>
+            <div><span class="k">Mercury</span><span class="v">None in the circuit</span></div>
+            <div><span class="k">Origin</span><span class="v">Licensed block, documented</span></div>
+            <div><span class="k">Grading report</span><span class="v">Per lot, on request</span></div>
+          </div>
+        </article>
+
+        <article class="plate">
+          <div class="plate__frame" data-stone="Sapphire" data-src="assets/stone-sapphire.webp">
+            <img src="assets/stone-sapphire.webp" width="900" height="1200" alt="Blue corundum rough, photographed as a plate.">
+          </div>
+          <div class="plate__meta">
+            <h3 class="plate__name" data-i18n="min2_name"></h3>
+            <span class="plate__type" data-i18n="min_type_gem"></span>
+          </div>
+          <p class="plate__cap" data-i18n="min2_p"></p>
+          <div class="grade" data-grade>
+            <div><span class="k">Source</span><span class="v">Pegmatite and alluvial</span></div>
+            <div><span class="k">Sorting</span><span class="v">By hand, colour and clarity</span></div>
+            <div><span class="k">Supplied as</span><span class="v">Rough parcels</span></div>
+            <div><span class="k">Grading report</span><span class="v">Per lot, on request</span></div>
+          </div>
+        </article>
+
+        <article class="plate">
+          <div class="plate__frame" data-stone="Emerald" data-src="assets/stone-emerald.webp">
+            <img src="assets/stone-emerald.webp" width="900" height="1200" alt="Green beryl rough, photographed as a plate.">
+          </div>
+          <div class="plate__meta">
+            <h3 class="plate__name" data-i18n="min3_name"></h3>
+            <span class="plate__type" data-i18n="min_type_gem"></span>
+          </div>
+          <p class="plate__cap" data-i18n="min3_p"></p>
+          <div class="grade" data-grade>
+            <div><span class="k">Graded on</span><span class="v">Colour saturation</span></div>
+            <div><span class="k">Also on</span><span class="v">Inclusion level</span></div>
+            <div><span class="k">Released as</span><span class="v">Supervised sealed parcels</span></div>
+            <div><span class="k">Grading report</span><span class="v">Per lot, on request</span></div>
+          </div>
+        </article>
+
+        <article class="plate">
+          <div class="plate__frame" data-stone="Lithium" data-src="assets/stone-lithium.webp">
+            <img src="assets/stone-lithium.webp" width="900" height="1200" alt="Spodumene-bearing pegmatite, photographed as a plate.">
+          </div>
+          <div class="plate__meta">
+            <h3 class="plate__name" data-i18n="min4_name"></h3>
+            <span class="plate__type" data-i18n="min_type_ind"></span>
+          </div>
+          <p class="plate__cap" data-i18n="min4_p"></p>
+          <div class="grade" data-grade>
+            <div><span class="k">Host rock</span><span class="v">Pegmatite</span></div>
+            <div><span class="k">Minerals</span><span class="v">Spodumene, lepidolite</span></div>
+            <div><span class="k">Sold as</span><span class="v">Graded concentrate</span></div>
+            <div><span class="k">Assay</span><span class="v">Accredited laboratory</span></div>
+          </div>
+        </article>
+
+        <div class="plates__note">
+          <p data-ha="Wannan jerin yana nuna abin da ake samarwa yanzu. Za a kara wasu duwatsu yayin da aka bude sabbin filaye.">This reflects current production. Further stones and industrial minerals are listed as new blocks come online.</p>
+          <p><a class="runlink" href="minerals.html" data-ha="Duba dukkan ma’adinan da yadda ake saya">See the full portfolio and how to buy</a></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · WARMTH: the block that was a pit, now under cowpea. Opens on what the
+       land feeds, not on the agronomy. -->
+  <section class="chapter has-ground stock--warm" data-sc-act="flow"
+           data-chapter="03" data-chapter-name="The ground, fed">
+    <div class="ground">
+      <img class="ground__img" src="assets/farm-real.webp"
+           srcset="assets/farm-real-m.webp 1000w, assets/farm-real.webp 2000w" sizes="100vw"
+           width="2000" height="1125" alt="Ploughed and ridged farmland ahead of planting on a Danbiba farm site." loading="lazy">
+      <div class="ground__scrim" aria-hidden="true"></div>
+      <div class="ground__title">
+        <header class="chapter__head">
+          <span class="chapter__num">Chapter three</span>
+          <h2 class="chapter__title" data-sc-cue="0.06 0.96 0.14 0.06" data-sc-kinetic="lines" data-ha="Inda muke noma">Where we farm</h2>
+        </header>
+      </div>
+      <p class="ground__cap"><b>Prepared ground.</b> Ridged and ready for planting. The farm sites are separate from the mineral blocks.</p>
+    </div>
+
+    <div class="panel">
+      <div class="chapter__inner">
+        <div class="spread">
+          <div class="prose" data-sc-in data-sc-stagger="60">
+            <p class="lede" data-ha="Rice, masara, dawa, gero, wake, waken soya, gyada, rogo, kaji da kifi. Ana noma su a gonakinmu, a filaye daban da na hakar ma’adinai.">Rice, maize, sorghum, millet, cowpea, soya, groundnut, cassava, broiler chickens and pond-raised catfish, grown on Danbiba farmland. The farm is its own operation on its own ground, worked by its own fleet.</p>
+            <p class="drop" data-i18n="disc6_p"></p>
+            <p data-ha="Ana jujjuya shuka tsakanin wake da hatsi domin kiyaye lafiyar kasa, ana kuma auna kasar kowace kaka.">Rotation runs legumes against grain to hold soil condition, and the soil is sampled each season. Separately, and on the mining side, worked-out blocks are backfilled and rehabilitated under their own conservation plan.</p>
+          </div>
+
+          <div class="mediacol">
+            <dl class="marginalia">
+              <dt data-ha="Nau’in amfanin gona">Produce lines</dt>
+              <dd><span class="sc-nums" data-sc-count="0 10" data-sc-count-at="0.15 0.5">0</span> <span data-ha="ana sayarwa da yawa">available for bulk procurement</span></dd>
+              <dt data-ha="Jerin shuka">Rotation</dt>
+              <dd data-ha="Ana jujjuya wake da hatsi.">Legumes against grain, sampled each season</dd>
+            </dl>
+            <p class="plate__hint" style="margin-top:var(--sc-5)">
+              <a class="runlink" href="produce.html" data-ha="Duba kayan gona da farashin sayarwa da yawa">See the farm products and bulk pricing</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · REGARD: the only people on the page, at the smallest type. -->
+  <section class="chapter has-ground stock--cool" data-sc-act="flow"
+           data-chapter="04" data-chapter-name="Held in trust">
+    <div class="ground">
+      <img class="ground__img" src="assets/trust.webp"
+           srcset="assets/trust-m.webp 1000w, assets/trust.webp 2000w" sizes="100vw"
+           width="2000" height="1112" alt="A community access road with a hand-pump borehole beside it, people walking in the distance." loading="lazy">
+      <div class="ground__scrim" aria-hidden="true"></div>
+      <div class="ground__title">
+        <header class="chapter__head">
+          <span class="chapter__num">Chapter four</span>
+          <h2 class="chapter__title" data-sc-cue="0.06 0.96 0.14 0.06" data-sc-kinetic="lines" data-ha="Amana">Held in trust</h2>
+        </header>
+      </div>
+      <p class="ground__cap"><b>Access road and borehole.</b> Built under a negotiated community development agreement.</p>
+    </div>
+
+    <div class="panel">
+      <div class="chapter__inner">
+        <div class="spread spread--flip">
+          <div class="prose" data-sc-in data-sc-stagger="60">
+            <p class="lede" data-ha="Al’ummar wurin ce ke da kasar. An gina shirin bisa wannan gaskiya.">The host community holds the land. The programme is built around that fact.</p>
+            <p data-i18n="ops5_what"></p>
+            <p data-i18n="ops5_safe"></p>
+          </div>
+
+          <div class="mediacol">
+            <dl class="marginalia">
+              <dt data-ha="Haduwa kowane wata">Liaison</dt>
+              <dd data-ha="Kowace al’umma tana zaben kwamiti da ke haduwa da shugabannin wurin a kowane wata.">Each host community elects a committee that meets site management on a fixed monthly schedule</dd>
+              <dt data-ha="Korafi">Grievances</dt>
+              <dd data-ha="Ana rubuta kowane korafi da lambar bibiya da lokacin amsa.">Logged with a reference number and a response deadline</dd>
+            </dl>
+          </div>
+        </div>
+
+        <nav class="readon" aria-label="Continue reading">
+          <a href="operations.html"><span class="k" data-ha="Cikakken bayani">Chapter, in full</span><span class="t" data-i18n="ops_hero_h1"></span></a>
+          <a href="governance.html"><span class="k" data-ha="Bayyanawa">Disclosure</span><span class="t" data-i18n="disclosure_title"></span></a>
+          <a href="minerals.html"><span class="k" data-ha="Ma’adinai">Portfolio</span><span class="t" data-i18n="min_hero_p"></span></a>
+          <a href="produce.html"><span class="k" data-ha="Noma">Agriculture</span><span class="t" data-i18n="products_h2"></span></a>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · RESOLVE: pin, cues that HOLD so the last screen still has content. -->
+  <section class="colophon stock--deepest" id="desk" data-sc-act="pin" data-sc-span="1.2"
+           data-chapter="Colophon" data-chapter-name="The desks">
+    <div data-sc-stage>
+      <div class="colophon__inner">
+        <h2 data-sc-cue="0 1 0 0" data-ha="Yi magana da sashen da ya shafe ka.">Speak to the desk that handles your side.</h2>
+
+        <div class="colophon__cols" data-sc-cue="0.05">
+          <div>
+            <p id="desk-note" data-ha="Girman kaya, rahoton aunawa da takardun fitarwa ana bayar da su ga masu saye da aka tabbatar. Idan ka duba wasu duwatsu a sama, an rubuta su a takardar kayanka.">Parcel sizes, grading reports and export documentation are shared with verified buyers on request. Anything you inspected in the plate section has been written onto your parcel sheet.</p>
+            <p>
+              <a class="runlink" id="minerals-desk" href="mailto:danbiba2008@outlook.com?subject=Minerals%20desk%20enquiry" data-ha="Tuntubi sashen ma’adinai">Contact the minerals desk</a>
+            </p>
+            <p>
+              <a class="runlink" href="mailto:danbiba2008@outlook.com?subject=Produce%20offtake%20enquiry" data-ha="Tuntubi sashen kayan gona">Contact the produce desk</a>
+            </p>
+          </div>
+          <div>
+            <dl class="marginalia">
+              <dt data-i18n="footer_hq_label"></dt>
+              <dd>Block 155, Room 9/10, Area C, Nyaya, Abuja, FCT, Nigeria</dd>
+              <dt data-i18n="footer_email_label"></dt>
+              <dd><a class="runlink" href="mailto:danbiba2008@outlook.com">danbiba2008@outlook.com</a></dd>
+            </dl>
+          </div>
+        </div>
+
+        <p class="colophon__tagline" data-sc-cue="0.05" data-i18n="footer_tagline"></p>
+        <footer class="colophon__foot" data-sc-cue="0.05">
+          <span data-i18n="footer_copyright"></span>
+          <a href="minerals.html" data-i18n="nav_minerals"></a>
+          <a href="produce.html" data-i18n="nav_products"></a>
+          <a href="fleet.html" data-i18n="nav_gallery"></a>
+          <a href="operations.html" data-i18n="nav_services"></a>
+          <a href="governance.html" data-ha="Bayyanawa">Disclosure</a>
+          <a href="contact.html" data-i18n="nav_contact"></a>
+        </footer>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="i18n.js"></script>
+<script src="scrollcraft.js"></script>
+<script src="danbiba.js"></script>
+<script src="interactions.js"></script>
+<script>ScrollCraft.mount(document.body);</script>
+
+<script type="importmap">
+{ "imports": {
+  "three": "./vendor/three/three.module.min.js",
+  "three/addons/controls/OrbitControls.js": "./vendor/three/OrbitControls.js"
+} }
+</script>
+<script type="module" src="hero-farm.js"></script>
+</body>
+</html>

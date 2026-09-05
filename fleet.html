@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Operational fleet &mdash; Danbiba Farms &amp; Mining Co. Ltd</title>
+<meta name="description" content="The machines Danbiba runs, by division: farming, mining and processing, and haulage. Photographed on site.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230F0D0B'/><rect x='6' y='6' width='20' height='20' fill='%23E2694E'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="scrollcraft.css">
+<link rel="stylesheet" href="danbiba.css">
+</head>
+<body>
+
+<span data-sc-progress></span>
+<div class="sc-grain" aria-hidden="true"></div>
+
+<nav class="folio" aria-label="Site navigation">
+  <a class="folio__mark" href="index.html">Danbiba<span>Farms &amp; Mining Co. Ltd</span></a>
+
+  <span class="folio__mobile-here" data-folio-title>Fleet</span>
+
+  <ul class="folio__nav">
+      <li><a href="index.html" data-i18n="nav_home"></a></li>
+      <li><a href="minerals.html" data-i18n="nav_minerals"></a></li>
+      <li><a href="produce.html" data-i18n="nav_products"></a></li>
+      <li><a href="fleet.html" aria-current="page" data-i18n="nav_gallery"></a></li>
+      <li><a href="operations.html" data-i18n="nav_services"></a></li>
+      <li><a href="governance.html" data-ha="Bayyanawa">Disclosure</a></li>
+      <li><a href="contact.html" data-i18n="nav_contact"></a></li>
+  </ul>
+
+  <div class="folio__lang" role="group" aria-label="Language">
+    <button type="button" id="lang-en" aria-pressed="true" data-lang="en">EN</button>
+    <span class="folio__sep" aria-hidden="true">/</span>
+    <button type="button" id="lang-ha" aria-pressed="false" data-lang="ha">HA</button>
+  </div>
+
+  <aside class="parcel" id="parcel" hidden aria-live="polite">
+    <p class="parcel__h" data-ha="Takardar Kaya">Your parcel sheet</p>
+    <ul class="parcel__list" id="parcel-list"></ul>
+  </aside>
+
+  <div class="folio__here">
+    <span class="folio__num" data-folio-num>Fleet</span>
+    <span class="folio__title" data-folio-title-desktop>Fleet</span>
+  </div>
+</nav>
+
+<main class="page" id="top">
+
+  <section class="titlepage stock--bone" data-sc-act="flow" data-chapter="Fleet" data-chapter-name="Operational fleet">
+    <div class="titlepage__inner sc-stack" data-sc-in data-sc-stagger="70">
+      <p class="kicker" data-i18n="gallery_eyebrow"></p>
+      <h1 class="masthead" data-i18n="gallery_h2"></h1>
+      <p class="standfirst" data-ha="Injunan da Danbiba ke aiki da su, an raba su bisa sassa. An dauki hotunan a wuraren aiki.">The machines Danbiba actually runs, by division. Photographed on site rather than sourced from a catalogue.</p>
+      <p class="byline">
+        <span data-i18n="g1_badge"></span>
+        <span data-i18n="g2_badge"></span>
+        <span data-i18n="g3_badge"></span>
+      </p>
+    </div>
+  </section>
+
+  <section class="chapter stock--bone" data-sc-act="flow" data-chapter="Fleet" data-chapter-name="On-ground assets">
+    <div class="chapter__inner">
+      <header class="chapter__head">
+        <span class="chapter__num" data-ha="Kadarorin wurin aiki">On-ground assets</span>
+        <h2 class="chapter__title" data-ha="Injuna 16">Sixteen machines</h2>
+      </header>
+
+      <div class="fleet-tabs" role="group" aria-label="Filter by division">
+        <button type="button" data-filter="all" aria-pressed="true" data-i18n="tab_all"></button>
+        <button type="button" data-filter="farming" aria-pressed="false" data-i18n="tab_farming"></button>
+        <button type="button" data-filter="mining" aria-pressed="false" data-i18n="tab_mining"></button>
+        <button type="button" data-filter="haulage" aria-pressed="false" data-i18n="tab_haulage"></button>
+      </div>
+
+      <ul class="fleet-grid" id="fleet-grid" data-sc-in data-sc-stagger="45">
+        <li class="fleet-item" data-division="farming">
+          <div class="fleet-item__crop">
+            <img src="assets/fleet-tractor.webp" width="1200" height="1600" alt="Utility tractor photographed on a Danbiba site." loading="lazy">
+          </div>
+          <h3 class="fleet-item__name">Utility tractor</h3>
+          <dl class="schema schema--tight">
+            <dt>Division</dt><dd data-i18n="g1_badge"></dd>
+            <dt>Use</dt><dd>Primary tillage and implement haulage across the farm blocks.</dd>
+          </dl>
+        </li>
+        <li class="fleet-item" data-division="farming">
+          <div class="fleet-item__crop">
+            <img src="assets/fleet-plough.webp" width="1200" height="1600" alt="Tractor and disc harrow photographed on a Danbiba site." loading="lazy">
+          </div>
+          <h3 class="fleet-item__name">Tractor and disc harrow</h3>
+          <dl class="schema schema--tight">
+            <dt>Division</dt><dd data-i18n="g1_badge"></dd>
+            <dt>Use</dt><dd>Breaking and levelling ground ahead of planting.</dd>
+          </dl>
+        </li>
+        <li class="fleet-item" data-division="farming">
+          <div class="fleet-item__crop">
+            <img src="assets/fleet-planter.webp" width="1200" height="1600" alt="Multi-row seed planter photographed on a Danbiba site." loading="lazy">
+          </div>
+          <h3 class="fleet-item__name">Multi-row seed planter</h3>
+          <dl class="schema schema--tight">
+            <dt>Division</dt><dd data-i18n="g1_badge"></dd>
+            <dt>Use</dt><dd>Row planting at spacing, across multi-hectare blocks.</dd>
+          </dl>
+        </li>
+        <li class="fleet-item" data-division="farming">
+          <div class="fleet-item__crop">
+            <img src="assets/fleet-sprayer.webp" width="1200" height="1600" alt="Trailed boom sprayer photographed on a Danbiba site." loading="lazy">
+          </div>
+          <h3 class="fleet-item__name">Trailed boom sprayer</h3>
+          <dl class="schema schema--tight">
+            <dt>Division</dt><dd data-i18n="g1_badge"></dd>
+            <dt>Use</dt><dd>Crop protection across standing rows.</dd>
+          </dl>
+        </li>
+        <li class="fleet-item" data-division="farming">
+          <div class="fleet-item__crop">
+            <img src="assets/fleet-header.webp" width="1200" height="1600" alt="Harvester header photographed on a Danbiba site." loading="lazy">
+          </div>
+          <h3 class="fleet-item__name">Harvester header</h3>
+          <dl class="schema schema--tight">
+            <dt>Division</dt><dd data-i18n="g1_badge"></dd>
+            <dt>Use</dt><dd>Cutting and gathering at harvest.</dd>
+          </dl>
+        </li>
+        <li class="fleet-item" data-division="farming">
+          <div class="fleet-item__crop">
+            <img src="assets/fleet-mixer.webp" width="1200" height="1600" alt="Feed mixer wagon photographed on a Danbiba site." loading="lazy">
+          </div>
+          <h3 class="fleet-item__name">Feed mixer wagon</h3>
+          <dl class="schema schema--tight">
+            <dt>Division</dt><dd data-i18n="g1_badge"></dd>
+            <dt>Use</dt><dd>Mixing and distributing livestock feed.</dd>
+          </dl>
+        </li>
+        <li class="fleet-item" data-division="mining">
+          <div class="fleet-item__crop">
+            <img src="assets/fleet-excavator.webp" width="1200" height="1600" alt="Crawler excavator photographed on a Danbiba site." loading="lazy">
+          </div>
+          <h3 class="fleet-item__name">Crawler excavator</h3>
+          <dl class="schema schema--tight">
+            <dt>Division</dt><dd data-i18n="g2_badge"></dd>
+            <dt>Use</dt><dd>Stripping and loading at the working face.</dd>
+          </dl>
+        </li>
+        <li class="fleet-item" data-division="mining">
+          <div class="fleet-item__crop">
+            <img src="assets/fleet-loader.webp" width="1200" height="1600" alt="Wheel loader photographed on a Danbiba site." loading="lazy">
+          </div>
+          <h3 class="fleet-item__name">Wheel loader</h3>
+          <dl class="schema schema--tight">
+            <dt>Division</dt><dd data-i18n="g2_badge"></dd>
+            <dt>Use</dt><dd>Moving stockpiled material and loading haulage.</dd>
+          </dl>
+        </li>
+        <li class="fleet-item" data-division="mining">
+          <div class="fleet-item__crop">
+            <img src="assets/fleet-screen.webp" width="1200" height="1600" alt="Rotary screen drum photographed on a Danbiba site." loading="lazy">
+          </div>
+          <h3 class="fleet-item__name">Rotary screen drum</h3>
+          <dl class="schema schema--tight">
+            <dt>Division</dt><dd data-i18n="g2_badge"></dd>
+            <dt>Use</dt><dd>Screening run-of-mine material by size fraction.</dd>
+          </dl>
+        </li>
+        <li class="fleet-item" data-division="mining">
+          <div class="fleet-item__crop">
+            <img src="assets/fleet-screen2.webp" width="1200" height="1600" alt="Rotary screen drum photographed on a Danbiba site." loading="lazy">
+          </div>
+          <h3 class="fleet-item__name">Rotary screen drum</h3>
+          <dl class="schema schema--tight">
+            <dt>Division</dt><dd data-i18n="g2_badge"></dd>
+            <dt>Use</dt><dd>Second screening unit, held on site as spare capacity.</dd>
+          </dl>
+        </li>
+        <li class="fleet-item" data-division="mining">
+          <div class="fleet-item__crop">
+            <img src="assets/fleet-conveyor.webp" width="1200" height="1600" alt="Belt conveyor and hopper photographed on a Danbiba site." loading="lazy">
+          </div>
+          <h3 class="fleet-item__name">Belt conveyor and hopper</h3>
+          <dl class="schema schema--tight">
+            <dt>Division</dt><dd data-i18n="g2_badge"></dd>
+            <dt>Use</dt><dd>Feeding screened material through the plant.</dd>
+          </dl>
+        </li>
+        <li class="fleet-item" data-division="mining">
+          <div class="fleet-item__crop">
+            <img src="assets/fleet-sorter.webp" width="1200" height="1600" alt="Sorting and grading unit photographed on a Danbiba site." loading="lazy">
+          </div>
+          <h3 class="fleet-item__name">Sorting and grading unit</h3>
+          <dl class="schema schema--tight">
+            <dt>Division</dt><dd data-i18n="g2_badge"></dd>
+            <dt>Use</dt><dd>Hand-fed sorting of graded material.</dd>
+          </dl>
+        </li>
+        <li class="fleet-item" data-division="mining">
+          <div class="fleet-item__crop">
+            <img src="assets/fleet-mill.webp" width="1200" height="1600" alt="Milling line photographed on a Danbiba site." loading="lazy">
+          </div>
+          <h3 class="fleet-item__name">Milling line</h3>
+          <dl class="schema schema--tight">
+            <dt>Division</dt><dd data-i18n="g2_badge"></dd>
+            <dt>Use</dt><dd>Bagged output from the processing shed.</dd>
+          </dl>
+        </li>
+        <li class="fleet-item" data-division="haulage">
+          <div class="fleet-item__crop">
+            <img src="assets/fleet-daf.webp" width="1200" height="1600" alt="DAF tipper photographed on a Danbiba site." loading="lazy">
+          </div>
+          <h3 class="fleet-item__name">DAF tipper</h3>
+          <dl class="schema schema--tight">
+            <dt>Division</dt><dd data-i18n="g3_badge"></dd>
+            <dt>Use</dt><dd>Cross-country transit, liveried to Danbiba Farms Ltd.</dd>
+          </dl>
+        </li>
+        <li class="fleet-item" data-division="haulage">
+          <div class="fleet-item__crop">
+            <img src="assets/fleet-kanda.webp" width="1200" height="1600" alt="Articulated tractor unit photographed on a Danbiba site." loading="lazy">
+          </div>
+          <h3 class="fleet-item__name">Articulated tractor unit</h3>
+          <dl class="schema schema--tight">
+            <dt>Division</dt><dd data-i18n="g3_badge"></dd>
+            <dt>Use</dt><dd>Long-haul transit, liveried to Danbiba Farms Ltd.</dd>
+          </dl>
+        </li>
+        <li class="fleet-item" data-division="haulage">
+          <div class="fleet-item__crop">
+            <img src="assets/fleet-iveco.webp" width="1200" height="1600" alt="Iveco tipper photographed on a Danbiba site." loading="lazy">
+          </div>
+          <h3 class="fleet-item__name">Iveco tipper</h3>
+          <dl class="schema schema--tight">
+            <dt>Division</dt><dd data-i18n="g3_badge"></dd>
+            <dt>Use</dt><dd>Site and regional haulage.</dd>
+          </dl>
+        </li>
+      </ul>
+      <p class="fleet-empty" id="fleet-empty" hidden data-ha="Babu injina a wannan sashe.">No machines listed in that division.</p>
+    </div>
+  </section>
+
+  <section class="colophon stock--deepest" id="desk" data-sc-act="pin" data-sc-span="1.2"
+           data-chapter="Colophon" data-chapter-name="The desks">
+    <div data-sc-stage>
+      <div class="colophon__inner">
+        <h2 data-sc-cue="0 1 0 0" data-ha="Kayan aiki ne ke tabbatar da isar da kaya.">Delivery is a question of equipment.</h2>
+        <div class="colophon__cols" data-sc-cue="0.05">
+          <div>
+            <p data-ha="Idan girman odarka ya dogara da adadin motoci ko injina, sashen zai tattauna abin da ake da shi da lokutan da suka dace.">If your volume depends on what we can move and when, the desk will talk through fleet availability and scheduling against your dates.</p>
+            <p><a class="runlink" href="mailto:danbiba2008@outlook.com?subject=Fleet%20and%20logistics%20enquiry" data-ha="Tuntubi sashen sufuri">Contact the logistics desk</a></p>
+          </div>
+          <div>
+            <dl class="marginalia">
+              <dt data-i18n="footer_hq_label"></dt>
+              <dd>Block 155, Room 9/10, Area C, Nyaya, Abuja, FCT, Nigeria</dd>
+              <dt data-i18n="footer_email_label"></dt>
+              <dd><a class="runlink" href="mailto:danbiba2008@outlook.com">danbiba2008@outlook.com</a></dd>
+            </dl>
+          </div>
+        </div>
+        <p class="colophon__tagline" data-sc-cue="0.05" data-i18n="footer_tagline"></p>
+        <footer class="colophon__foot" data-sc-cue="0.05">
+          <span data-i18n="footer_copyright"></span>
+          <a href="minerals.html" data-i18n="nav_minerals"></a>
+          <a href="produce.html" data-i18n="nav_products"></a>
+          <a href="fleet.html" data-i18n="nav_gallery"></a>
+          <a href="operations.html" data-i18n="nav_services"></a>
+          <a href="governance.html" data-ha="Bayyanawa">Disclosure</a>
+          <a href="contact.html" data-i18n="nav_contact"></a>
+        </footer>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="i18n.js"></script>
+<script src="scrollcraft.js"></script>
+<script src="danbiba.js"></script>
+<script src="interactions.js"></script>
+<script>ScrollCraft.mount(document.body);</script>
+</body>
+</html>

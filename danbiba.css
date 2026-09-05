@@ -1,0 +1,1413 @@
+/* ===========================================================================
+   Danbiba Farms & Mining. Chaptered editorial.
+   The rebrand is the token block. Everything below is this page's own markup;
+   nothing here restyles .sc-stage, .sc-copy or any [data-sc-*] selector.
+   =========================================================================== */
+
+:root {
+  /* Dark stock is the page default. ONE chapter cuts to paper, because without
+     that contrast the dark reads as monotony rather than as a decision. */
+  --sc-canvas:     #0F0D0B;
+  --sc-surface:    #191512;
+  --sc-ink:        #F4EFE6;
+  --sc-ink-soft:   #A99C8C;
+  --sc-accent:     #E2694E;   /* laterite, lifted to clear 4.5:1 on dark ground */
+  --sc-accent-ink: #0F0D0B;
+
+  --sc-font-display: "Archivo", system-ui, sans-serif;
+  --sc-font-text:    "Newsreader", Georgia, serif;
+
+  --sc-shadow-color: 30 25% 12%;
+  --sc-r-sm: 2px; --sc-r-md: 3px; --sc-r-lg: 4px;  /* print corners, held flat */
+
+  --folio-w: clamp(9rem, 13vw, 14.5rem);
+  --rule: 1px solid color-mix(in oklab, var(--sc-ink) 20%, transparent);
+}
+
+/* Light text on dark needs more leading, more tracking, one step more weight.
+   Restating `color` is mandatory: it inherits as a computed value, so a subtree
+   that only redefines --sc-ink renders in the body's ink and fails silently. */
+.stock--dark {
+  --sc-canvas:     #12100E;
+  --sc-surface:    #1B1714;
+  --sc-ink:        #F2EDE4;
+  --sc-ink-soft:   #A79C8D;
+  --sc-accent:     #E2694E;   /* one hue, second lightness, keyed to the ground */
+  --sc-accent-ink: #12100E;
+  color: var(--sc-ink);
+  --sc-leading-body: 1.68;
+}
+/* The grounds are now dark by default, so redefining these three flips every
+   page at once. They still cut hard rather than interpolating. */
+.stock--bone { --sc-canvas: #0F0D0B; color: var(--sc-ink); }
+.stock--cool { --sc-canvas: #141110; color: var(--sc-ink); }
+.stock--warm { --sc-canvas: #17120F; color: var(--sc-ink); }
+
+/* The single paper chapter. Restating `color` is mandatory here: it inherits as
+   a computed value, so a subtree that only redefines --sc-ink keeps the body's
+   light ink and renders bone-on-bone. */
+.stock--paper {
+  --sc-canvas: #EDEAE3;
+  --sc-surface: #E1DDD3;
+  --sc-ink: #171512;
+  --sc-ink-soft: #5C564C;
+  --sc-accent: #A8331E;       /* one hue, second lightness, keyed to the ground */
+  --sc-accent-ink: #FBF7F0;
+  --sc-leading-body: 1.62;
+  color: var(--sc-ink);
+}
+.stock--deepest {
+  --sc-canvas: #080706; --sc-surface: #141110;
+  --sc-ink: #F2EDE4; --sc-ink-soft: #A79C8D;
+  --sc-accent: #E2694E; --sc-accent-ink: #0E0C0A;
+  color: var(--sc-ink);
+}
+
+/* Chapters cut, they do not interpolate. Each section paints its own ground. */
+.chapter, .titlepage, .halftitle, .colophon, .plate-act {
+  background: var(--sc-canvas);
+  position: relative;
+}
+
+body {
+  background: var(--sc-canvas);
+  color: var(--sc-ink);
+  font-family: var(--sc-font-text);
+  font-size: var(--sc-t-base);
+  line-height: var(--sc-leading-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ------------------------------------------------------------------ folio --
+   The chrome is a folio in the margin, not a bar. It carries where you are,
+   the language, and the parcel sheet once it has anything in it. */
+.folio {
+  position: fixed; z-index: 40;
+  top: 0; left: 0; bottom: 0;
+  width: var(--folio-w);
+  padding: var(--sc-6) var(--sc-4) var(--sc-5) var(--sc-5);
+  display: flex; flex-direction: column; gap: var(--sc-5);
+  font-family: var(--sc-font-display);
+  color: var(--sc-ink);
+  mix-blend-mode: normal;
+  pointer-events: none;
+}
+.folio > * { pointer-events: auto; }
+.folio__mark {
+  font-size: var(--sc-t-sm); font-weight: 700;
+  letter-spacing: var(--sc-track-wide); text-transform: uppercase;
+  line-height: 1.3; text-decoration: none; color: inherit;
+}
+.folio__mark span { display: block; font-weight: 500; font-size: var(--sc-t-xs);
+  letter-spacing: 0.06em; color: var(--sc-ink-soft); text-transform: none; }
+.folio__here { margin-top: auto; border-top: var(--rule); padding-top: var(--sc-3); }
+.folio__num {
+  display: block; font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide);
+  text-transform: uppercase; color: var(--sc-ink-soft);
+}
+.folio__title {
+  display: block; font-size: var(--sc-t-sm); font-weight: 600;
+  letter-spacing: var(--sc-track-snug); margin-top: var(--sc-1);
+  transition: opacity 180ms var(--sc-ease-out);
+}
+.folio__lang { display: flex; gap: var(--sc-1); align-items: center;
+  font-size: var(--sc-t-xs); letter-spacing: 0.08em; }
+.folio__lang button {
+  font: inherit; letter-spacing: inherit; background: none; border: 0;
+  color: var(--sc-ink-soft); cursor: pointer; padding: 10px 6px;
+  text-transform: uppercase; transition: color 140ms var(--sc-ease-out);
+}
+.folio__lang button[aria-pressed="true"] { color: var(--sc-ink); font-weight: 700; }
+.folio__lang button:hover { color: var(--sc-accent); }
+.folio__sep { color: var(--sc-ink-soft); opacity: .5; }
+
+/* the parcel sheet: empty until the reader inspects a stone */
+.parcel { border-top: var(--rule); padding-top: var(--sc-3); }
+.parcel[hidden] { display: none; }
+.parcel__h { font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide);
+  text-transform: uppercase; color: var(--sc-ink-soft); margin-bottom: var(--sc-2); }
+.parcel__list { list-style: none; margin: 0; padding: 0;
+  font-size: var(--sc-t-xs); font-family: var(--sc-font-display); }
+.parcel__list li { display: flex; justify-content: space-between; gap: var(--sc-2);
+  padding: 3px 0; border-bottom: 1px dotted color-mix(in oklab, var(--sc-ink) 22%, transparent);
+  animation: stamp 320ms var(--sc-ease-out) both; }
+.parcel__list li b { font-weight: 600; }
+.parcel__list li span { color: var(--sc-ink-soft); font-variant-numeric: tabular-nums; }
+@keyframes stamp { from { opacity: 0; transform: translateY(-4px) scale(0.97); } }
+
+/* The folio floats OVER the page, it does not indent it. Padding on .page would
+   stop each chapter's ground reaching the left edge, and a bone stripe beside a
+   dark chapter reads as a layout bug. Inset the inner wrappers instead. */
+.page { padding-left: 0; }
+@media (min-width: 1080px) {
+  .titlepage__inner, .chapter__inner, .halftitle__inner, .colophon__inner, .plates {
+    padding-left: calc(var(--folio-w) + var(--sc-gutter));
+  }
+}
+
+/* The folio is transparent and takes its ink from whatever stock is behind it.
+   Dark is now the default, so the class that exists is the light one. */
+.folio--on-paper {
+  --sc-canvas: #EDEAE3;   /* the mobile strip tints from this */
+  --sc-surface: #E1DDD3;
+  --sc-ink: #171512; --sc-ink-soft: #5C564C; --sc-accent: #A8331E;
+  color: var(--sc-ink);
+}
+.folio__mark, .folio__num, .folio__title, .folio__lang button, .parcel__h {
+  transition: color 240ms var(--sc-ease-out);
+}
+.folio, .folio__here, .parcel { transition: border-color 240ms var(--sc-ease-out); }
+
+@media (max-width: 1079px) {
+  .folio {
+    inset: 0 0 auto 0; width: auto; bottom: auto;
+    flex-direction: row; align-items: center; gap: var(--sc-4);
+    padding: 0 var(--sc-gutter); height: 46px;
+    background: color-mix(in oklab, var(--sc-canvas) 92%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: var(--rule);
+  }
+  .folio__mark span, .folio__here { display: none; }
+  .folio__mobile-here { font-size: var(--sc-t-xs); color: var(--sc-ink-soft);
+    letter-spacing: 0.06em; white-space: nowrap; overflow: hidden;
+    text-overflow: ellipsis; }
+  .folio__lang { margin-left: auto; }
+  .parcel { position: fixed; top: 46px; right: 0; left: auto;
+    width: min(19rem, 82vw); background: var(--sc-surface);
+    border: var(--rule); border-top: 0; padding: var(--sc-3) var(--sc-4);
+    box-shadow: var(--sc-e2); }
+  .page { padding-left: 0; padding-top: 46px; }
+}
+@media (min-width: 1080px) { .folio__mobile-here { display: none; } }
+
+/* ------------------------------------------------------------- title page --
+   A feature opens on type. No media above the fold, no centred copy. */
+.titlepage { min-height: 100svh; display: flex; align-items: center;
+  padding-block: var(--sc-9); }
+.titlepage__inner { width: 100%; max-width: 74rem;
+  padding-inline: var(--sc-gutter) var(--sc-6); }
+.kicker {
+  font-family: var(--sc-font-display); font-size: var(--sc-t-xs);
+  letter-spacing: var(--sc-track-wide); text-transform: uppercase;
+  color: var(--sc-accent); font-weight: 600;
+}
+.masthead {
+  font-family: var(--sc-font-display); font-weight: 800;
+  font-size: var(--sc-t-4xl); line-height: 0.92;
+  letter-spacing: var(--sc-track-tight); text-wrap: balance;
+  margin: var(--sc-5) 0 0; max-width: 17ch;  /* holds the line inside the scrim column */
+}
+.masthead em { font-style: italic; font-weight: 700; }
+.standfirst {
+  margin-top: var(--sc-5); max-width: 46ch;
+  font-size: var(--sc-t-lg); line-height: 1.5; color: var(--sc-ink-soft);
+  text-wrap: pretty;
+}
+.byline { margin-top: var(--sc-7); padding-top: var(--sc-3); border-top: var(--rule);
+  display: flex; flex-wrap: wrap; gap: var(--sc-2) var(--sc-6);
+  font-family: var(--sc-font-display); font-size: var(--sc-t-xs);
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--sc-ink-soft); }
+
+@media (max-width: 700px) {
+  /* the portrait crop of the type. --sc-t-4xl floors at a desktop 3.4rem and
+     wraps a masthead to six lines on a 390px screen. */
+  .masthead { font-size: var(--sc-t-2xl); line-height: 0.98; }
+  .standfirst { font-size: var(--sc-t-base); }
+}
+
+/* ---------------------------------------------------------------- chapter -- */
+.chapter { padding-block: var(--sc-section); }
+.chapter__inner { max-width: var(--sc-maxw); margin-inline: auto;
+  padding-inline: var(--sc-gutter); }
+.chapter__head { display: flex; align-items: baseline; gap: var(--sc-4);
+  border-top: 2px solid var(--sc-ink); padding-top: var(--sc-3);
+  margin-bottom: var(--sc-7); }
+.chapter__num { font-family: var(--sc-font-display); font-weight: 700;
+  font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide);
+  text-transform: uppercase; color: var(--sc-accent); white-space: nowrap; }
+.chapter__title { font-family: var(--sc-font-display); font-weight: 700;
+  font-size: var(--sc-t-xl); letter-spacing: var(--sc-track-snug);
+  line-height: 1.05; margin: 0; text-wrap: balance; }
+
+/* the feature spread: prose column plus a margin column for labels */
+.spread { display: grid; gap: var(--sc-7) var(--sc-8);
+  grid-template-columns: minmax(0, 1fr); align-items: start; }
+@media (min-width: 900px) {
+  .spread { grid-template-columns: minmax(0, 1.55fr) minmax(14rem, 0.85fr); }
+  .spread--flip > .prose { order: 2; }
+}
+.prose { max-width: var(--sc-measure); }
+.prose > p { margin: 0 0 var(--sc-4); text-wrap: pretty; }
+.prose > p:last-child { margin-bottom: 0; }
+.prose .drop::first-letter {
+  float: left; font-family: var(--sc-font-display); font-weight: 800;
+  font-size: 3.4em; line-height: 0.82; padding: 0.06em 0.09em 0 0;
+  color: var(--sc-accent);
+}
+.lede { font-size: var(--sc-t-lg); line-height: 1.45; color: var(--sc-ink);
+  margin-bottom: var(--sc-5); text-wrap: pretty; }
+
+/* margin column: museum labels, fact not pitch */
+.marginalia { border-top: var(--rule); padding-top: var(--sc-3);
+  font-family: var(--sc-font-display); }
+.marginalia dt { font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide);
+  text-transform: uppercase; color: var(--sc-ink-soft); margin-top: var(--sc-4); }
+.marginalia dt:first-of-type { margin-top: 0; }
+.marginalia dd { margin: var(--sc-1) 0 0; font-size: var(--sc-t-sm);
+  line-height: 1.4; }
+.marginalia .sc-nums { font-weight: 700; font-size: var(--sc-t-lg); }
+
+/* media sits in its own column with a caption. It never bleeds under type. */
+.plate-fig { margin: 0; }
+.plate-fig img { display: block; width: 100%; height: auto;
+  background: var(--sc-surface); }
+.plate-fig figcaption { margin-top: var(--sc-3); padding-top: var(--sc-2);
+  border-top: var(--rule); font-family: var(--sc-font-display);
+  font-size: var(--sc-t-xs); line-height: 1.45; color: var(--sc-ink-soft);
+  max-width: 42ch; }
+.plate-fig figcaption b { color: var(--sc-ink); font-weight: 600; }
+.mediacol { overflow: clip; }
+
+/* the five stages, as a numbered run of prose against a rule */
+.stages { list-style: none; margin: 0; padding: 0; }
+.stages > li { border-top: var(--rule); padding: var(--sc-5) 0;
+  display: grid; gap: var(--sc-2) var(--sc-6);
+  grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 760px) {
+  .stages > li { grid-template-columns: 4.5rem minmax(0, 1fr); }
+}
+.stages__n { font-family: var(--sc-font-display); font-weight: 700;
+  font-size: var(--sc-t-sm); color: var(--sc-accent);
+  letter-spacing: var(--sc-track-wide); font-variant-numeric: tabular-nums; }
+.stages h3 { font-family: var(--sc-font-display); font-weight: 700;
+  font-size: var(--sc-t-lg); margin: 0 0 var(--sc-2);
+  letter-spacing: var(--sc-track-snug); }
+.stages p { margin: 0; max-width: 58ch; color: var(--sc-ink-soft);
+  text-wrap: pretty; }
+
+/* -------------------------------------------------------------- halftitle --
+   Authored silence. One near-empty screen, and the stock has already cut. */
+.halftitle { min-height: 92svh; display: flex; align-items: center; }
+.halftitle__inner { max-width: var(--sc-maxw); margin-inline: auto; width: 100%;
+  padding-inline: var(--sc-gutter); }
+.halftitle .kicker { color: var(--sc-accent); }
+.halftitle h2 { font-family: var(--sc-font-display); font-weight: 800;
+  font-size: var(--sc-t-3xl); line-height: 0.96; margin: var(--sc-4) 0 0;
+  letter-spacing: var(--sc-track-tight); max-width: 16ch; text-wrap: balance; }
+.halftitle__rule { margin-top: var(--sc-6); height: 2px; background: var(--sc-accent);
+  transform-origin: left center; }
+.halftitle p { margin-top: var(--sc-4); max-width: 42ch; color: var(--sc-ink-soft); }
+
+/* ----------------------------------------------------------- plate insert --
+   The peak. Coated dark stock, plates travelling laterally, a loupe on each. */
+.plate-act .sc-stage { display: flex; align-items: center; }
+/* The rail pans leftward past the folio, so plates would slide under the
+   chapter chrome and collide with it. Dissolve them into the margin instead,
+   the way a plate runs off the edge of a page. Masking beats giving the folio
+   an opaque band, which would read as a panel bolted onto the insert. */
+@media (min-width: 1080px) {
+  .plate-act .sc-stage {
+    -webkit-mask-image: linear-gradient(to right, transparent 0,
+      rgba(0,0,0,0.35) calc(var(--folio-w) * 0.62), #000 calc(var(--folio-w) * 1.02));
+    mask-image: linear-gradient(to right, transparent 0,
+      rgba(0,0,0,0.35) calc(var(--folio-w) * 0.62), #000 calc(var(--folio-w) * 1.02));
+  }
+}
+.plates { display: flex; align-items: center; gap: clamp(1.5rem, 4vw, 4rem);
+  padding-inline: var(--sc-gutter); will-change: transform; }
+.plates__lead { flex: 0 0 auto; width: min(24rem, 74vw); }
+.plates__lead h2 { font-family: var(--sc-font-display); font-weight: 800;
+  font-size: var(--sc-t-2xl); line-height: 0.98; margin: var(--sc-3) 0 var(--sc-4);
+  letter-spacing: var(--sc-track-tight); }
+.plates__lead p { color: var(--sc-ink-soft); margin: 0; }
+
+.plate { flex: 0 0 auto; width: min(30rem, 78vw); }
+.plate__frame {
+  /* 3:4, which is the portrait ratio the generator actually accepts, and the
+     ratio the plates were cropped at */
+  position: relative; aspect-ratio: 3 / 4; overflow: hidden;
+  background: var(--sc-surface); box-shadow: var(--sc-e2);
+  cursor: crosshair; touch-action: pan-y;
+}
+.plate__frame img { position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; }
+.plate__meta { display: flex; justify-content: space-between; align-items: baseline;
+  gap: var(--sc-3); margin-top: var(--sc-3); padding-top: var(--sc-2);
+  border-top: 1px solid color-mix(in oklab, var(--sc-ink) 26%, transparent);
+  font-family: var(--sc-font-display); }
+.plate__name { font-size: var(--sc-t-lg); font-weight: 700; margin: 0;
+  letter-spacing: var(--sc-track-snug); }
+.plate__type { font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide);
+  text-transform: uppercase; color: var(--sc-accent); }
+.plate__cap { margin: var(--sc-2) 0 0; font-size: var(--sc-t-sm);
+  color: var(--sc-ink-soft); max-width: 40ch; }
+
+/* the loupe */
+.loupe {
+  position: absolute; width: 172px; height: 172px; border-radius: 50%;
+  pointer-events: none; opacity: 0; transform: translate(-50%, -50%) scale(0.92);
+  transition: opacity 160ms var(--sc-ease-out), transform 160ms var(--sc-ease-out);
+  background-repeat: no-repeat;
+  box-shadow: 0 2px 10px hsl(var(--sc-shadow-color) / .5),
+              0 18px 42px -10px hsl(var(--sc-shadow-color) / .6),
+              inset 0 0 0 2px color-mix(in oklab, #F2EDE4 70%, transparent),
+              inset 0 0 0 9px color-mix(in oklab, #12100E 55%, transparent);
+  z-index: 2;
+}
+.plate__frame.is-inspecting .loupe { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+.loupe__read {
+  position: absolute; left: 50%; bottom: 12px; translate: -50% 0;
+  font-family: var(--sc-font-display); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap;
+  color: #F2EDE4; background: color-mix(in oklab, #12100E 82%, transparent);
+  padding: 3px 7px;
+}
+@media (max-width: 700px) { .loupe { width: 132px; height: 132px; } }
+
+/* the grading card, stamped once a stone has actually been inspected */
+.grade {
+  margin-top: var(--sc-3); border-top: 2px solid var(--sc-accent);
+  padding-top: var(--sc-3); font-family: var(--sc-font-display);
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--sc-2) var(--sc-5);
+  opacity: 0; transform: translateY(6px);
+  transition: opacity 260ms var(--sc-ease-out), transform 260ms var(--sc-ease-out);
+}
+.grade.is-open { opacity: 1; transform: none; }
+.grade div { display: flex; flex-direction: column; gap: 2px; }
+.grade dt, .grade .k { font-size: 10px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--sc-ink-soft); }
+.grade dd, .grade .v { margin: 0; font-size: var(--sc-t-sm); font-weight: 600;
+  font-variant-numeric: tabular-nums; }
+
+.plate__hint { margin-top: var(--sc-2); font-family: var(--sc-font-display);
+  font-size: var(--sc-t-xs); color: var(--sc-ink-soft); letter-spacing: 0.04em; }
+.plate__hint[hidden] { display: none; }
+
+.plates__note { flex: 0 0 auto; width: min(22rem, 74vw); }
+.plates__note p { color: var(--sc-ink-soft); margin: 0 0 var(--sc-4); }
+
+/* -------------------------------------------------------------- colophon -- */
+.colophon .sc-stage { display: flex; flex-direction: column;
+  justify-content: center; }
+.colophon__inner { max-width: var(--sc-maxw); margin-inline: auto; width: 100%;
+  padding-inline: var(--sc-gutter); }
+.colophon h2 { font-family: var(--sc-font-display); font-weight: 800;
+  font-size: var(--sc-t-2xl); line-height: 1; margin: 0 0 var(--sc-5);
+  letter-spacing: var(--sc-track-tight); max-width: 20ch; }
+.colophon__cols { display: grid; gap: var(--sc-6) var(--sc-8);
+  grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 860px) {
+  .colophon__cols { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); }
+}
+.colophon p { max-width: 54ch; text-wrap: pretty; }
+/* the CTA is a line of running text, not a button island */
+.runlink { color: var(--sc-accent); font-weight: 600;
+  text-decoration: underline; text-underline-offset: 0.22em;
+  text-decoration-thickness: 2px;
+  transition: color 140ms var(--sc-ease-out); }
+.runlink:hover { color: var(--sc-ink); }
+.colophon__foot { margin-top: var(--sc-8); padding-top: var(--sc-3);
+  border-top: var(--rule); display: flex; flex-wrap: wrap;
+  gap: var(--sc-2) var(--sc-6); font-family: var(--sc-font-display);
+  font-size: var(--sc-t-xs); letter-spacing: 0.06em; color: var(--sc-ink-soft); }
+.colophon__foot a { color: inherit; text-decoration: none; padding: 6px 0; }
+.colophon__foot a:hover { color: var(--sc-accent); }
+
+/* ------------------------------------------------------------ index links -- */
+.readon { border-top: var(--rule); margin-top: var(--sc-7); padding-top: var(--sc-4);
+  display: grid; gap: var(--sc-4) var(--sc-7);
+  grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 760px) { .readon { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.readon a { text-decoration: none; color: inherit; display: block;
+  padding: var(--sc-3) 0; border-bottom: var(--rule);
+  transition: opacity 140ms var(--sc-ease-out); }
+.readon a:hover { opacity: 0.62; }
+.readon .k { display: block; font-family: var(--sc-font-display);
+  font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide);
+  text-transform: uppercase; color: var(--sc-accent); }
+.readon .t { display: block; font-family: var(--sc-font-display);
+  font-size: var(--sc-t-lg); font-weight: 700; margin-top: var(--sc-1);
+  letter-spacing: var(--sc-track-snug); }
+
+/* ---------------------------------------------------------------- states -- */
+:where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--sc-accent); outline-offset: 3px;
+}
+
+/* A link that is the whole content of its line is a control, not running text,
+   so it carries a real tap target. Links inside a sentence keep the inline
+   flow, which is where the running-text CTA is supposed to live. */
+p > .runlink:only-child,
+.plate__hint > .runlink,
+.marginalia dd > .runlink,
+.folio__mark {
+  display: inline-block;
+  padding-block: 8px;
+}
+::selection { background: var(--sc-accent); color: var(--sc-accent-ink); }
+
+@media (prefers-reduced-motion: reduce) {
+  .parcel__list li { animation: none; }
+  .grade { opacity: 1; transform: none; }
+}
+
+/* ===========================================================================
+   CATALOG GRAMMAR. minerals.html and produce.html only.
+   Objects in a walkable collection. Museum labels, not marketing copy: every
+   object carries the SAME label schema, which is what makes it a collection
+   instead of a grid. No hero claim, no scrim copy, no persuasion in a label.
+   =========================================================================== */
+
+/* the nav is an index of objects, and it jumps */
+.index { border-top: var(--rule); padding-top: var(--sc-3); }
+.index__h { font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide);
+  text-transform: uppercase; color: var(--sc-ink-soft); margin: 0 0 var(--sc-2); }
+.index__list { list-style: none; margin: 0; padding: 0; font-family: var(--sc-font-display); }
+.index__list button {
+  font: inherit; background: none; border: 0; cursor: pointer; width: 100%;
+  text-align: left; color: var(--sc-ink-soft); font-size: var(--sc-t-xs);
+  letter-spacing: 0.04em; padding: 7px 0; display: flex; justify-content: space-between;
+  gap: var(--sc-2); transition: color 140ms var(--sc-ease-out);
+}
+.index__list button:hover { color: var(--sc-accent); }
+.index__list button[aria-current="true"] { color: var(--sc-ink); font-weight: 700; }
+.index__list button i { font-style: normal; opacity: .55; font-variant-numeric: tabular-nums; }
+
+@media (max-width: 1079px) {
+  .index { position: fixed; top: 46px; left: 0; right: 0; border-top: 0;
+    background: var(--sc-surface); border-bottom: var(--rule);
+    padding: var(--sc-2) var(--sc-gutter); z-index: 30; }
+  .index__h { display: none; }
+  .index__list { display: flex; gap: var(--sc-4); overflow-x: auto;
+    scrollbar-width: none; }
+  .index__list::-webkit-scrollbar { display: none; }
+  .index__list li { flex: 0 0 auto; }
+  .index__list button { padding: 8px 0; white-space: nowrap; }
+  .index__list button i { display: none; }
+  .page--catalog { padding-top: 92px; }
+}
+
+/* the collection itself */
+.collection { display: flex; align-items: flex-start;
+  gap: clamp(1.5rem, 3.4vw, 3.5rem); padding-inline: var(--sc-gutter);
+  will-change: transform; }
+@media (min-width: 1080px) { .collection { padding-left: calc(var(--folio-w) + var(--sc-gutter)); } }
+
+.object { flex: 0 0 auto; width: min(21rem, 76vw); }
+.object .plate__frame { aspect-ratio: 3 / 4; }
+.object__crop { position: relative; aspect-ratio: 3 / 4; overflow: hidden;
+  background: var(--sc-surface); box-shadow: var(--sc-e1); }
+.object__crop img { position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; }
+.object__name { font-family: var(--sc-font-display); font-weight: 700;
+  font-size: var(--sc-t-lg); letter-spacing: var(--sc-track-snug);
+  margin: var(--sc-3) 0 0; }
+.object__note { margin: var(--sc-2) 0 0; font-size: var(--sc-t-sm);
+  color: var(--sc-ink-soft); }
+
+/* the schema. Identical on every object, no exceptions. */
+.schema { margin: var(--sc-3) 0 0; padding-top: var(--sc-2);
+  border-top: 1px solid color-mix(in oklab, var(--sc-ink) 26%, transparent);
+  font-family: var(--sc-font-display); display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr); gap: 4px var(--sc-3); }
+.schema dt { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--sc-ink-soft); padding-top: 2px; }
+.schema dd { margin: 0; font-size: var(--sc-t-sm); font-weight: 600; line-height: 1.35; }
+
+/* the close is an inquiry plate, typeset exactly like a label */
+.inquiry { flex: 0 0 auto; width: min(23rem, 78vw); }
+.inquiry h2 { font-family: var(--sc-font-display); font-weight: 700;
+  font-size: var(--sc-t-lg); letter-spacing: var(--sc-track-snug); margin: 0 0 var(--sc-3); }
+.inquiry p { color: var(--sc-ink-soft); margin: 0 0 var(--sc-3); font-size: var(--sc-t-sm); }
+
+/* ------------------------------------------------------------ enquiry form -- */
+.enquiry-form .marginalia dt { margin-top: var(--sc-4); }
+.enquiry-form .marginalia dd { margin-top: var(--sc-1); }
+.enquiry-form :is(input, select, textarea) {
+  width: 100%; font: inherit; font-family: var(--sc-font-text);
+  font-size: var(--sc-t-sm); color: var(--sc-ink);
+  background: color-mix(in oklab, var(--sc-ink) 4%, transparent);
+  border: 0; border-bottom: 1px solid color-mix(in oklab, var(--sc-ink) 34%, transparent);
+  border-radius: 0; padding: 10px 10px;
+  transition: border-color 140ms var(--sc-ease-out), background 140ms var(--sc-ease-out);
+}
+.enquiry-form :is(input, select, textarea):hover {
+  background: color-mix(in oklab, var(--sc-ink) 7%, transparent);
+}
+.enquiry-form :is(input, select, textarea):focus-visible {
+  outline: 2px solid var(--sc-accent); outline-offset: 2px;
+  border-bottom-color: var(--sc-accent);
+}
+.enquiry-form textarea { resize: vertical; min-height: 7rem; }
+.enquiry-form label { cursor: pointer; }
+.enquiry-form button {
+  font-family: var(--sc-font-display); font-size: var(--sc-t-sm); font-weight: 600;
+  background: none; border: 0; cursor: pointer; padding: 10px 0;
+  color: var(--sc-accent); text-decoration: underline;
+  text-underline-offset: 0.22em; text-decoration-thickness: 2px;
+}
+.enquiry-form button:hover { color: var(--sc-ink); }
+.enquiry-form button:active { transform: translateY(1px); }
+
+/* The catalog grammar forbids a title treatment: the collection starts at the
+   top of the page. Document structure still needs one h1, so it is present for
+   assistive tech and absent visually. */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap;
+}
+
+
+/* ===========================================================================
+   PHOTOGRAPHIC CHAPTER GROUNDS
+   Requested directly: images behind the page rather than flat stock. The
+   chapter opens on a full-bleed photograph carrying its title, and the reading
+   panel then overlaps the photograph's lower edge. Overlap is the cheapest
+   depth there is, and it keeps the prose on solid ground where it stays
+   legible instead of floating over a picture.
+   =========================================================================== */
+
+.has-ground { padding-top: 0; }
+.has-ground .chapter__inner { position: relative; z-index: 2; }
+
+.ground {
+  position: relative;
+  height: clamp(21rem, 68vh, 46rem);
+  overflow: clip;
+  background: var(--sc-surface);
+}
+.ground__img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  /* Ken Burns, driven off the act's own progress rather than a keyframe clock,
+     so the movement belongs to the reader's hand. */
+  transform: scale(calc(1.04 + var(--sc-p, 0) * 0.09))
+             translate3d(0, calc(var(--sc-p, 0) * -2.2%), 0);
+  will-change: transform;
+}
+/* A scrim only where the type sits. A full-frame overlay would throw the
+   photograph away to fix one corner. */
+.ground__scrim {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(to top, var(--sc-canvas) 0%,
+      color-mix(in oklab, var(--sc-canvas) 74%, transparent) 16%,
+      color-mix(in oklab, var(--sc-canvas) 34%, transparent) 30%, transparent 52%),
+    radial-gradient(110% 86% at 2% 94%,
+      color-mix(in oklab, #000 62%, transparent) 0%, transparent 62%);
+}
+/* the chapter title rides on the photograph */
+.ground__title {
+  /* clear of the panel, which overlaps the ground by up to 5rem */
+  position: absolute; left: 0; right: 0; bottom: clamp(6rem, 13vh, 9rem);
+  z-index: 2;
+  padding-inline: var(--sc-gutter);
+}
+@media (min-width: 1080px) {
+  .ground__title { padding-left: calc(var(--folio-w) + var(--sc-gutter)); }
+}
+.ground__title .chapter__head {
+  border-top-color: color-mix(in oklab, #F4EFE6 55%, transparent);
+  margin-bottom: 0;
+}
+.ground__title .chapter__title { color: #F4EFE6; }
+.ground__title .chapter__num { color: var(--sc-accent); }
+
+/* the reading panel rides up over the photograph */
+.has-ground .panel {
+  position: relative; z-index: 2;
+  margin-top: clamp(-5rem, -7vh, -3rem);
+  background: var(--sc-canvas);
+  padding: clamp(2rem, 5vw, 4rem) 0 0;
+}
+.has-ground .panel::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px;
+  background: color-mix(in oklab, var(--sc-ink) 16%, transparent);
+}
+.chapter.has-ground { padding-block: 0 var(--sc-section); }
+
+/* a caption for the ground, set like every other caption on the page */
+.ground__cap {
+  position: absolute; right: var(--sc-gutter); bottom: clamp(6rem, 13vh, 9rem);
+  z-index: 2; max-width: 22ch; text-align: right;
+  font-family: var(--sc-font-display); font-size: var(--sc-t-xs);
+  line-height: 1.45; color: color-mix(in oklab, #F4EFE6 78%, transparent);
+  text-shadow: 0 1px 3px rgba(0,0,0,.6);
+}
+@media (max-width: 860px) { .ground__cap { display: none; } }
+
+/* The title page gets the same treatment at full height. */
+.titlepage.has-ground { min-height: 100svh; align-items: flex-end; padding-block: 0; }
+.titlepage.has-ground .ground {
+  position: absolute; inset: 0; height: 100%;
+}
+.titlepage.has-ground .ground__scrim {
+  /* A column of density under the text column. A full-width band dense enough
+     for three lines of display type buries the photograph behind its own title
+     page, which is the opposite of the point. This leaves the right of the
+     frame open. */
+  background:
+    linear-gradient(to right,
+      color-mix(in oklab, var(--sc-canvas) 92%, transparent) 0%,
+      color-mix(in oklab, var(--sc-canvas) 92%, transparent) 52%,
+      color-mix(in oklab, var(--sc-canvas) 87%, transparent) 72%,
+      color-mix(in oklab, var(--sc-canvas) 34%, transparent) 84%,
+      transparent 95%),
+    linear-gradient(to top,
+      var(--sc-canvas) 0%,
+      color-mix(in oklab, var(--sc-canvas) 58%, transparent) 14%,
+      color-mix(in oklab, var(--sc-canvas) 14%, transparent) 34%,
+      transparent 58%);
+}
+.titlepage.has-ground .titlepage__inner {
+  position: relative; z-index: 2;
+  /* Wide enough that the masthead lands in three lines rather than five. At
+     five it pushed the byline off the fold, and a hero that overflows the
+     viewport is a hero that lost its footer. */
+  max-width: 74rem;
+  padding-bottom: clamp(3rem, 9vh, 7rem);
+  /* The title block rides up the frame as the section leaves, and the scrim
+     that protects it does not travel with it. So it goes before it reaches the
+     open sky, rather than sitting bone-on-daylight for the last screen. */
+  opacity: calc(1 - max(0, var(--sc-p, 0) - 0.52) * 2.9);
+}
+@media (prefers-reduced-motion: reduce) {
+  .titlepage.has-ground .titlepage__inner { opacity: 1; }
+}
+
+/* depth: a vignette on every dark section, so a flat ground stops banding */
+.chapter, .titlepage, .halftitle, .colophon, .plate-act { isolation: isolate; }
+.chapter:not(.stock--paper)::after,
+.titlepage::after, .halftitle::after, .plate-act::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+  background: radial-gradient(130% 100% at 50% 42%, transparent 52%,
+    color-mix(in oklab, #000 34%, transparent) 100%);
+}
+.has-ground::after { display: none; }
+
+/* ------------------------------------------------------------------ motion --
+   Everything here is transform or opacity, driven by scroll or by a short
+   ease-out. Nothing animates width, height or position. */
+
+/* kinetic line masks need room for descenders or the tails shear off */
+[data-sc-kinetic] { overflow: visible; }
+
+/* the accent rule under a chapter number, drawn by scroll */
+.chapter__head { position: relative; }
+.chapter__head::after {
+  content: ""; position: absolute; left: 0; top: -2px; height: 2px;
+  width: calc(var(--sc-p, 0) * 100%);
+  max-width: 100%; background: var(--sc-accent);
+}
+
+/* marginalia arrive after the prose they annotate */
+.sc-in .marginalia dt, .sc-in .marginalia dd { transition-delay: 120ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ground__img { transform: scale(1.04); }
+  .chapter__head::after { width: 100%; }
+}
+
+/* ---------------------------------------------------------- folio gutter --
+   MUST stay last. The inset was originally declared before the base rules for
+   these wrappers, and `padding-inline` there is a shorthand that resets
+   padding-left at equal specificity, so the inset silently lost and every
+   chapter ran under the folio. Declared here, after them, it holds. */
+@media (min-width: 1080px) {
+  .titlepage__inner,
+  .chapter__inner,
+  .halftitle__inner,
+  .colophon__inner,
+  .plates,
+  .collection {
+    padding-left: calc(var(--folio-w) + var(--sc-gutter));
+  }
+}
+
+/* ===========================================================================
+   SITE NAVIGATION IN THE FOLIO
+   Seven pages need real navigation. It stays a folio: a margin index of the
+   feature's parts, not a marketing bar with a wordmark and a CTA.
+   =========================================================================== */
+.folio { overflow-y: auto; scrollbar-width: none; }
+.folio::-webkit-scrollbar { display: none; }
+
+.folio__nav { list-style: none; margin: 0; padding: 0; display: flex;
+  flex-direction: column; gap: 1px; }
+.folio__nav a {
+  display: block; text-decoration: none; color: var(--sc-ink-soft);
+  font-size: var(--sc-t-xs); letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 7px 0; transition: color 140ms var(--sc-ease-out);
+}
+.folio__nav a:hover { color: var(--sc-accent); }
+.folio__nav a[aria-current="page"] { color: var(--sc-ink); font-weight: 700; }
+.folio__nav a[aria-current="page"]::before {
+  content: ""; display: inline-block; width: 12px; height: 1px; margin-right: 7px;
+  vertical-align: middle; background: var(--sc-accent);
+}
+
+:root { --folio-h: 46px; }
+
+@media (max-width: 1079px) {
+  :root { --folio-h: 88px; }
+  .folio {
+    height: auto; flex-wrap: wrap; align-items: center;
+    padding-block: 6px 0; row-gap: 0;
+  }
+  .folio__nav {
+    order: 5; flex-direction: row; width: 100%;
+    gap: var(--sc-4); overflow-x: auto; scrollbar-width: none;
+    border-top: var(--rule); margin-top: 6px; padding-block: 2px;
+  }
+  .folio__nav::-webkit-scrollbar { display: none; }
+  .folio__nav li { flex: 0 0 auto; }
+  .folio__nav a { white-space: nowrap; padding: 9px 0; }
+  .page { padding-top: var(--folio-h); }
+  .index { top: var(--folio-h); }
+  .page--catalog { padding-top: calc(var(--folio-h) + 46px); }
+  .parcel { top: var(--folio-h); }
+}
+@media (min-width: 1080px) { .folio__nav { margin-top: var(--sc-2); } }
+
+/* ===========================================================================
+   FLEET GALLERY
+   A real collection of machines, so a grid is the honest form. Same label
+   schema on every object, which is what makes it a collection and not a wall
+   of feature cards.
+   =========================================================================== */
+.fleet-tabs { display: flex; flex-wrap: wrap; gap: var(--sc-2) var(--sc-5);
+  border-bottom: var(--rule); padding-bottom: var(--sc-3);
+  margin-bottom: var(--sc-7); font-family: var(--sc-font-display); }
+.fleet-tabs button {
+  font: inherit; background: none; border: 0; cursor: pointer;
+  font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide);
+  text-transform: uppercase; color: var(--sc-ink-soft); padding: 10px 0;
+  position: relative; transition: color 140ms var(--sc-ease-out);
+}
+.fleet-tabs button:hover { color: var(--sc-accent); }
+.fleet-tabs button[aria-pressed="true"] { color: var(--sc-ink); font-weight: 700; }
+.fleet-tabs button[aria-pressed="true"]::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px;
+  background: var(--sc-accent);
+}
+
+.fleet-grid { list-style: none; margin: 0; padding: 0; display: grid;
+  gap: var(--sc-7) var(--sc-5);
+  grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr)); }
+.fleet-item { min-width: 0; }
+.fleet-item[hidden] { display: none; }
+.fleet-item__crop { position: relative; aspect-ratio: 3 / 4; overflow: hidden;
+  background: var(--sc-surface); box-shadow: var(--sc-e1); }
+.fleet-item__crop img { position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; transition: transform 420ms var(--sc-ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  .fleet-item:hover .fleet-item__crop img { transform: scale(1.035); }
+}
+.fleet-item__name { font-family: var(--sc-font-display); font-weight: 700;
+  font-size: var(--sc-t-base); letter-spacing: var(--sc-track-snug);
+  margin: var(--sc-3) 0 0; }
+.schema--tight { grid-template-columns: 5.5rem minmax(0, 1fr); }
+.fleet-empty { font-family: var(--sc-font-display); color: var(--sc-ink-soft); }
+.fleet-empty[hidden] { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fleet-item__crop img { transition: none; }
+  .fleet-item:hover .fleet-item__crop img { transform: none; }
+}
+
+.colophon__tagline { max-width: 52ch; color: var(--sc-ink-soft);
+  margin: var(--sc-8) 0 0; padding-top: var(--sc-4); border-top: var(--rule);
+  font-size: var(--sc-t-sm); }
+
+/* the stage index on the operations page */
+.stage-jump { margin-top: var(--sc-7); padding-top: var(--sc-3);
+  border-top: var(--rule); font-family: var(--sc-font-display); }
+.stage-jump__h { display: block; font-size: var(--sc-t-xs);
+  letter-spacing: var(--sc-track-wide); text-transform: uppercase;
+  color: var(--sc-ink-soft); margin-bottom: var(--sc-2); }
+.stage-jump ol { list-style: none; margin: 0; padding: 0; display: flex;
+  flex-wrap: wrap; gap: var(--sc-2) var(--sc-5); counter-reset: stage; }
+.stage-jump li { counter-increment: stage; }
+.stage-jump a { text-decoration: none; color: var(--sc-ink);
+  font-size: var(--sc-t-sm); font-weight: 600; padding: 8px 0; display: block;
+  transition: color 140ms var(--sc-ease-out); }
+.stage-jump a::before { content: counter(stage, decimal-leading-zero) " ";
+  color: var(--sc-accent); font-variant-numeric: tabular-nums; }
+.stage-jump a:hover { color: var(--sc-accent); }
+
+/* ===========================================================================
+   TOP BAR
+   Asked for directly: navigation at the top, visible, with the pages listed.
+   This replaces the marginal folio. Setting --folio-w to 0 collapses every
+   left-inset calculation back to the plain gutter, so nothing else needs
+   touching. Declared last so it wins the cascade.
+   =========================================================================== */
+:root { --folio-w: 0px; --folio-h: 58px; }
+
+.folio {
+  position: fixed; inset: 0 0 auto 0; z-index: 60;
+  width: auto; height: var(--folio-h); bottom: auto;
+  flex-direction: row; align-items: center; gap: var(--sc-5);
+  padding: 0 var(--sc-gutter);
+  background: color-mix(in oklab, #0B0A09 88%, transparent);
+  backdrop-filter: blur(10px) saturate(1.1);
+  border-bottom: 1px solid color-mix(in oklab, #F4EFE6 16%, transparent);
+  overflow: visible;
+  /* the bar keeps its own ink regardless of the stock behind it */
+  --sc-ink: #F4EFE6; --sc-ink-soft: #A99C8C; --sc-accent: #E2694E;
+  color: var(--sc-ink);
+}
+.folio--on-paper { --sc-ink: #F4EFE6; --sc-ink-soft: #A99C8C; --sc-accent: #E2694E; }
+
+.folio__mark { flex: 0 0 auto; font-size: var(--sc-t-sm); padding-block: 9px; }
+.folio__mark span { display: none; }
+
+.folio__nav {
+  flex: 1 1 auto; flex-direction: row; align-items: center;
+  gap: clamp(0.75rem, 1.9vw, 1.9rem);
+  margin: 0; overflow-x: auto; scrollbar-width: none;
+}
+.folio__nav::-webkit-scrollbar { display: none; }
+.folio__nav li { flex: 0 0 auto; }
+.folio__nav a { padding: 8px 0; white-space: nowrap; font-size: var(--sc-t-xs); }
+.folio__nav a[aria-current="page"]::before { display: none; }
+.folio__nav a[aria-current="page"] {
+  color: var(--sc-ink); box-shadow: inset 0 -2px 0 var(--sc-accent);
+}
+
+.folio__lang { flex: 0 0 auto; margin-left: 0; }
+.folio__here, .folio__mobile-here { display: none; }
+
+.page, .page--catalog { padding-top: var(--folio-h); padding-left: 0; }
+.index { top: var(--folio-h); }
+.parcel {
+  position: fixed; top: calc(var(--folio-h) + 10px); right: var(--sc-gutter);
+  left: auto; width: min(17rem, 74vw);
+  background: color-mix(in oklab, #12100E 95%, transparent);
+  border: 1px solid color-mix(in oklab, #F4EFE6 18%, transparent);
+  padding: var(--sc-3) var(--sc-4); box-shadow: var(--sc-e2); z-index: 55;
+  --sc-ink: #F4EFE6; --sc-ink-soft: #A99C8C; color: var(--sc-ink);
+}
+
+/* the plate rail no longer passes under a left column, so the mask that used to
+   dissolve it into the folio is a fixed edge treatment now */
+@media (min-width: 1080px) {
+  .plate-act .sc-stage {
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 4rem);
+    mask-image: linear-gradient(to right, transparent 0, #000 4rem);
+  }
+  .titlepage__inner, .chapter__inner, .halftitle__inner, .colophon__inner,
+  .plates, .collection, .ground__title { padding-left: var(--sc-gutter); }
+}
+
+@media (max-width: 900px) {
+  :root { --folio-h: 92px; }
+  .folio { flex-wrap: wrap; height: var(--folio-h); align-content: center;
+    row-gap: 2px; padding-block: 4px; }
+  .folio__mark { order: 1; }
+  .folio__lang { order: 2; margin-left: auto; }
+  .folio__nav { order: 3; width: 100%; flex: 1 0 100%;
+    border-top: 1px solid color-mix(in oklab, #F4EFE6 12%, transparent);
+    padding-top: 2px; }
+  .page--catalog { padding-top: calc(var(--folio-h) + 46px); }
+}
+
+/* ===========================================================================
+   INTERACTION LAYER
+   =========================================================================== */
+
+/* --- the parcel sheet was a permanently open panel pinned over the page, so
+   it clipped whatever it landed on. It is a control in the bar now, opaque,
+   and closed until asked for. */
+.parcel-toggle {
+  flex: 0 0 auto; font-family: var(--sc-font-display); font-size: var(--sc-t-xs);
+  letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600;
+  background: none; border: 1px solid color-mix(in oklab, #F4EFE6 26%, transparent);
+  color: #F4EFE6; cursor: pointer; padding: 7px 11px; display: none;
+  align-items: center; gap: 7px; transition: border-color 140ms var(--sc-ease-out),
+  background 140ms var(--sc-ease-out);
+}
+.parcel-toggle.is-live { display: inline-flex; }
+.parcel-toggle:hover { border-color: var(--sc-accent); background: color-mix(in oklab, var(--sc-accent) 14%, transparent); }
+.parcel-toggle .n {
+  background: var(--sc-accent); color: #12100E; font-weight: 800;
+  min-width: 1.25rem; height: 1.25rem; display: grid; place-items: center;
+  font-variant-numeric: tabular-nums; font-size: 11px;
+}
+.parcel-toggle .n.is-bump { animation: bump 380ms var(--sc-ease-out); }
+@keyframes bump { 0% { transform: scale(1); } 40% { transform: scale(1.45); } 100% { transform: scale(1); } }
+
+.parcel {
+  position: fixed; top: calc(var(--folio-h) + 8px); right: var(--sc-gutter);
+  left: auto; width: min(18rem, 82vw);
+  background: #14110F;                      /* fully opaque: it sits over copy */
+  border: 1px solid color-mix(in oklab, #F4EFE6 22%, transparent);
+  padding: var(--sc-4); box-shadow: var(--sc-e3); z-index: 65;
+  --sc-ink: #F4EFE6; --sc-ink-soft: #A99C8C; color: var(--sc-ink);
+  transform-origin: top right;
+  animation: sheetIn 220ms var(--sc-ease-out) both;
+}
+@keyframes sheetIn { from { opacity: 0; transform: translateY(-6px) scale(0.98); } }
+
+/* --- scroll progress, riding the bottom edge of the bar */
+[data-sc-progress] {
+  position: fixed; top: calc(var(--folio-h) - 2px); left: 0;
+  height: 2px; background: var(--sc-accent); z-index: 61;
+  transform-origin: left center; pointer-events: none;
+}
+
+/* --- lightbox: any plate, object or machine opens large, with its full label */
+.lb { border: 0; padding: 0; background: transparent; max-width: none; max-height: none;
+  width: 100%; height: 100%; overflow: hidden; }
+.lb::backdrop { background: color-mix(in oklab, #080706 88%, transparent); backdrop-filter: blur(6px); }
+.lb__inner { display: grid; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center;
+  grid-template-columns: minmax(0, 1fr); height: 100%; padding: clamp(3.5rem, 8vh, 6rem) var(--sc-gutter);
+  overflow-y: auto; }
+@media (min-width: 860px) { .lb__inner { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); } }
+.lb__figure { margin: 0; justify-self: center; max-width: min(46vh, 100%); }
+.lb__figure img { display: block; width: 100%; height: auto; box-shadow: var(--sc-e3); }
+.lb__body { color: #F4EFE6; --sc-ink: #F4EFE6; --sc-ink-soft: #A99C8C; }
+.lb__kicker { font-family: var(--sc-font-display); font-size: var(--sc-t-xs);
+  letter-spacing: var(--sc-track-wide); text-transform: uppercase; color: var(--sc-accent); }
+.lb__title { font-family: var(--sc-font-display); font-weight: 800;
+  font-size: var(--sc-t-2xl); line-height: 1; margin: var(--sc-3) 0 var(--sc-4);
+  letter-spacing: var(--sc-track-tight); }
+.lb__note { color: #A99C8C; max-width: 46ch; margin: 0 0 var(--sc-5); }
+.lb__body .schema dt, .lb__body .schema .k { color: #A99C8C; }
+.lb__body .schema dd, .lb__body .schema .v { color: #F4EFE6; }
+.lb__close, .lb__prev, .lb__next {
+  position: fixed; background: none; border: 1px solid color-mix(in oklab, #F4EFE6 28%, transparent);
+  color: #F4EFE6; cursor: pointer; width: 44px; height: 44px; display: grid;
+  place-items: center; font-size: 18px; font-family: var(--sc-font-display);
+  transition: border-color 140ms var(--sc-ease-out), background 140ms var(--sc-ease-out);
+}
+.lb__close:hover, .lb__prev:hover, .lb__next:hover {
+  border-color: var(--sc-accent); background: color-mix(in oklab, var(--sc-accent) 18%, transparent); }
+.lb__close { top: calc(var(--folio-h) + 12px); right: var(--sc-gutter); }
+.lb__prev { left: var(--sc-gutter); top: 50%; translate: 0 -50%; }
+.lb__next { right: var(--sc-gutter); top: 50%; translate: 0 -50%; }
+.lb__count { position: fixed; bottom: var(--sc-5); left: 50%; translate: -50% 0;
+  font-family: var(--sc-font-display); font-size: var(--sc-t-xs); color: #A99C8C;
+  letter-spacing: 0.1em; font-variant-numeric: tabular-nums; }
+
+/* --- objects and machines now say they are pressable */
+.object__crop, .fleet-item__crop, .plate__frame { cursor: zoom-in; }
+.object__crop, .fleet-item__crop {
+  transition: transform 320ms var(--sc-ease-out), box-shadow 320ms var(--sc-ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  .object:hover .object__crop, .fleet-item:hover .fleet-item__crop {
+    transform: translateY(-4px); box-shadow: var(--sc-e3); }
+}
+
+/* --- disclosure registry opens and closes, as it did on the original site */
+.stages--disclose > li > div > h3 { cursor: pointer; display: flex;
+  align-items: baseline; justify-content: space-between; gap: var(--sc-3); }
+.stages--disclose > li > div > h3::after {
+  content: "+"; font-weight: 500; color: var(--sc-accent); font-size: 1.2em;
+  transition: transform 220ms var(--sc-ease-out); }
+.stages--disclose > li.is-open > div > h3::after { transform: rotate(45deg); }
+.stages--disclose > li > div > p {
+  display: grid; grid-template-rows: 0fr; overflow: hidden;
+  transition: grid-template-rows 300ms var(--sc-ease-out), opacity 220ms var(--sc-ease-out);
+  opacity: 0; margin: 0; }
+.stages--disclose > li > div > p > span { min-height: 0; }
+.stages--disclose > li.is-open > div > p { grid-template-rows: 1fr; opacity: 1;
+  margin-top: var(--sc-2); }
+
+/* --- the stage index tracks where you are */
+.stage-jump a[aria-current="true"] { color: var(--sc-accent); }
+.stage-jump a[aria-current="true"]::after {
+  content: ""; display: block; height: 2px; background: var(--sc-accent); margin-top: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .parcel { animation: none; }
+  .parcel-toggle .n.is-bump { animation: none; }
+  .object__crop, .fleet-item__crop { transition: none; }
+  .stages--disclose > li > div > p { transition: none; }
+}
+
+/* ===========================================================================
+   MOTION SYSTEM v2
+   The first pass put the interactions behind clicks. Scrolling and hovering
+   are what a reader actually does, so the work belongs there.
+   Every transform below composes from CSS variables, which is what lets the
+   pointer and the scroll drive the same element without fighting over it.
+   =========================================================================== */
+
+/* --- 3D: pointer tilt and scroll rotation on one transform ---------------- */
+.tilt3d { transform-style: preserve-3d; will-change: transform; }
+.tilt3d > * { transform: translateZ(0); }
+.tilt3d {
+  transform:
+    perspective(1100px)
+    rotateX(var(--rx, 0deg))
+    rotateY(calc(var(--ry, 0deg) + var(--sry, 0deg)))
+    translateZ(var(--tz, 0px))
+    scale(var(--sc, 1));
+  transition: transform 520ms var(--sc-ease-out);
+}
+.tilt3d.is-pointing { transition: transform 90ms linear; }
+
+/* the specular sheen tracks the pointer across the surface */
+.tilt3d::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+  opacity: 0; transition: opacity 320ms var(--sc-ease-out);
+  background: radial-gradient(38% 42% at var(--mx, 50%) var(--my, 50%),
+    color-mix(in oklab, #FFF 30%, transparent) 0%,
+    color-mix(in oklab, #FFF 8%, transparent) 38%, transparent 72%);
+  mix-blend-mode: soft-light;
+}
+.tilt3d.is-pointing::after { opacity: 1; }
+
+/* --- a generic scroll entrance, applied to almost everything ------------- */
+[data-rise] {
+  opacity: 0;
+  transform: translate3d(0, var(--rise-y, 18px), 0) scale(var(--rise-s, 1));
+  transition:
+    opacity 620ms var(--sc-ease-out) calc(var(--i, 0) * 55ms),
+    transform 720ms var(--sc-ease-out) calc(var(--i, 0) * 55ms);
+}
+[data-rise].is-in { opacity: 1; transform: none; }
+[data-rise="side"] { --rise-y: 0px; transform: translate3d(-16px, 0, 0); }
+[data-rise="lift"] { --rise-y: 26px; --rise-s: 0.985; }
+
+/* --- scroll-linked drift between the prose and its margin ---------------- */
+@media (min-width: 900px) {
+  .mediacol { transform: translate3d(0, calc((var(--sc-p, 0.5) - 0.5) * -34px), 0); }
+  .prose    { transform: translate3d(0, calc((var(--sc-p, 0.5) - 0.5) * 12px), 0); }
+}
+
+/* the rule under a chapter number draws itself as the chapter arrives */
+.chapter__head { position: relative; overflow: visible; }
+
+/* --- hover, everywhere the reader can put a pointer ---------------------- */
+@media (hover: hover) and (pointer: fine) {
+
+  /* nav: the underline sweeps in rather than snapping */
+  .folio__nav a { position: relative; }
+  .folio__nav a::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 2px; height: 2px;
+    background: var(--sc-accent); transform: scaleX(0); transform-origin: left center;
+    transition: transform 260ms var(--sc-ease-out);
+  }
+  .folio__nav a:hover::after { transform: scaleX(1); }
+
+  /* running links: the underline redraws and the text nudges */
+  .runlink { position: relative; text-decoration: none;
+    background-image: linear-gradient(var(--sc-accent), var(--sc-accent));
+    background-size: 100% 2px; background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 300ms var(--sc-ease-out), color 160ms var(--sc-ease-out);
+  }
+  .runlink:hover { background-size: 0% 2px; color: var(--sc-ink); }
+
+  /* marginalia rows answer the pointer with an accent tick */
+  .marginalia dt, .marginalia dd { transition: transform 260ms var(--sc-ease-out),
+    color 200ms var(--sc-ease-out); }
+  .marginalia div:hover dt, .marginalia:hover dt:hover,
+  .marginalia dt:hover, .marginalia dt:hover + dd { transform: translateX(6px); }
+  .marginalia dt:hover { color: var(--sc-accent); }
+
+  /* the numbered stages lift and light up */
+  .stages > li { transition: transform 320ms var(--sc-ease-out),
+    border-color 320ms var(--sc-ease-out); }
+  .stages > li:hover { transform: translateX(8px); border-top-color: var(--sc-accent); }
+  .stages > li .stages__n { transition: transform 320ms var(--sc-ease-out),
+    color 200ms var(--sc-ease-out); display: inline-block; }
+  .stages > li:hover .stages__n { transform: scale(1.35); }
+
+  /* read-on cards */
+  .readon a { transition: transform 300ms var(--sc-ease-out),
+    border-color 300ms var(--sc-ease-out), opacity 200ms var(--sc-ease-out); }
+  .readon a:hover { transform: translateX(10px); border-bottom-color: var(--sc-accent); opacity: 1; }
+  .readon a .t { transition: color 200ms var(--sc-ease-out); }
+  .readon a:hover .t { color: var(--sc-accent); }
+
+  /* the colophon footer */
+  .colophon__foot a { transition: transform 240ms var(--sc-ease-out), color 180ms var(--sc-ease-out); }
+  .colophon__foot a:hover { transform: translateY(-2px); }
+
+  /* fleet filter tabs */
+  .fleet-tabs button { transition: transform 220ms var(--sc-ease-out), color 160ms var(--sc-ease-out); }
+  .fleet-tabs button:hover { transform: translateY(-2px); }
+
+  /* the catalog index */
+  .index__list button { transition: transform 220ms var(--sc-ease-out), color 160ms var(--sc-ease-out); }
+  .index__list button:hover { transform: translateX(5px); }
+
+  /* the disclosure headings */
+  .stages--disclose > li > div > h3 { transition: color 180ms var(--sc-ease-out); }
+  .stages--disclose > li > div > h3:hover { color: var(--sc-accent); }
+
+  /* schema rows in a lightbox */
+  .lb__schema div, .lb__schema dt, .lb__schema dd { transition: color 180ms var(--sc-ease-out); }
+}
+
+/* press feedback on everything pressable */
+.fleet-tabs button:active, .index__list button:active,
+.parcel-toggle:active, .lb__close:active, .lb__prev:active, .lb__next:active {
+  transform: translateY(1px) scale(0.985);
+}
+
+/* --- the plate rail gets real depth ------------------------------------- */
+.plates, .collection { perspective: 1400px; perspective-origin: 50% 45%; }
+
+/* --- drop cap arrives with the paragraph -------------------------------- */
+.prose .drop::first-letter { transition: color 300ms var(--sc-ease-out); }
+
+@media (prefers-reduced-motion: reduce) {
+  .tilt3d { transform: none !important; transition: none; }
+  .tilt3d::after { display: none; }
+  [data-rise] { opacity: 1; transform: none; transition: none; }
+  .mediacol, .prose { transform: none !important; }
+  .stages > li:hover, .readon a:hover, .index__list button:hover,
+  .fleet-tabs button:hover, .colophon__foot a:hover { transform: none; }
+}
+
+/* ===========================================================================
+   HERO: the farm journey
+   A scrub act, so the stage is sticky and the engine paints the poster and the
+   video into it. The copy is a cue layer inside that stage rather than a block
+   in flow, which is what lets it greet on the first frame and leave before the
+   camera reaches open sky.
+   =========================================================================== */
+.hero-scrub { background: var(--sc-canvas); position: relative; }
+.hero-scrub .sc-stage { display: flex; align-items: flex-end; }
+
+.hero-scrub .titlepage__inner {
+  position: relative; z-index: var(--sc-z-copy);
+  width: 100%; max-width: 74rem;
+  padding: 0 var(--sc-gutter) clamp(3rem, 9vh, 7rem);
+  opacity: 1;                      /* cues drive this now, not act progress */
+}
+@media (min-width: 1080px) {
+  .hero-scrub .titlepage__inner { padding-left: var(--sc-gutter); }
+}
+
+/* the scrim rides inside the stage, over the video, under the copy */
+.hero-scrub .ground__scrim {
+  /* The copy block runs from 9% to nearly 70% of the frame height, so a
+     bottom-anchored band cannot protect it: the masthead sits where such a
+     gradient has already faded out. This is a COLUMN of density down the left,
+     which is what taste.md prescribes for copy held to one side, plus a light
+     bottom band. Tuned against the worst frame of a moving camera, not the
+     first one. */
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background:
+    linear-gradient(to right,
+      color-mix(in oklab, var(--sc-canvas) 95%, transparent) 0%,
+      color-mix(in oklab, var(--sc-canvas) 92%, transparent) 56%,
+      color-mix(in oklab, var(--sc-canvas) 74%, transparent) 70%,
+      color-mix(in oklab, var(--sc-canvas) 30%, transparent) 84%,
+      transparent 95%),
+    linear-gradient(to top,
+      color-mix(in oklab, var(--sc-canvas) 80%, transparent) 0%,
+      color-mix(in oklab, var(--sc-canvas) 30%, transparent) 26%,
+      transparent 55%);
+}
+
+/* A block-level box spans the whole column even when the text is one short
+   line, so contrast gets measured against bright frame far to the right of the
+   glyphs. Shrink the box to the ink. */
+.hero-scrub .kicker,
+.hero-scrub .byline,
+.hero-scrub .masthead { width: fit-content; max-width: 100%; }
+.hero-scrub .standfirst { max-width: 44ch; }
+
+/* the vignette belongs to the flat sections, not over a moving camera */
+.hero-scrub::after { display: none; }
+
+/* On a phone the hero copy spans the full width, so a column of density down
+   the left protects nothing. Below this width it becomes a band, which is what
+   taste.md prescribes once a corner anchor has become full-bleed. */
+@media (max-width: 860px) {
+  .hero-scrub .ground__scrim {
+    background:
+      linear-gradient(to top,
+        var(--sc-canvas) 0%,
+        color-mix(in oklab, var(--sc-canvas) 96%, transparent) 42%,
+        color-mix(in oklab, var(--sc-canvas) 86%, transparent) 60%,
+        color-mix(in oklab, var(--sc-canvas) 42%, transparent) 78%,
+        transparent 92%);
+  }
+  .hero-scrub .kicker,
+  .hero-scrub .byline,
+  .hero-scrub .masthead { width: auto; }
+  /* The accent sits high in a phone frame, above where the band can reach, and
+     laterite on a hazy sky measures near 1:1. Extending the band that far up
+     would bury the photograph to protect one small label, so the label gives
+     way instead. */
+  .hero-scrub .kicker { color: var(--sc-ink); }
+}
+
+/* ===========================================================================
+   HERO: the farm, modelled
+   The scene in this section is WebGL. The geometry is built at runtime and
+   rasterised every frame, so it can be turned and looked into rather than
+   merely looked at.
+
+   Two consequences for the CSS. The photograph is a placeholder, not the
+   hero, so it fades out the moment the scene is up. And the type cannot rely
+   on a scrim over the picture for its contrast, because the picture now
+   changes as the visitor drags: the copy carries its own ground instead.
+   =========================================================================== */
+.hero3d {
+  position: relative; min-height: 100svh; overflow: clip;
+  display: flex; align-items: flex-end;
+  background: var(--sc-canvas);
+}
+
+.farm {
+  position: absolute; inset: 0; z-index: 0;
+  /* The ground under the scene while it builds. It is the rendered farm's own
+     range — warm haze over dark land — so the canvas arriving is a resolve
+     rather than a cut. */
+  background:
+    linear-gradient(to bottom,
+      #8E6547 0%, #7B5B44 24%, #4E4A33 50%, #2C2B1F 76%, var(--sc-canvas) 100%);
+}
+
+.farm__canvas {
+  position: absolute; inset: 0; z-index: 1;
+  width: 100%; height: 100%; display: block;
+  cursor: grab; outline: none;
+  opacity: 0; transition: opacity 900ms var(--sc-ease-out);
+}
+.farm.is-ready .farm__canvas { opacity: 1; }
+.farm__canvas:active { cursor: grabbing; }
+.farm__canvas:focus-visible { outline: 2px solid var(--sc-accent); outline-offset: -4px; }
+
+/* The photograph is the fallback, not the opening frame. It stays at zero
+   until hero-farm.js asks for it, which is why the old hero no longer flashes
+   past on the way to the scene. */
+.farm__still {
+  position: absolute; inset: 0; z-index: 0;
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  opacity: 0;
+  transition: opacity 700ms var(--sc-ease-out);
+}
+.farm.is-fallback .farm__still { opacity: 1; }
+.farm.is-ready .farm__still { opacity: 0; }
+.farm.is-static .farm__canvas,
+.farm.is-static .farm__hint { display: none; }
+
+/* the invitation, which stops being useful the moment it is taken */
+.farm__hint {
+  position: absolute; z-index: 3; margin: 0;
+  right: var(--sc-gutter); bottom: clamp(1.4rem, 4vh, 2.4rem);
+  font-family: var(--sc-font-display);
+  font-size: .68rem; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--sc-ink);
+  background: color-mix(in oklab, #0B0A09 66%, transparent);
+  backdrop-filter: blur(8px);
+  border: 1px solid color-mix(in oklab, var(--sc-ink) 20%, transparent);
+  border-radius: var(--sc-r-sm);
+  padding: .52rem .85rem;
+  pointer-events: none;
+  opacity: 0; transition: opacity 700ms var(--sc-ease-out);
+}
+.farm.is-ready .farm__hint { opacity: 1; }
+.farm.has-touched .farm__hint { opacity: 0; }
+.farm__hint b { color: var(--sc-accent); font-weight: 600; }
+.farm__hint-coarse { display: none; }
+@media (pointer: coarse) {
+  .farm__hint-fine { display: none; }
+  .farm__hint-coarse { display: inline; }
+}
+
+/* On a touch screen an activated scene owns the swipe. This is the way out. */
+.farm__release {
+  position: absolute; z-index: 4;
+  right: var(--sc-gutter); top: calc(var(--folio-h) + 12px);
+  font-family: var(--sc-font-display); font-size: .68rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--sc-accent-ink); background: var(--sc-accent);
+  border: 0; border-radius: var(--sc-r-sm);
+  padding: .6rem 1.05rem; cursor: pointer;
+}
+.farm__release[hidden] { display: none; }
+
+/* light enough to keep the farm visible, since the plate does the real work */
+.hero3d__scrim {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background:
+    linear-gradient(to top,
+      color-mix(in oklab, var(--sc-canvas) 58%, transparent) 0%,
+      color-mix(in oklab, var(--sc-canvas) 16%, transparent) 24%,
+      transparent 46%),
+    radial-gradient(130% 86% at 50% 4%, transparent 52%,
+      color-mix(in oklab, var(--sc-canvas) 58%, transparent) 100%);
+}
+
+.hero3d__copy { position: relative; z-index: 3; width: 100%; }
+.hero3d .titlepage__inner {
+  max-width: 74rem; padding: 0 var(--sc-gutter) clamp(3rem, 9vh, 7rem);
+}
+/* The copy wrapper is transparent but full width, so left alone it would eat
+   every drag aimed at the farm beside it. Only the plate itself is solid. */
+.hero3d__copy, .hero3d .titlepage__inner { pointer-events: none; }
+.hero3d__plate { pointer-events: auto; }
+
+/* the copy's own ground. A scrim cannot guarantee contrast over a scene the
+   visitor is free to re-aim; a plate can. */
+.hero3d__plate {
+  max-width: 44rem;
+  padding: clamp(1.2rem, 2.4vw, 1.8rem) clamp(1.35rem, 2.6vw, 2rem);
+  background: color-mix(in oklab, #0B0A09 84%, transparent);
+  backdrop-filter: blur(16px) saturate(1.04);
+  border: 1px solid color-mix(in oklab, var(--sc-ink) 15%, transparent);
+  border-radius: var(--sc-r-sm);
+}
+/* the hero's type is set a step down from the page's: the plate has to end
+   clear of the fixed bar, and a masthead sized for a full page will not */
+.hero3d__plate .masthead { font-size: clamp(2.4rem, 4.6vw, 4.1rem); line-height: 0.98; }
+.hero3d__plate .standfirst { font-size: clamp(1rem, 1.15vw, 1.12rem); max-width: 52ch; }
+.hero3d__plate .byline { margin-top: 1rem; }
+.hero3d::after { display: none; }
+
+@media (max-width: 860px) {
+  .hero3d .kicker { color: var(--sc-ink); }
+  .hero3d__plate { max-width: none; }
+  .farm__hint { left: var(--sc-gutter); right: auto; }
+}
+
+/* On a phone the plate ran 560px in an 844px viewport and pushed its own last
+   two lines below the fold. The type steps down again so the whole plate ends
+   on screen, and so the farm keeps a band to be seen in. */
+@media (max-width: 620px) {
+  /* the page is already inset by the fixed bar, so a 100svh hero ended a
+     whole bar-height below the fold and took the plate's last lines with it */
+  .hero3d { min-height: calc(100svh - var(--folio-h)); }
+  .hero3d__plate { padding: 1.1rem 1.15rem 1.2rem; }
+  .hero3d__plate .masthead { font-size: clamp(1.95rem, 8.2vw, 2.5rem); line-height: 1.0; }
+  .hero3d__plate .standfirst { font-size: .95rem; line-height: 1.46; }
+  .hero3d__plate .kicker { font-size: .64rem; }
+  .hero3d__plate .byline { margin-top: .8rem; font-size: .62rem; row-gap: .2rem; }
+  .hero3d .titlepage__inner { padding-bottom: clamp(1.5rem, 4vh, 2.5rem); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .farm__canvas, .farm__still, .farm__hint { transition: none; }
+}
+
+/* A rail or a pinned close that has been converted to a stacked section on a
+   phone. The stage must stop being sticky, or it keeps its clipped 100vh box. */
+.is-stacked [data-sc-stage] {
+  position: static; height: auto; overflow: visible; display: block;
+}
+.is-stacked { padding-block: var(--sc-section); }
+.is-stacked .plates,
+.is-stacked .collection {
+  display: grid; grid-template-columns: 1fr; gap: var(--sc-8);
+  padding-inline: var(--sc-gutter); perspective: none; transform: none !important;
+}
+.is-stacked .plate,
+.is-stacked .object,
+.is-stacked .plates__lead,
+.is-stacked .plates__note,
+.is-stacked .inquiry { width: auto; max-width: none; }
+.is-stacked .tilt3d { transform: none !important; }
+.colophon.is-stacked .colophon__inner { padding-block: 0; }
